@@ -9,9 +9,7 @@ import shaazImage from "../assets/images/Shaaz.jpg";
 
 const team = [
   { name: "Shaaz meharoof", role: "CHAIRMAN", image: shaazImage },
-  { name: "Rijuwal", role: "Ceo", image: shaazImage },
-  { name: "Shradha", role: "CHAIRMAN", image: shaazImage },
-  { name: "Sales", role: "Sales Manager ", image: shaazImage },
+
 
 ];
 

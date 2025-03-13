@@ -7,6 +7,8 @@ import Why from "../pages/why";
 import Team from "../pages/Team";
 import Faq from "../pages/Faq";
 import PrivateEquity from "../pages/privateequity";
+import Awards from "../pages/Awards";
+import Testimonials from "../pages/Testimonials";
 
 const Home = () => {
   return (
@@ -15,7 +17,9 @@ const Home = () => {
       <About />
       <MissionVision />
       <Why />
+      <Awards />
       <PrivateEquity />
+      <Testimonials />
       <Team />
       <Faq />
       <Chatbot />

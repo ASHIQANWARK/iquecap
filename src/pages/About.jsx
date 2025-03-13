@@ -35,7 +35,7 @@ const About = () => {
       >
         Ique Cap is a trusted startup investment platform from the startup
         fostering company, IQue Ventures (
-        <a href="https://www.ique.in" target="_blank" rel="noopener noreferrer" className="text-black underline">
+        <a href="https://www.ique.in" target="_blank" rel="noopener noreferrer" className="text-white underline">
           www.ique.in
         </a>
         ). Ique Cap is a premier investment platform dedicated to connecting investors with
