@@ -6,7 +6,7 @@ import Chatbot from "../pages/Chatbot";
 import Why from "../pages/why";
 import Team from "../pages/Team";
 import Faq from "../pages/Faq";
-import PrivateEquity from "../pages/PrivateEquity";
+import PrivateEquity from "../pages/privateequity";
 
 const Home = () => {
   return (
