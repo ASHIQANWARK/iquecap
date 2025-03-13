@@ -10,7 +10,7 @@ import PrivateEquity from "../pages/privateequity";
 
 const Home = () => {
   return (
-    <div className="bg-gradient-to-t from-emerald-900 to-teal-800 min-h-screen">
+    <div className="bg-gradient-to-t from-emerald-950 to-teal-950 min-h-screen">
       <Hero />
       <About />
       <MissionVision />

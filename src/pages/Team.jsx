@@ -20,9 +20,9 @@ const Team = () => {
     <div className="py-16 ">
       <div className="container mx-auto px-6">
         {/* Section Heading */}
-        <h2 className="text-4xl font-bold text-center text-[#0b081f] mb-12">
+        <h2 className="text-6xl font-bold text-center text-white mb-12">
           Our Team
-          <User className="inline-block w-8 h-8 ml-2 text-[#05081e]" />
+          <User className="inline-block w-12 h-15  text-white" />
         </h2>
 
         {/* Team Grid */}

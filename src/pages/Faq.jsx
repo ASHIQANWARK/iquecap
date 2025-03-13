@@ -57,31 +57,31 @@ export default function FAQSection() {
       <div className="max-w-6xl mx-auto">
         {/* Heading Section */}
         <div className="text-center mb-10">
-          <h1 className="text-5xl font-semibold text-emerald-900">FAQs</h1>
-          <h2 className="text-4xl font-bold text-gray-900 mt-2">
-            Get the Answers to <br /> Common Questions
+          <h1 className="text-5xl font-semibold text-white">FAQs</h1>
+          <h2 className="text-4xl font-bold  text-white mt-2">
+            Get the Answers to  Common Questions
           </h2>
         </div>
 
         <div className="flex flex-col md:flex-row items-center gap-10">
           {/* Left Section - FAQs */}
           <div className="w-full md:w-1/2">
-            <div className="bg-gradient-to-t from-teal-800 to-emerald-900 p-6 rounded-xl shadow-md max-h-[500px] overflow-y-auto">
+            <div className="bg-white p-6 rounded-xl shadow-md max-h-[500px] overflow-y-auto">
               {faqs.map((faq, index) => (
-                <div key={index} className="border-b last:border-none">
+                <div key={index} className="border-b-4 last:border-none">
                   <button
-                    className="w-full flex justify-between items-center py-4 text-left text-lg font-medium text-white focus:outline-none"
+                    className="w-full flex justify-between items-center py-4 text-left text-lg font-medium text-black focus:outline-none"
                     onClick={() => toggleFAQ(index)}
                   >
                     {faq.question}
                     {openIndex === index ? (
-                      <ChevronUp className="text-gray-600" />
+                      <ChevronUp className="text-black" />
                     ) : (
-                      <ChevronDown className="text-gray-600" />
+                      <ChevronDown className="text-black" />
                     )}
                   </button>
                   {openIndex === index && (
-                    <p className="text-gray-600 pb-4">{faq.answer}</p>
+                    <p className="text-black pb-4">{faq.answer}</p>
                   )}
                 </div>
               ))}

@@ -51,13 +51,13 @@ const HeroSection = () => {
 
             {/* Overlay for better readability */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30 flex flex-col items-center justify-center text-center px-6">
-              <h1 className="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg">
+            <h1 className="text-4xl md:text-6xl font-extrabold bg-gradient-to-r from-emerald-400 to-white bg-clip-text text-transparent drop-shadow-lg">
                 {slide.title}
               </h1>
               <p className="mt-4 text-lg md:text-xl text-white/90 max-w-2xl">
                 {slide.description}
               </p>
-              <button className="mt-6 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-teal-400 hover:to-emerald-500 text-white px-6 py-3 rounded-full text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+              <button className="mt-6 bg-gradient-to-r from-emerald-800 to-teal-900 hover:from-teal-400 hover:to-emerald-500 text-white px-6 py-3 rounded-full text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                 Learn More
               </button>
             </div>
