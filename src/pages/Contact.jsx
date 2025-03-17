@@ -19,14 +19,14 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-16  bg-gradient-to-t from-teal-800 to-emerald-900 overflow-x-hidden">
+    <section className="py-16  bg-gradient-to-t from-emerald-950 to-teal-950 overflow-x-hidden">
       <div className="container mx-auto px-4 pt-4 max-w-full">
         <h2 className="text-4xl font-bold text-center mb-4 text-white">Contact Us</h2>
         <p className="text-center text-xl mb-12 text-gray-300">Have questions or need assistance? We are just a message away.</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-8">
             <div className="flex items-center p-6 rounded-xl shadow-xl bg-white bg-opacity-40 backdrop-blur-md">
-              <div className="text-3xl text-[#1d375f] mr-4">
+              <div className="text-3xl text-emerald-950 mr-4">
                 <i className="fas fa-globe"></i>
               </div>
               <div>
@@ -35,7 +35,7 @@ const Contact = () => {
               </div>
             </div>
             <div className="flex items-center p-6 rounded-xl shadow-xl bg-white bg-opacity-40 backdrop-blur-md">
-              <div className="text-3xl text-[#1d375f] mr-4">
+              <div className="text-3xl text-emerald-950 mr-4">
                 <i className="fas fa-phone-alt"></i>
               </div>
               <div>
@@ -44,7 +44,7 @@ const Contact = () => {
               </div>
             </div>
             <div className="flex items-center p-6 rounded-xl shadow-xl bg-white bg-opacity-40 backdrop-blur-md">
-              <div className="text-3xl text-[#1d375f] mr-4">
+              <div className="text-3xl text-emerald-950 mr-4">
                 <i className="fas fa-envelope-open-text"></i>
               </div>
               <div>
@@ -61,7 +61,7 @@ const Contact = () => {
                   <input
                     type="text"
                     name="name"
-                    className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-[#1d375f] transition-all"
+                    className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-emerald-950 transition-all"
                     placeholder="Your Name"
                     required
                     value={formData.name}
@@ -70,7 +70,7 @@ const Contact = () => {
                   <input
                     type="email"
                     name="email"
-                    className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-[#1d375f] transition-all"
+                    className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-emerald-950 transition-all"
                     placeholder="Your Email"
                     required
                     value={formData.email}
@@ -80,7 +80,7 @@ const Contact = () => {
                 <input
                   type="text"
                   name="subject"
-                  className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-[#1d375f] transition-all"
+                  className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-emerald-950 transition-all"
                   placeholder="Subject"
                   required
                   value={formData.subject}
@@ -88,7 +88,7 @@ const Contact = () => {
                 />
                 <textarea
                   name="message"
-                  className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-[#1d375f] transition-all"
+                  className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-emerald-950 transition-all"
                   rows="4"
                   placeholder="Your Message"
                   required
@@ -97,7 +97,7 @@ const Contact = () => {
                 ></textarea>
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-xl bg-gradient-to-b from-teal-400 via-emerald-500 to-emerald-900 text-white text-lg font-semibold hover:bg-[#162d4f] transition-colors"
+                  className="w-full py-3 rounded-xl bg-gradient-to-t from-emerald-950 to-teal-950 text-white text-lg font-semibold hover:bg-[#162d4f] transition-colors"
                 >
                   Send via WhatsApp
                 </button>

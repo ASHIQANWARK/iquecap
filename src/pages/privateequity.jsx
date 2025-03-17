@@ -70,7 +70,7 @@ const PrivateEquity = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12">
       <div
-        className="relative bg-cover bg-center shadow-2xl rounded-2xl overflow-hidden max-w-3xl w-full p-10 transform hover:scale-105 transition duration-500"
+        className="relative bg-cover bg-center shadow-2xl rounded-2xl overflow-hidden max-w-5xl w-full p-10 transform hover:scale-105 transition duration-500"
         style={{ backgroundImage: `url(${moneyImage})` }}
       >
         {/* Overlay for readability */}
