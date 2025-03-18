@@ -6,6 +6,9 @@ const Contact = () => {
     email: "",
     subject: "",
     message: "",
+    investmentRange: "",
+    preferredIndustries: "",
+    investmentPreference: "",
   });
 
   const handleChange = (e) => {
@@ -14,12 +17,12 @@ const Contact = () => {
 
   const sendWhatsAppMessage = (e) => {
     e.preventDefault();
-    const whatsappMessage = `Name: ${formData.name}%0AEmail: ${formData.email}%0ASubject: ${formData.subject}%0AMessage: ${formData.message}`;
+    const whatsappMessage = `Name: ${formData.name}%0AEmail: ${formData.email}%0ASubject: ${formData.subject}%0AMessage: ${formData.message}%0AInvestment Range: ${formData.investmentRange}%0APreferred Industries: ${formData.preferredIndustries}%0AInvestment Preference: ${formData.investmentPreference}`;
     window.open(`https://wa.me/9035514814?text=${whatsappMessage}`, "_blank");
   };
 
   return (
-    <section className="py-16  bg-gradient-to-t from-emerald-950 to-teal-950 overflow-x-hidden">
+    <section className="py-16 bg-gradient-to-t from-emerald-950 to-teal-950 overflow-x-hidden">
       <div className="container mx-auto px-4 pt-4 max-w-full">
         <h2 className="text-4xl font-bold text-center mb-4 text-white">Contact Us</h2>
         <p className="text-center text-xl mb-12 text-gray-300">Have questions or need assistance? We are just a message away.</p>
@@ -95,6 +98,35 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                 ></textarea>
+                
+                <input
+                  type="text"
+                  name="investmentRange"
+                  className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-emerald-950 transition-all"
+                  placeholder="Investment Range"
+                  required
+                  value={formData.investmentRange}
+                  onChange={handleChange}
+                />
+                <input
+                  type="text"
+                  name="preferredIndustries"
+                  className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-emerald-950 transition-all"
+                  placeholder="Preferred Industries"
+                  required
+                  value={formData.preferredIndustries}
+                  onChange={handleChange}
+                />
+                <input
+                  type="text"
+                  name="investmentPreference"
+                  className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-emerald-950 transition-all"
+                  placeholder="Investment Preference"
+                  required
+                  value={formData.investmentPreference}
+                  onChange={handleChange}
+                />
+                
                 <button
                   type="submit"
                   className="w-full py-3 rounded-xl bg-gradient-to-t from-emerald-950 to-teal-950 text-white text-lg font-semibold hover:bg-[#162d4f] transition-colors"
