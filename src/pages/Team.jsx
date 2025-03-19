@@ -6,7 +6,7 @@ import { FaInstagram, FaFacebook, FaLinkedin, FaXTwitter } from "react-icons/fa6
 import shaazImage from "../assets/images/Shaaz.jpg";
 import shradhaImage from "../assets/images/shradha.jpg";
 import royImage from "../assets/images/Roy.jpg";
-import rijuwalImage from "../assets/images/Rizwan.JPG";
+
 
 
 
@@ -14,7 +14,7 @@ const team = [
   { name: "Shaaz meharoof", role: "CHAIRMAN", image: shaazImage },
   {name: "Shradha .S", role: "Chief Accountant", image: shradhaImage},
   {name: "Roy", role: "Sales Director", image: royImage},
-  {name: "Rizwan", role: "Sales Manager ", image: rijuwalImage}
+
 
 
 ];
