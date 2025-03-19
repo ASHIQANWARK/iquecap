@@ -34,7 +34,7 @@ const Team = () => {
           {team.map((member, index) => (
             <div
               key={index}
-              className="bg-gradient-to-b from-teal-400 via-emerald-500 to-emerald-900 rounded-lg shadow-lg overflow-hidden p-6 flex flex-col items-center transition-all hover:shadow-xl hover:scale-105 w-full h-[450px]"
+              className="bg-gradient-to-b from-teal-400 via-emerald-500 to-emerald-900 rounded-lg shadow-lg overflow-hidden p-6 flex flex-col items-center transition-all hover:shadow-xl hover:scale-105 w-full h-[550px]"
             >
               {/* Profile Image (Fixed Min Height for Mobile) */}
               <div className="w-full min-h-[240px] md:h-60 mb-4 flex-grow">
