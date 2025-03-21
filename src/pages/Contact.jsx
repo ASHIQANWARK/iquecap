@@ -18,7 +18,7 @@ const Contact = () => {
   const sendWhatsAppMessage = (e) => {
     e.preventDefault();
     const whatsappMessage = `Name: ${formData.name}%0AEmail: ${formData.email}%0ASubject: ${formData.subject}%0AMessage: ${formData.message}%0AInvestment Range: ${formData.investmentRange}%0APreferred Industries: ${formData.preferredIndustries}%0AInvestment Preference: ${formData.investmentPreference}`;
-    window.open(`https://wa.me/9035514814?text=${whatsappMessage}`, "_blank");
+    window.open(`https://wa.me/9071600134?text=${whatsappMessage}`, "_blank");
   };
 
   return (
