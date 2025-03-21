@@ -17,16 +17,40 @@ const Contact = () => {
 
   const sendWhatsAppMessage = (e) => {
     e.preventDefault();
-    const whatsappMessage = `Name: ${formData.name}%0AEmail: ${formData.email}%0ASubject: ${formData.subject}%0AMessage: ${formData.message}%0AInvestment Range: ${formData.investmentRange}%0APreferred Industries: ${formData.preferredIndustries}%0AInvestment Preference: ${formData.investmentPreference}`;
-    window.open(`https://wa.me/9071600134?text=${whatsappMessage}`, "_blank");
+
+    const {
+      name,
+      email,
+      subject,
+      message,
+      investmentRange,
+      preferredIndustries,
+      investmentPreference,
+    } = formData;
+
+    const whatsappMessage = `Name: ${name}
+Email: ${email}
+Subject: ${subject}
+Message: ${message}
+Investment Range: ${investmentRange}
+Preferred Industries: ${preferredIndustries}
+Investment Preference: ${investmentPreference}`;
+
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    window.open(`https://wa.me/9071600134?text=${encodedMessage}`, "_blank");
   };
 
   return (
     <section className="py-16 bg-gradient-to-t from-emerald-950 to-teal-950 overflow-x-hidden">
       <div className="container mx-auto px-4 pt-4 max-w-full">
-        <h2 className="text-4xl font-bold text-center mb-4 text-white">Contact Us</h2>
-        <p className="text-center text-xl mb-12 text-gray-300">Have questions or need assistance? We are just a message away.</p>
+        <h2 className="text-4xl font-bold text-center mb-4 text-white">
+          Contact Us
+        </h2>
+        <p className="text-center text-xl mb-12 text-gray-300">
+          Have questions or need assistance? We are just a message away.
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Contact Info */}
           <div className="space-y-8">
             <div className="flex items-center p-6 rounded-xl shadow-xl bg-white bg-opacity-40 backdrop-blur-md">
               <div className="text-3xl text-emerald-950 mr-4">
@@ -57,6 +81,7 @@ const Contact = () => {
             </div>
           </div>
 
+          {/* Contact Form */}
           <div>
             <div className="bg-white p-8 rounded-xl shadow-xl bg-opacity-80 backdrop-blur-md">
               <form onSubmit={sendWhatsAppMessage} className="space-y-6">
@@ -98,35 +123,63 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                 ></textarea>
-                
-                <input
-                  type="text"
+
+                <select
                   name="investmentRange"
                   className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-emerald-950 transition-all"
-                  placeholder="Investment Range"
                   required
                   value={formData.investmentRange}
                   onChange={handleChange}
-                />
-                <input
-                  type="text"
+                >
+                  <option value="" disabled>
+                    Select Investment Range
+                  </option>
+                  <option value="₹10K - ₹50K">₹10K - ₹50K</option>
+                  <option value="₹50K - ₹1L">₹50K - ₹1L</option>
+                  <option value="₹1L - ₹5L">₹1L - ₹5L</option>
+                  <option value="₹5L - ₹10L">₹5L - ₹10L</option>
+                  <option value="₹10L - ₹50L">₹10L - ₹50L</option>
+                  <option value="₹50L - ₹1Cr">₹50L - ₹1Cr</option>
+                  <option value="₹1Cr - ₹5Cr">₹1Cr - ₹5Cr</option>
+                  <option value="₹5Cr+">₹5Cr+</option>
+                </select>
+
+                <select
                   name="preferredIndustries"
                   className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-emerald-950 transition-all"
-                  placeholder="Preferred Industries"
                   required
                   value={formData.preferredIndustries}
                   onChange={handleChange}
-                />
-                <input
-                  type="text"
+                >
+                  <option value="" disabled>
+                    Select Preferred Industries
+                  </option>
+                  <option value="Technology">Technology</option>
+                  <option value="Real Estate">Real Estate</option>
+                  <option value="Healthcare">Healthcare</option>
+                  <option value="Finance">Finance</option>
+                  <option value="Consumer Goods">Consumer Goods</option>
+                  <option value="Other">Other</option>
+                </select>
+
+                <select
                   name="investmentPreference"
                   className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-emerald-950 transition-all"
-                  placeholder="Investment Preference"
                   required
                   value={formData.investmentPreference}
                   onChange={handleChange}
-                />
-                
+                >
+                  <option value="" disabled>
+                    Select Investment Preference
+                  </option>
+                  <option value="Short-Term">Short-Term</option>
+                  <option value="Long-Term">Long-Term</option>
+                  <option value="Equity">Equity</option>
+                  <option value="Franchise">Franchise</option>
+                  <option value="CIP">CIP</option>
+                  <option value="OTHERS">OTHERS</option>
+                </select>
+
                 <button
                   type="submit"
                   className="w-full py-3 rounded-xl bg-gradient-to-t from-emerald-950 to-teal-950 text-white text-lg font-semibold hover:bg-[#162d4f] transition-colors"
