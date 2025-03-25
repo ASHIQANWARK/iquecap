@@ -15,7 +15,7 @@ const team = [
   { name: "Shaaz meharoof", role: "Chairman & Founder", image: shaazImage },
   {name: "Shradha .S", role: "CFO", image: shradhaImage},
   {name: "Roy Alexander", role: "Sales Director", image: royImage},
-  {name: "Rizwan", role: "senior Sales Manager", image: rizwanImage},
+  {name: "Rizwan", role: "Senior Sales Manager", image: rizwanImage},
 
 
 
