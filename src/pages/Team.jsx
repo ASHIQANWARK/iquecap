@@ -12,10 +12,10 @@ import rizwanImage from "../assets/images/rizwan-img.jpg"
 
 
 const team = [
-  { name: "Shaaz meharoof", role: "CHAIRMAN", image: shaazImage },
-  {name: "Shradha .S", role: "Chief Accountant", image: shradhaImage},
-  {name: "Roy", role: "Sales Director", image: royImage},
-  {name: "Rizwan", role: "Sales Manager", image: rizwanImage},
+  { name: "Shaaz meharoof", role: "Chairman & Founder", image: shaazImage },
+  {name: "Shradha .S", role: "CFO", image: shradhaImage},
+  {name: "Roy Alexander", role: "Sales Director", image: royImage},
+  {name: "Rizwan", role: "senior Sales Manager", image: rizwanImage},
 
 
 
