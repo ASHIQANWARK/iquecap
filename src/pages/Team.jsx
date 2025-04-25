@@ -9,7 +9,7 @@ import rizwanImage from "../assets/images/rizwan-img.jpg"
 const team = [
   { name: "Shaaz Bin Maharoof", role: "Founder & CEO", image: shaazImage },
   {name: "Shradha .S", role: "CFO", image: shradhaImage},
-  {name: "Roy Alexander", role: "Senior Director", image: royImage},
+  {name: "Roy Alexander", role: "Senior Sales Director", image: royImage},
   {name: "Rizwan", role: "Senior Sales Manager", image: rizwanImage},
 
 ];
