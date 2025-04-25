@@ -1,39 +1,39 @@
 import React from 'react';
-import { FaFacebookF, FaInstagram, FaWhatsapp, FaLinkedin } from 'react-icons/fa';
-import Logo from "../assets/images/iCAPL1.png"
+import { FaFacebookF, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import Logo from "../assets/images/iCAPL1.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-white text-black">
+    <footer className="bg-emerald-950  text-white shadow-md ">
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
-        
+
         {/* Column 1: Logo */}
         <div className="flex justify-center md:justify-start">
-          <img 
-            src={Logo} 
-            alt="Incubention Logo" 
-            className="w-32 h-auto object-contain" // Adjusted size
+          <img
+            src={Logo}
+            alt="IQue Cap Logo"
+            className="w-32 h-auto object-contain"
           />
         </div>
 
         {/* Column 2: Address, Email, Privacy Policy & Help Centre */}
         <div className="text-center md:text-left">
           <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
-          <p className="text-black">
+          <p className="text-white">
             Address: Door No: 84, 3rd Cross Rd, KHB Block, Koramangala, Bengaluru, Karnataka 560095
           </p>
-          <p className="text-black mt-2">
+          <p className="text-white mt-2">
             Email:{' '}
-            <a href="mailto:support@iqueventures.com" className="text-emerald-900 hover:underline">
+            <a href="mailto:support@iqueventures.com" className="text-blue-700 hover:underline">
               support@iqueventures.com
             </a>
           </p>
           <p className="text-black mt-2">
-            <a href="/privacy-policy" className="text-emerald-900 hover:underline">
+            <a href="/privacy-policy" className="text-blue-700 hover:underline">
               Privacy Policy
             </a>{' '}
             |{' '}
-            <a href="/help-centre" className="text-emerald-900 hover:underline">
+            <a href="/help-centre" className="text-blue-700 hover:underline">
               Help Centre
             </a>
           </p>
@@ -41,18 +41,30 @@ const Footer = () => {
 
         {/* Column 3: Social Media */}
         <div className="flex flex-col items-center">
-          <h3 className="text-lg font-semibold mb-2">Follow Us</h3>
+          <h3 className="text-xl font-semibold mb-2">Follow Us</h3>
           <div className="flex space-x-6">
-            <a href="#" className="text-[#000000] transition">
+            <a
+              href="https://www.facebook.com/profile.php?id=61572517916783"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-700 hover:text-emerald-700 transition"
+            >
               <FaFacebookF size={24} />
             </a>
-            <a href="#" className="text-[#000000] transition">
+            <a
+              href="https://www.instagram.com/ique.cap?igsh=b212OWl4eTZvMWt1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pink-600 hover:text-pink-600 transition"
+            >
               <FaInstagram size={24} />
             </a>
-            <a href="#" className="text-[#000000] transition">
-              <FaWhatsapp size={24} />
-            </a>
-            <a href="#" className="text-[#000000] transition">
+            <a
+              href="https://www.linkedin.com/company/ique-cap/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-700 hover:text-blue-700 transition"
+            >
               <FaLinkedin size={24} />
             </a>
           </div>
@@ -72,14 +84,14 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Copyright Section */}
-      <div className="bg-emerald-900 py-4 text-center">
-        <p className="text-gray-400 text-sm">&copy; 2025 Ique Ventures. All rights reserved.</p>
+      {/* Bottom Section */}
+      <div className="bg-emerald-950 py-4 text-center rounded-b-xl">
+        <p className="text-white text-sm">
+          &copy; {new Date().getFullYear()} Ique Ventures. All rights reserved.
+        </p>
       </div>
     </footer>
   );
 };
 
 export default Footer;
-
-  

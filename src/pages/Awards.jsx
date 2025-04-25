@@ -5,7 +5,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// Import images
 import user1 from "../assets/images/varsha.jpg";
 import user2 from "../assets/images/INDU MAAM.jpg";
 import user3 from "../assets/images/arun.jpg";
@@ -24,14 +23,14 @@ const ceoImages = [ceo1, ceo2, ceo3];
 const sliderSettings = {
   dots: true,
   infinite: true,
-  speed: 500,
+  speed: 700,
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 3000,
+  autoplaySpeed: 3500,
+  arrows: false,
 };
 
-// Number Animation Component
 const AnimatedNumber = ({ value }) => {
   const [count, setCount] = useState(0);
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });
@@ -58,7 +57,7 @@ const AnimatedNumber = ({ value }) => {
   }, [inView, value]);
 
   return (
-    <span ref={ref} className="text-green-400">
+    <span ref={ref} className="text-emerald-400 font-bold">
       {count}+
     </span>
   );
@@ -66,76 +65,86 @@ const AnimatedNumber = ({ value }) => {
 
 const Awards = () => {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center text-white py-16">
-      {/* Title Header */}
+    <section className="min-h-screen w-full bg-transparent flex flex-col items-center justify-center text-white py-16 px-6">
       <motion.h2
-        className="text-5xl font-extrabold text-center mb-8"
+        className="text-4xl md:text-5xl font-extrabold text-center leading-tight mb-8"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        Our <span className="text-green-400">Achievements</span> at Ique Cap
+        Our{" "}
+        <span className="bg-gradient-to-r from-emerald-400 to-teal-200 text-transparent bg-clip-text">
+          Achievements
+        </span>{" "}
+        at iQue Cap
       </motion.h2>
 
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 md:px-12">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
         {/* Left Section */}
         <motion.div
           className="w-full md:w-1/2 text-left"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
         >
-          {/* Awards Earned Section */}
-          <h3 className="text-3xl font-bold mt-6">Achievements</h3>
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <h3 className="text-3xl font-semibold mb-3">Achievements of our Partners</h3>
+          <p className="text-gray-300 mb-6 font-sans">
+            At iQue Cap, we take pride in the milestones we've reached through dedication and innovation. Our journey has
+            been marked by recognition, successful startups, and a growing team of professionals who make it all possible.
+            These accomplishments are a testament to our unwavering commitment to empowering investors and entrepreneurs worldwide.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
             {awards.map((award, index) => (
               <motion.div
                 key={index}
-                className="text-center p-6 rounded-lg  shadow-lg"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.3 }}
+                className="text-center p-6 rounded-xl shadow-xl bg-gradient-to-b from-[#003322] to-[#002711]"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.3 }}
               >
-                <h2 className="text-5xl font-extrabold">
+                <h2 className="text-5xl font-bold mb-2">
                   <AnimatedNumber value={award.count} />
                 </h2>
-                <p className="text-lg text-gray-300">{award.label}</p>
+                <p className="text-gray-300">{award.label}</p>
               </motion.div>
             ))}
           </div>
 
-          {/* Trusted Customers */}
-          <h3 className="text-3xl font-bold mt-12">5M+ Trusted Global Customers</h3>
-          <div className="flex items-center space-x-4 mt-6">
-            {[user1, user2, user3].map((user, index) => (
+          {/* Trusted Users */}
+          <h3 className="text-3xl font-semibold mb-3">5M+ Trusted Customers</h3>
+          <div className="flex items-center gap-4 mt-2">
+            {[user1, user2, user3].map((user, i) => (
               <img
-                key={index}
+                key={i}
                 src={user}
-                alt={`User ${index + 1}`}
-                className="w-16 h-16 rounded-full border-2 border-white object-cover"
+                alt={`User ${i + 1}`}
+                className="w-14 h-14 rounded-full border-2 border-white object-cover transition-transform duration-300 hover:scale-105"
               />
             ))}
-            <span className="text-lg font-semibold text-gray-300">
-              5M+ Trusted Global Customers
+            <span className="text-base font-medium text-gray-300">
+              & Growing Worldwide
             </span>
           </div>
         </motion.div>
 
-        {/* Right Section - CEO Image Carousel */}
+        {/* Right Section - CEO Carousel */}
         <motion.div
-          className="w-full md:w-1/2 mt-12 md:mt-0"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          className="w-full md:w-1/2 max-w-md"
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
         >
-          <Slider {...sliderSettings} className="p-6 rounded-xl">
+          <Slider {...sliderSettings}>
             {ceoImages.map((image, index) => (
               <div key={index} className="flex justify-center">
-                <img
-                  src={image}
-                  alt={`CEO ${index + 1}`}
-                  className="rounded-lg shadow-lg max-w-full h-auto"
-                />
+                <div className="rounded-lg overflow-hidden shadow-lg w-[300px] h-[350px] bg-[#002B1F] p-2 border-2 border-emerald-400">
+                  <img
+                    src={image}
+                    alt={`CEO ${index + 1}`}
+                    className="w-full h-full object-cover rounded-md transition-transform duration-500 hover:scale-105"
+                  />
+                </div>
               </div>
             ))}
           </Slider>

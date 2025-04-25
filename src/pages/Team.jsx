@@ -1,36 +1,27 @@
 import React from "react";
 import { User } from "lucide-react";
 import { FaInstagram, FaFacebook, FaLinkedin, FaXTwitter } from "react-icons/fa6";
-
-// Correct Imports for Local Images
 import shaazImage from "../assets/images/Shaaz.jpg";
 import shradhaImage from "../assets/images/shradha.jpg";
 import royImage from "../assets/images/Roy.jpg";
 import rizwanImage from "../assets/images/rizwan-img.jpg"
 
-
-
-
 const team = [
-  { name: "Shaaz Bin Maharoof", role: "Chairman & CEO", image: shaazImage },
+  { name: "Shaaz Bin Maharoof", role: "Founder & CEO", image: shaazImage },
   {name: "Shradha .S", role: "CFO", image: shradhaImage},
   {name: "Roy Alexander", role: "Sales Director", image: royImage},
   {name: "Rizwan", role: "Senior Sales Manager", image: rizwanImage},
-
-
 
 ];
 
 const Team = () => {
   return (
     <div className="py-16 ">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto">
         {/* Section Heading */}
-        <h2 className="text-6xl font-bold text-center text-white mb-12">
+        <h2 className="text-4xl  text-center text-white font-bold mb-8">
           Our Team
-          <User className="inline-block w-12 h-15  text-white" />
         </h2>
-
         {/* Team Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {team.map((member, index) => (

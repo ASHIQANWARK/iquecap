@@ -69,6 +69,12 @@ const Testimonials = () => {
       <h2 className="text-4xl font-extrabold text-white mb-8 text-center">
         What Our Clients Say
       </h2>
+      <motion.div
+                className="mt-2 mx-auto w-24 h-1 bg-gradient-to-r from-yellow-400 to-emerald-300 rounded-full"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              ></motion.div>
       <div className="w-full max-w-6xl">
         <Slider {...settings}>
           {testimonials.map((testimonial, index) => (

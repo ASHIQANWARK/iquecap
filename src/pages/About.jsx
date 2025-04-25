@@ -7,14 +7,14 @@ const About = () => {
       <div className="max-w-5xl mx-auto text-center">
         {/* Animated Title */}
         <motion.h1
-          className="text-5xl sm:text-6xl font-extrabold text-white drop-shadow-lg"
+          className="text-4xl  font-extrabold text-white drop-shadow-lg"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           About{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-white">
-            IQUE CAP
+            iQue CAP
           </span>
         </motion.h1>
 
@@ -28,7 +28,7 @@ const About = () => {
 
         {/* Animated Description */}
         <motion.p
-        className="mt-6 text-center  text-white max-w-3xl mx-auto leading-relaxed"
+        className="mt-6 text-center text-xl text-white max-w-6xl mx-auto leading-relaxed font-sans"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.6 }}

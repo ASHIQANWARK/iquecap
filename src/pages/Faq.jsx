@@ -95,9 +95,7 @@ export default function FAQSection() {
               alt="Business meeting"
               className="rounded-lg shadow-lg w-full"
             />
-            <button className="absolute bottom-4 left-4 bg-blue-800 text-white px-6 py-3 rounded-full flex items-center gap-2 shadow-lg">
-              Read More Q & A →
-            </button>
+            
           </div>
         </div>
       </div>

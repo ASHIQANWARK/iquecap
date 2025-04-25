@@ -1,10 +1,20 @@
 import React from "react";
-import { FaChartLine, FaBuilding, FaBusinessTime, FaCoins, FaMoneyCheckAlt } from "react-icons/fa";
+import {
+  FaChartLine,
+  FaBuilding,
+  FaBusinessTime,
+  FaCoins,
+  FaMoneyCheckAlt,
+} from "react-icons/fa";
+
+// Image imports
 import shortTermImg from "../assets/images/SHORT.jpg";
 import longTermImg from "../assets/images/LONG.webp";
 import equityImg from "../assets/images/equity.jpg";
-import franchiseImg from "../assets/images/FRANCHISE.jpg";
+import franchiseImg from "../assets/images/img12.jpg";
 import cipImg from "../assets/images/CIP.png";
+import shortTermBrochure from "../assets/images/CAPShortterm1.pdf";
+import longTermBrochure from "../assets/images/CAPlongterm1.pdf";
 
 const services = [
   {
@@ -13,6 +23,7 @@ const services = [
       "Maximize your earnings with our exclusive short-term investment plans. Experience rapid growth with minimal risks.",
     icon: <FaChartLine className="text-blue-600 text-4xl" />,
     image: shortTermImg,
+    brochure: shortTermBrochure,
   },
   {
     title: "Long Term With Fixed Returns",
@@ -20,6 +31,7 @@ const services = [
       "Secure a financially stable future with guaranteed fixed returns on long-term investments, ensuring steady growth.",
     icon: <FaBuilding className="text-green-600 text-4xl" />,
     image: longTermImg,
+    brochure: longTermBrochure,
   },
   {
     title: "Equity Based Investments",
@@ -59,17 +71,34 @@ const ServicesSection = () => {
             key={index}
             className="backdrop-blur-lg bg-opacity-90 rounded-lg shadow-lg hover:shadow-2xl transition-transform duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-200"
           >
-            <img src={service.image} alt={service.title} className="w-full h-48 object-cover" />
+            <img
+              src={service.image}
+              alt={service.title}
+              className="w-full h-48 object-cover"
+            />
             <div className="p-6 text-center">
               <div className="flex justify-center">{service.icon}</div>
-              <h3 className="text-xl font-bold mt-4 text-white">{service.title}</h3>
+              <h3 className="text-xl font-bold mt-4 text-white">
+                {service.title}
+              </h3>
               <p className="text-sm text-white mt-2">{service.description}</p>
-              <button
-                className="mt-5 px-5 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
-                aria-label={`Learn more about ${service.title}`}
-              >
-                Learn More
-              </button>
+
+              {service.brochure ? (
+                <a
+                  href={service.brochure}
+                  download
+                  className="mt-5 inline-block px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition transform hover:scale-105"
+                >
+                  📥 Download Brochure
+                </a>
+              ) : (
+                <button
+                  disabled
+                  className="mt-5 px-6 py-2 bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-bold rounded-full animate-pulse cursor-not-allowed"
+                >
+                  🚧 Coming Soon
+                </button>
+              )}
             </div>
           </div>
         ))}
