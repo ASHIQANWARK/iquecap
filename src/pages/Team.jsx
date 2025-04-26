@@ -39,7 +39,7 @@ const Team = () => {
               {/* Member Info */}
               <div className="flex flex-col items-center py-4 px-3">
                 <h3 className="text-lg font-semibold text-white text-center">{member.name}</h3>
-                <p className="text-gray-200 text-sm text-center">{member.role}</p>
+                <p className="text-gray-200 text-sm font-sans text-center">{member.role}</p>
 
                 <div className="flex space-x-3 mt-3">
                   <a href="https://www.instagram.com/ique.cap?igsh=b212OWl4eTZvMWt1" className="text-white hover:text-[#E1306C] transition" target="_blank" rel="noopener noreferrer">
