@@ -13,24 +13,24 @@ import {
 } from "react-icons/fa";
 
 const items = [
-  { text: "Comprehensive Support", icon: <FaUsers className="text-green-500" /> },
-  { text: "Rigorous Vetting Process", icon: <FaCheckCircle className="text-green-500" /> },
-  { text: "Expert Guidance", icon: <FaStar className="text-green-500" /> },
-  { text: "Access to a Robust Network", icon: <FaLightbulb className="text-green-500" /> },
-  { text: "Tailored Investment Opportunities", icon: <FaCogs className="text-green-500" /> },
-  { text: "Innovative Platform Features", icon: <FaRocket className="text-green-500" /> },
-  { text: "Transparent Processes", icon: <FaShieldAlt className="text-green-500" /> },
-  { text: "Strong Track Record", icon: <FaChartLine className="text-green-500" /> },
-  { text: "Dedicated Customer Support", icon: <FaHandshake className="text-green-500" /> },
-  { text: "Flexible Investment Options", icon: <FaDollarSign className="text-green-500" /> },
+  { text: "Comprehensive Support", icon: <FaUsers className="text-green-400" /> },
+  { text: "Rigorous Vetting Process", icon: <FaCheckCircle className="text-green-400" /> },
+  { text: "Expert Guidance", icon: <FaStar className="text-green-400" /> },
+  { text: "Access to a Robust Network", icon: <FaLightbulb className="text-green-400" /> },
+  { text: "Tailored Investment Opportunities", icon: <FaCogs className="text-green-400" /> },
+  { text: "Innovative Platform Features", icon: <FaRocket className="text-green-400" /> },
+  { text: "Transparent Processes", icon: <FaShieldAlt className="text-green-400" /> },
+  { text: "Strong Track Record", icon: <FaChartLine className="text-green-400" /> },
+  { text: "Dedicated Customer Support", icon: <FaHandshake className="text-green-400" /> },
+  { text: "Flexible Investment Options", icon: <FaDollarSign className="text-green-400" /> },
 ];
 
 const WhyIqueCap = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 md:p-12 bg-transparent">
+    <div className="w-full flex flex-col items-center justify-center py-12 px-6 md:py-16 bg-transparent">
       {/* Title & Description */}
       <motion.div
-        className="text-center mb-10 max-w-4xl"
+        className="text-center mb-8 max-w-4xl"
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -48,14 +48,14 @@ const WhyIqueCap = () => {
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
         ></motion.div>
-        <p className="text-base md:text-lg text-gray-300 mt-5 leading-relaxed">
+        <p className="text-base md:text-lg text-gray-300 mt-4 leading-relaxed">
           We provide top-tier investment opportunities, expert guidance, and a strong network for your financial growth.
         </p>
       </motion.div>
 
       {/* Feature List */}
       <motion.div
-        className="p-4 md:p-8 rounded-2xl max-w-7xl w-full"
+        className="w-full max-w-7xl"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -72,11 +72,11 @@ const WhyIqueCap = () => {
               transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
               whileHover={{
                 scale: 1.1,
-                rotate: 2,
+                rotate: 1,
                 transition: { duration: 0.3 },
               }}
             >
-              <div className="bg-emerald-950 text-white rounded-xl p-6 flex flex-col items-center text-center h-full">
+              <div className="bg-emerald-950 text-white rounded-xl p-6 flex flex-col items-center justify-center text-center h-full">
                 <div className="text-4xl md:text-5xl mb-3">{item.icon}</div>
                 <span className="text-sm md:text-lg font-semibold">{item.text}</span>
               </div>
