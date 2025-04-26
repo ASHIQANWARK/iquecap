@@ -65,9 +65,10 @@ const AnimatedNumber = ({ value }) => {
 
 const Awards = () => {
   return (
-    <section className="min-h-screen w-full bg-transparent flex flex-col items-center justify-center text-white py-16 px-6">
+    <section className="min-h-screen w-full bg-transparent flex flex-col items-center justify-center text-white py-16 px-6 overflow-x-hidden">
+      {/* Heading */}
       <motion.h2
-        className="text-4xl md:text-5xl font-extrabold text-center leading-tight mb-8"
+        className="text-4xl md:text-5xl font-extrabold text-center leading-tight mb-12"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
@@ -79,69 +80,72 @@ const Awards = () => {
         at iQue Cap
       </motion.h2>
 
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
-        {/* Left Section */}
+      {/* Content Section */}
+      <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-16">
+        {/* Left Side */}
         <motion.div
-          className="w-full md:w-1/2 text-left"
+          className="w-full lg:w-1/2"
           initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          <h3 className="text-3xl font-semibold mb-3">Achievements of our Partners</h3>
-          <p className="text-gray-300 mb-6 font-sans">
+          <h3 className="text-3xl font-semibold mb-4 text-center lg:text-left">Achievements of our Partners</h3>
+          <p className="text-gray-300 mb-8 text-center lg:text-left">
             At iQue Cap, we take pride in the milestones we've reached through dedication and innovation. Our journey has
             been marked by recognition, successful startups, and a growing team of professionals who make it all possible.
             These accomplishments are a testament to our unwavering commitment to empowering investors and entrepreneurs worldwide.
           </p>
 
+          {/* Awards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
             {awards.map((award, index) => (
               <motion.div
                 key={index}
-                className="text-center p-6 rounded-xl shadow-xl bg-gradient-to-b from-[#003322] to-[#002711]"
+                className="text-center p-6 rounded-2xl shadow-xl bg-gradient-to-b from-[#003322] to-[#002711]"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.3 }}
+                transition={{ delay: index * 0.2 }}
               >
                 <h2 className="text-5xl font-bold mb-2">
                   <AnimatedNumber value={award.count} />
                 </h2>
-                <p className="text-gray-300">{award.label}</p>
+                <p className="text-gray-300 text-sm">{award.label}</p>
               </motion.div>
             ))}
           </div>
 
           {/* Trusted Users */}
-          <h3 className="text-3xl font-semibold mb-3">5M+ Trusted Customers</h3>
-          <div className="flex items-center gap-4 mt-2">
-            {[user1, user2, user3].map((user, i) => (
-              <img
-                key={i}
-                src={user}
-                alt={`User ${i + 1}`}
-                className="w-14 h-14 rounded-full border-2 border-white object-cover transition-transform duration-300 hover:scale-105"
-              />
-            ))}
-            <span className="text-base font-medium text-gray-300">
-              & Growing Worldwide
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <div className="flex items-center space-x-3">
+              {[user1, user2, user3].map((user, idx) => (
+                <img
+                  key={idx}
+                  src={user}
+                  alt={`User ${idx + 1}`}
+                  className="w-14 h-14 rounded-full border-2 border-white object-cover transition-transform duration-300 hover:scale-105"
+                />
+              ))}
+            </div>
+            <span className="text-base font-medium text-gray-300 mt-2 sm:mt-0">
+              5M+ Trusted Customers & Growing
             </span>
           </div>
         </motion.div>
 
-        {/* Right Section - CEO Carousel */}
+        {/* Right Side - CEO Carousel */}
         <motion.div
-          className="w-full md:w-1/2 max-w-md"
+          className="w-full lg:w-1/2 max-w-md"
           initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
           <Slider {...sliderSettings}>
-            {ceoImages.map((image, index) => (
-              <div key={index} className="flex justify-center">
-                <div className="rounded-lg overflow-hidden shadow-lg w-[300px] h-[350px] bg-[#002B1F] p-2 border-2 border-emerald-400">
+            {ceoImages.map((image, idx) => (
+              <div key={idx} className="flex justify-center">
+                <div className="rounded-lg overflow-hidden shadow-lg w-[280px] h-[360px] bg-[#002B1F] p-2 border-2 border-emerald-400">
                   <img
                     src={image}
-                    alt={`CEO ${index + 1}`}
+                    alt={`CEO ${idx + 1}`}
                     className="w-full h-full object-cover rounded-md transition-transform duration-500 hover:scale-105"
                   />
                 </div>

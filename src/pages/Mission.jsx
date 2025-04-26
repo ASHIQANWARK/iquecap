@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import visionImg from "../assets/images/img2.jpg";
-import missionImg from "../assets/images/img4.jpg";
+import visionImg from "../assets/images/hero.jpg";
+import missionImg from "../assets/images/img3.jpg";
 
 const MissionVision = () => {
   return (

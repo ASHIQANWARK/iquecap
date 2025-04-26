@@ -61,7 +61,7 @@ Investment Preference: ${investmentPreference}`;
                 <p className="text-lg">www.iquecap.com</p>
               </div>
             </div>
-            <div className="flex items-center p-6 rounded-xl shadow-xl bg-white bg-opacity-40 backdrop-blur-md">
+            <div className="flex items-center p-6 rounded-xl shadow-xl bg-white bg-opacity-40 backdrop-blur-md font-sans">
               <div className="text-3xl text-emerald-950 mr-4">
                 <i className="fas fa-phone-alt"></i>
               </div>
@@ -70,7 +70,7 @@ Investment Preference: ${investmentPreference}`;
                 <p className="text-lg">9071600134</p>
               </div>
             </div>
-            <div className="flex items-center p-6 rounded-xl shadow-xl bg-white bg-opacity-40 backdrop-blur-md">
+            <div className="flex items-center p-6 rounded-xl shadow-xl bg-white bg-opacity-40 backdrop-blur-md font-sans">
               <div className="text-3xl text-emerald-950 mr-4">
                 <i className="fas fa-envelope-open-text"></i>
               </div>

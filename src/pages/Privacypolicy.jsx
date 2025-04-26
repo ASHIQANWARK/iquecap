@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const PrivacyPolicy = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-t from-teal-800 to-emerald-900 flex items-center justify-center p-6 md:p-12">
+    <div className="min-h-screen bg-emerald-950 flex items-center justify-center p-6 md:p-12">
       <motion.div
         className="max-w-4xl bg-white p-8 rounded-2xl shadow-xl"
         initial={{ opacity: 0, y: 30 }}
