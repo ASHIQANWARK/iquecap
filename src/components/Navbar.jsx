@@ -57,7 +57,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-8 font-sans">
             {menuItems.map(({ name, path, onClick }) =>
               onClick ? (
                 <button
