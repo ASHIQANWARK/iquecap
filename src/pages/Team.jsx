@@ -26,16 +26,7 @@ const team = [
       facebook: "https://www.facebook.com/profile.php?id=61572517916783",
     },
   },
-  {
-    name: "Roy Alexander",
-    role: "Senior Sales Director",
-    image: royImage,
-    socials: {
-      instagram: "https://www.instagram.com/ique.cap?igsh=b212OWl4eTZvMWt1",
-      linkedin: "ttps://www.linkedin.com/company/ique-cap/",
-      facebook: "https://www.facebook.com/profile.php?id=61572517916783",
-    },
-  },
+  
   {
     name: "Rizwan",
     role: "Senior Sales Manager",
