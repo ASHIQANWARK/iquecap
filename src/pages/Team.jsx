@@ -1,8 +1,8 @@
-import React from "react";
+ import React from "react";
 import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa6";
 import shaazImage from "../assets/images/Shaaz.jpg";
 import shradhaImage from "../assets/images/shradha.jpg";
-import royImage from "../assets/images/Roy.jpg";
+import { motion } from "framer-motion";
 import rizwanImage from "../assets/images/rizwan-img.jpg";
 
 const team = [
@@ -43,10 +43,15 @@ const Team = () => {
   return (
     <div className="py-16">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl text-center text-white font-bold mb-12">
+        <h2 className="text-4xl text-center text-emerald-900 font-bold mb-12">
           Our Team
         </h2>
-
+        <motion.div
+                className="mt-1 mb-10 mx-auto w-24 h-1 bg-gradient-to-r from-yellow-400 to-emerald-300 rounded-full"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {team.map((member, index) => (
             <div

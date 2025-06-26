@@ -9,15 +9,17 @@ import Faq from "../pages/Faq";
 
 import Awards from "../pages/Awards";
 import Testimonials from "../pages/Testimonials";
+import Founder from "./Founder";
 
 const Home = () => {
   return (
-    <div className="bg-gradient-to-t from-emerald-950 to-teal-950 min-h-screen">
+    <div className=" min-h-screen">
       <Hero />
       <About />
       <MissionVision />
       <Why />
       <Awards />
+      <Founder />
       <Testimonials />
       <Team />
       <Faq />

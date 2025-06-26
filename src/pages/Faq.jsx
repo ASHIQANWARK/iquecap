@@ -57,8 +57,8 @@ export default function FAQSection() {
       <div className="max-w-6xl mx-auto">
         {/* Heading Section */}
         <div className="text-center mb-10">
-          <h1 className="text-5xl font-semibold text-white">FAQs</h1>
-          <h2 className="text-4xl font-bold  text-white mt-2">
+          <h1 className="text-5xl font-semibold text-black">FAQs</h1>
+          <h2 className="text-4xl font-bold  text-emerald-900 mt-2">
             Get the Answers to  Common Questions
           </h2>
         </div>

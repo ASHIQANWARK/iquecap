@@ -11,6 +11,7 @@ import user3 from "../assets/images/arun.jpg";
 import ceo1 from "../assets/images/art14.jpg";
 import ceo2 from "../assets/images/art17.jpg";
 import ceo3 from "../assets/images/art15.jpg";
+import bgSVG from "../assets/images/3353859.jpg"; // ✅ Your SVG Background
 
 const awards = [
   { count: 32, label: "Awards Earned" },
@@ -23,12 +24,13 @@ const ceoImages = [ceo1, ceo2, ceo3];
 const sliderSettings = {
   dots: true,
   infinite: true,
-  speed: 700,
+  speed: 600,
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
   autoplaySpeed: 3500,
   arrows: false,
+  adaptiveHeight: true,
 };
 
 const AnimatedNumber = ({ value }) => {
@@ -39,10 +41,10 @@ const AnimatedNumber = ({ value }) => {
     if (inView) {
       let start = 0;
       const end = value;
-      let incrementTime = 50;
-      let step = Math.ceil(end / (1000 / incrementTime));
+      const duration = 1000;
+      const step = Math.ceil(end / (duration / 40));
 
-      let timer = setInterval(() => {
+      const timer = setInterval(() => {
         start += step;
         if (start >= end) {
           setCount(end);
@@ -50,7 +52,7 @@ const AnimatedNumber = ({ value }) => {
         } else {
           setCount(start);
         }
-      }, incrementTime);
+      }, 40);
 
       return () => clearInterval(timer);
     }
@@ -65,23 +67,16 @@ const AnimatedNumber = ({ value }) => {
 
 const Awards = () => {
   return (
-    <section className="w-full bg-transparent flex flex-col items-center justify-center text-white py-16 md:py-24 px-4 md:px-8 overflow-x-hidden">
-      {/* Heading */}
-      <motion.h2
-        className="text-3xl md:text-5xl font-extrabold text-center leading-tight mb-12"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        Our{" "}
-        <span className="bg-gradient-to-r from-emerald-400 to-teal-200 text-transparent bg-clip-text">
-          Achievements
-        </span>{" "}
-        at iQue Cap
-      </motion.h2>
+    <section className="relative w-full py-20 px-6 bg-gradient-to-t from-emerald-950 to-teal-950 text-white overflow-hidden">
+      {/* ✅ Background SVG */}
+      <img
+        src={bgSVG}
+        alt="Background"
+        className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none z-0"
+      />
 
-      {/* Content */}
-      <div className="w-full max-w-7xl flex flex-col-reverse lg:flex-row items-center justify-center gap-16">
+      {/* Main Content */}
+      <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 z-10">
         {/* Left Side */}
         <motion.div
           className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left"
@@ -89,29 +84,36 @@ const Awards = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          <h3 className="text-2xl sm:text-3xl font-semibold mb-4">
-            Achievements of our Partners
-          </h3>
-          <p className="text-gray-300 mb-8 max-w-lg">
-            At iQue Cap, we take pride in the milestones we've reached through
-            dedication and innovation. Our journey has been marked by
-            recognition, successful startups, and a growing team of
-            professionals who make it all possible. These accomplishments are a
-            testament to our unwavering commitment to empowering investors and
-            entrepreneurs worldwide.
+          <motion.h2
+            className="text-3xl md:text-5xl font-extrabold mb-6"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Our{" "}
+            <span className="bg-gradient-to-r from-emerald-400 to-teal-200 text-transparent bg-clip-text">
+              Achievements
+            </span>{" "}
+            at iQue Cap
+          </motion.h2>
+
+          <p className="text-gray-300 mb-8 max-w-xl">
+            At iQue Cap, our milestones reflect years of perseverance, innovation, and
+            impact. From award-winning ideas to thriving startups, we're building the
+            future — together.
           </p>
 
-          {/* Awards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10 w-full">
+          {/* Stats */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full mb-10">
             {awards.map((award, index) => (
               <motion.div
                 key={index}
-                className="flex flex-col items-center justify-center text-center p-6 rounded-2xl shadow-xl bg-gradient-to-b from-[#003322] to-[#002711]"
+                className="bg-gradient-to-br from-[#014233] to-[#011F16] p-6 rounded-xl text-center shadow-xl backdrop-blur-md"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2 }}
               >
-                <h2 className="text-4xl sm:text-5xl font-bold mb-2">
+                <h2 className="text-4xl font-bold mb-2">
                   <AnimatedNumber value={award.count} />
                 </h2>
                 <p className="text-gray-300 text-sm">{award.label}</p>
@@ -119,25 +121,25 @@ const Awards = () => {
             ))}
           </div>
 
-          {/* Trusted Users */}
+          {/* User Avatars */}
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            <div className="flex items-center space-x-3">
+            <div className="flex -space-x-3">
               {[user1, user2, user3].map((user, idx) => (
                 <img
                   key={idx}
                   src={user}
                   alt={`User ${idx + 1}`}
-                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-white object-cover transition-transform duration-300 hover:scale-105"
+                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-white object-cover hover:scale-105 transition-transform"
                 />
               ))}
             </div>
-            <span className="text-base font-medium text-gray-300 mt-2 sm:mt-0">
-              5M+ Trusted Customers & Growing
+            <span className="text-sm sm:text-base font-medium text-gray-300 mt-2 sm:mt-0">
+              5M+ Trusted Users Worldwide
             </span>
           </div>
         </motion.div>
 
-        {/* Right Side - CEO Carousel */}
+        {/* Right Side - Carousel */}
         <motion.div
           className="w-full lg:w-1/2 flex justify-center"
           initial={{ opacity: 0, x: 60 }}
@@ -146,13 +148,13 @@ const Awards = () => {
         >
           <div className="w-[260px] sm:w-[300px]">
             <Slider {...sliderSettings}>
-              {ceoImages.map((image, idx) => (
-                <div key={idx} className="flex justify-center">
-                  <div className="rounded-lg overflow-hidden shadow-lg w-full h-[340px] sm:h-[380px] bg-[#002B1F] p-2 border-2 border-emerald-400">
+              {ceoImages.map((img, idx) => (
+                <div key={idx} className="p-2">
+                  <div className="overflow-hidden rounded-xl shadow-2xl border-2 border-emerald-500 bg-[#002A22]">
                     <img
-                      src={image}
+                      src={img}
                       alt={`CEO ${idx + 1}`}
-                      className="w-full h-full object-cover rounded-md transition-transform duration-500 hover:scale-105"
+                      className="w-full h-[340px] sm:h-[380px] object-cover rounded-lg transition-transform duration-500 hover:scale-105"
                     />
                   </div>
                 </div>

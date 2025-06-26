@@ -31,7 +31,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="w-full bg-transparent flex flex-col items-center justify-center py-14 px-6 overflow-hidden">
+    <section className="w-full bg-gradient-to-t from-emerald-950 to-teal-950 flex flex-col items-center justify-center py-14 px-6 overflow-hidden">
       {/* Heading */}
       <motion.h2
         className="text-4xl md:text-5xl font-extrabold text-white mb-4 text-center leading-tight"
