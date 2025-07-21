@@ -33,7 +33,7 @@ const HeroSection = () => {
       <img
         src={overlaySVG}
         alt="Decorative Overlay"
-        className="absolute inset-0 w-full h-full object-cover opacity-80 z-10 pointer-events-none"
+        className="absolute inset-0 w-full h-full object-cover opacity-20 z-10 pointer-events-none"
       />
 
       {/* Gradient Overlay */}

@@ -1,29 +1,24 @@
 import React from "react";
-import founderSVG from "../assets/images/2870157.jpg"; // ✅ Make sure the path is correct
+
 
 const Founder = () => {
   return (
     <section className="relative bg-white py-20 px-4 overflow-hidden" id="founder">
-      {/* 🔷 SVG Background Image */}
-      <img
-        src={founderSVG}
-        alt="Decorative Background"
-        className="absolute inset-0 w-full h-full object-cover opacity-90 z-0 pointer-events-none"
-      />
+     
 
       {/* 🔷 Main Content */}
       <div className="relative max-w-6xl mx-auto text-center z-10">
-        <h2 className="text-4xl text-white font-bold mb-6">Meet Our Founder</h2>
-        <p className="text-lg text-white max-w-2xl mx-auto mb-12 italic">
+        <h2 className="text-4xl text-emerald-900 font-bold mb-6">Meet Our Founder</h2>
+        <p className="text-lg text-emerald-900 max-w-2xl mx-auto mb-12 italic">
           “At iQue Cap, we're not just funding startups—we're investing in visionary founders
           who are shaping tomorrow’s economy.” – Shaaz Bin Maharoof
         </p>
 
         <div className="mb-16">
-          <h3 className="text-2xl font-semibold mb-2 text-white">
+          <h3 className="text-2xl font-semibold mb-2 text-emerald-900">
             🎙️ Featured Podcast: <span className="italic">The Founder Lens</span>
           </h3>
-          <p className="text-white">
+          <p className="text-emerald-900">
             Insights, strategies, and behind-the-scenes from India’s most promising startup stories.
           </p>
         </div>

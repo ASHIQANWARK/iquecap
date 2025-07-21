@@ -1,102 +1,78 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { EyeIcon, RocketIcon } from "lucide-react";
-import centerImage from "../assets/images/hero.jpg"; // your center image
-import svgBackground from "../assets/images/mjy12.jpg"; // your full-screen SVG
+import missionImage from "../assets/images/img14.jpg";
+import visionImage from "../assets/images/img13.jpg";
 
 const MissionVision = () => {
   return (
-    <section className="relative px-4 py-20 overflow-hidden">
-      {/* Background SVG full fit */}
-      <img
-        src={svgBackground}
-        alt="Background"
-        className="absolute inset-0 w-full h-full object-cover opacity-25 z-0 pointer-events-none"
-      />
+    <section className="bg-white px-4 py-24">
+      <div className="max-w-6xl mx-auto text-center mb-20">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">Our Mission and Vision</h2>
+        <div className="w-28 h-1 bg-gradient-to-r from-yellow-400 to-emerald-500 mx-auto mt-4 rounded-full" />
+      </div>
 
-      {/* Main Content */}
-      <div className="relative max-w-7xl mx-auto z-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-16">
-          Our Mission and Vision
-        </h2>
+      {/* Vision Section */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mb-28">
+        {/* Vision Image */}
+        <div className="rounded-3xl overflow-hidden h-full max-h-[400px] flex items-center">
+          <img
+            src={visionImage}
+            alt="Vision"
+            className="w-full h-full object-cover rounded-3xl"
+          />
+        </div>
 
-        <motion.div
-          className="mt-1 mb-10 mx-auto w-24 h-1 bg-gradient-to-r from-yellow-400 to-emerald-300 rounded-full"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        />
+        {/* Vision Text */}
+        <div className="space-y-6">
+          <div className="flex items-center space-x-3">
+            <EyeIcon className="w-8 h-8 text-yellow-500" />
+            <h3 className="text-2xl font-semibold text-gray-800">Our Vision</h3>
+          </div>
+          <p className="text-gray-700 text-base leading-relaxed text-justify">
+            At Ique Cap, we envision a future where innovation thrives without barriers. 
+            Our goal is to build an inclusive and dynamic ecosystem where startups with 
+            bold ideas can seamlessly access the right capital, mentorship, and resources to scale. 
+            We aim to be the trusted bridge between high-potential founders and forward-thinking investors.
+          </p>
+          <p className="text-gray-700 text-base leading-relaxed text-justify">
+            Our vision is to be more than a platform—we aspire to be a movement that empowers 
+            entrepreneurship across industries, geographies, and communities. Through transparency, 
+            trust, and long-term collaboration, we work toward a thriving startup landscape where 
+            innovation leads to sustainable progress.
+          </p>
+        </div>
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-          {/* ➤ Vision Card */}
-          <motion.div
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="bg-gradient-to-t from-emerald-950 to-teal-950 text-white rounded-3xl shadow-xl p-8 h-full self-start"
-          >
-            <div className="flex flex-col items-center text-center space-y-4">
-              <EyeIcon className="w-10 h-10 text-yellow-300" />
-              <h3 className="text-2xl font-bold uppercase">Our Vision</h3>
-              <div className="w-20 h-1 bg-yellow-400 rounded-full" />
-              <p className="text-md leading-relaxed text-white/90 text-justify">
-                At <strong>iQue CAP</strong>, we envision a future where every individual
-                has the power to shape their entrepreneurial destiny. Our vision is to be
-                the catalyst for fostering innovation, sustainability, and business success.
-                We aim to create an ecosystem that encourages groundbreaking ideas,
-                supports emerging businesses, and drives meaningful change across industries.
-                By harnessing the power of technology, mentorship, and collaboration, we strive
-                to unlock new opportunities for entrepreneurs at every stage of their journey.
-                Our goal is to empower individuals and businesses with the resources and
-                strategies necessary to thrive in an evolving global landscape. Through
-                continuous innovation and ethical leadership, we aspire to build a world
-                where creativity and ambition lead to sustainable success.
-              </p>
-            </div>
-          </motion.div>
+      {/* Mission Section */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        {/* Mission Text */}
+        <div className="space-y-6 md:order-1 order-2">
+          <div className="flex items-center space-x-3">
+            <RocketIcon className="w-8 h-8 text-emerald-600" />
+            <h3 className="text-2xl font-semibold text-gray-800">Our Mission</h3>
+          </div>
+          <p className="text-gray-700 text-base leading-relaxed text-justify">
+            Our mission is to empower both startups and investors through a well-structured, 
+            expertly guided investment journey. We curate exceptional early-stage and growth-stage 
+            startups and rigorously evaluate them to ensure that only the most promising businesses 
+            reach our investor network.
+          </p>
+          <p className="text-gray-700 text-base leading-relaxed text-justify">
+            Backed by IQue Ventures' deep expertise in venture building, we aim to minimize risk 
+            while maximizing impact. We’re committed to supporting visionary founders not just 
+            with funding, but with strategic advice, mentorship, and operational support. 
+            Through this mission, we strive to build ventures that are scalable, impactful, 
+            and investment-worthy.
+          </p>
+        </div>
 
-          {/* ➤ Center Image */}
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="rounded-3xl overflow-hidden shadow-xl"
-          >
-            <img
-              src={centerImage}
-              alt="Collaboration"
-              className="w-full h-full object-cover rounded-3xl"
-            />
-          </motion.div>
-
-          {/* ➤ Mission Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="bg-gradient-to-t from-emerald-950 to-teal-950 text-white rounded-3xl shadow-xl p-8 h-full self-end"
-          >
-            <div className="flex flex-col items-center text-center space-y-4">
-              <RocketIcon className="w-10 h-10 text-emerald-300" />
-              <h3 className="text-2xl font-bold uppercase">Our Mission</h3>
-              <div className="w-20 h-1 bg-emerald-400 rounded-full" />
-              <p className="text-md leading-relaxed text-white/90 text-justify">
-                At <strong>iQue CAP</strong>, our mission is to empower visionaries with
-                the tools, knowledge, and network to bring their ideas to life. We foster
-                an ecosystem where innovation flourishes, businesses thrive, and impactful
-                solutions emerge for a better tomorrow. By providing strategic guidance,
-                access to resources, and financial support, we ensure that aspiring
-                entrepreneurs and established businesses alike can overcome challenges and
-                scale effectively. Our mission extends beyond profit-driven success; we
-                prioritize ethical business practices, sustainability, and inclusivity.
-                We believe in shaping an economic landscape that benefits communities, fuels
-                creative disruption, and champions long-term prosperity. Through collaboration
-                with industry leaders, investors, and forward-thinking individuals, we aim to
-                redefine how businesses innovate and grow—creating lasting value for future
-                generations.
-              </p>
-            </div>
-          </motion.div>
+        {/* Mission Image */}
+        <div className="rounded-3xl overflow-hidden h-full max-h-[400px] flex items-center md:order-2 order-1">
+          <img
+            src={missionImage}
+            alt="Mission"
+            className="w-full h-full object-cover rounded-3xl"
+          />
         </div>
       </div>
     </section>

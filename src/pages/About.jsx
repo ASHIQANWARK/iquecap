@@ -4,7 +4,7 @@ import decorativeSVG from "../assets/images/5052197.jpg"; // Make sure this path
 
 const About = () => {
   return (
-    <section id="about" className="relative py-20 px-4 bg-[#fbf3f3]">
+    <section id="about" className="relative py-20 px-4 bg-[#ffffff]">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
