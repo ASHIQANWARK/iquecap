@@ -9,6 +9,7 @@ import Team from './pages/Team';
 import Contacts from './pages/Contact';
 import ServicesSection from './pages/Services';
 import PrivacyPolicy from './pages/Privacypolicy';
+import CapAdvisor from './pages/Capadvisor';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/team" element={<Team />} />
         <Route path="/contact" element={<Contacts />} />
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+        <Route path="/capacademy" element={< CapAdvisor />} />
       </Routes>
       <Footer />
     </Router>

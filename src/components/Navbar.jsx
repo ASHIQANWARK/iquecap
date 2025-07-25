@@ -40,6 +40,7 @@ const Navbar = () => {
     { name: "About", path: "#about", onClick: handleAboutClick },
     { name: "Services", path: "/services" },
     { name: "Contact", path: "/contact" },
+    {name: "Cap Academy" ,path:"/capacademy"},
     { name: "Privacy & Policy", path: "/privacypolicy" },
   ];
 
