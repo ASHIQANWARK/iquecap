@@ -90,7 +90,7 @@ const CapAdvisor = () => {
           About CAP Academy
         </h2>
 
-        <div className="text-lg text-gray-800 max-w-3xl mx-auto space-y-8 text-justify">
+        <div className="text-lg text-gray-800 max-w-3xl mx-auto space-y-6 text-justify">
           <p className="font-semibold text-2xl text-center text-black">
             CAP Academy is an initiative by IqueCap to create India’s largest
             network of trained and certified Cap Advisors.
@@ -119,8 +119,7 @@ const CapAdvisor = () => {
             India's Startup Growth in Numbers
           </h3>
 
-          {/* Center-aligned UL */}
-          <ul className="list-disc space-y-2 text-left mx-auto max-w-md pl-6">
+          <ul className="list-disc pl-6 space-y-2">
             <li>
               <strong>$140+ Billion</strong> invested in Indian Startups (till
               2025)
@@ -156,8 +155,7 @@ const CapAdvisor = () => {
             With IqueCap, You Get:
           </h4>
 
-          {/* Center-aligned UL */}
-          <ul className="list-disc space-y-2 text-left mx-auto max-w-md pl-6">
+          <ul className="list-disc pl-6 space-y-2">
             <li>Access to vetted startup deals</li>
             <li>Structured investment process</li>
             <li>Support from trained Cap Advisors</li>
@@ -167,13 +165,13 @@ const CapAdvisor = () => {
 
         {/* Visual Cards */}
         <div className="mt-16 flex justify-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
             {/* Card 1 */}
             <div
-              className="aspect-square bg-cover bg-center text-white rounded-xl shadow-lg p-6 text-center relative max-w-xs mx-auto"
+              className="aspect-square bg-cover bg-center text-white rounded-xl shadow-lg p-6 text-center relative"
               style={{ backgroundImage: `url(${cardIqueCap})` }}
             >
-              <div className="absolute inset-0 bg-black/40 rounded-xl" />
+              <div className="absolute inset-0 bg-black/40 bg-opacity-60 rounded-xl" />
               <div className="relative z-10 flex items-center justify-center h-full">
                 <p className="font-bold text-2xl sm:text-3xl">
                   Backed by IqueCap
@@ -183,10 +181,10 @@ const CapAdvisor = () => {
 
             {/* Card 2 */}
             <div
-              className="aspect-square bg-cover bg-center text-white rounded-xl shadow-lg p-6 text-center relative max-w-xs mx-auto"
+              className="aspect-square bg-cover bg-center text-white rounded-xl shadow-lg p-6 text-center relative"
               style={{ backgroundImage: `url(${cardOnline})` }}
             >
-              <div className="absolute inset-0 bg-black/40 rounded-xl" />
+              <div className="absolute inset-0 bg-black/40 bg-opacity-60 rounded-xl" />
               <div className="relative z-10 flex items-center justify-center h-full">
                 <p className="font-bold text-2xl sm:text-3xl">
                   Fully Online, Easy-to-Learn Format
@@ -196,7 +194,6 @@ const CapAdvisor = () => {
           </div>
         </div>
       </section>
-
       {/* Why Become a CAP Advisor */}
       <section className="py-16 px-6 bg-white  m  ">
         <div className="max-w-7xl mx-auto">
