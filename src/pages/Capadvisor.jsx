@@ -7,7 +7,10 @@ import {
   FaHandHoldingUsd,
   FaInfinity,
   FaFlag,
-  FaCheckCircle,FaPhoneAlt, FaEnvelope, FaGlobe
+  FaCheckCircle,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaGlobe,
 } from "react-icons/fa";
 import heroBg from "../assets/images/acad1.png";
 import trainingImage from "../assets/images/img11.jpg";
@@ -34,15 +37,29 @@ const CapAdvisor = () => {
             <h2 className="text-2xl sm:text-3xl italic font-light text-emerald-300">
               Learn. Earn. Grow.
             </h2>
-            <p className="text-lg sm:text-xl text-gray-200 leading-relaxed">
+            <p className="text-lg sm:text-xl text-gray-200 leading-relaxed space-y-2">
               Empowering India’s Next Generation of Investment Advisors. <br />
               Become a certified Cap Advisor and connect investors to India’s
-              top startups.
+              top startups. <br />
+              <br />
+              Whether you're a student, working professional, or aspiring
+              entrepreneur, CAP Academy equips you with the skills to thrive in
+              the world of private markets. <br />
+              Through structured training, real-world exposure, and mentorship,
+              we help you become a trusted financial guide for others — while
+              building your own path to financial growth.
             </p>
+
             <div className="pt-4">
-              <button className="bg-white text-emerald-800 font-semibold px-6 py-3 rounded-xl shadow hover:bg-emerald-100 transition">
-                Join as Advisor
-              </button>
+              <a
+                href="https://forms.gle/5ydJrcSRdT59B2Zm8"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="bg-white text-emerald-800 font-semibold px-6 py-3 rounded-xl shadow hover:bg-emerald-100 transition">
+                  Join as Advisor
+                </button>
+              </a>
             </div>
           </motion.div>
 
@@ -73,7 +90,7 @@ const CapAdvisor = () => {
           About CAP Academy
         </h2>
 
-        <div className="text-lg text-gray-800 max-w-3xl mx-auto space-y-6 text-justify">
+        <div className="text-lg text-gray-800 max-w-3xl mx-auto space-y-8 text-justify">
           <p className="font-semibold text-2xl text-center text-black">
             CAP Academy is an initiative by IqueCap to create India’s largest
             network of trained and certified Cap Advisors.
@@ -102,7 +119,8 @@ const CapAdvisor = () => {
             India's Startup Growth in Numbers
           </h3>
 
-          <ul className="list-disc pl-6 space-y-2">
+          {/* Center-aligned UL */}
+          <ul className="list-disc space-y-2 text-left mx-auto max-w-md pl-6">
             <li>
               <strong>$140+ Billion</strong> invested in Indian Startups (till
               2025)
@@ -138,7 +156,8 @@ const CapAdvisor = () => {
             With IqueCap, You Get:
           </h4>
 
-          <ul className="list-disc pl-6 space-y-2">
+          {/* Center-aligned UL */}
+          <ul className="list-disc space-y-2 text-left mx-auto max-w-md pl-6">
             <li>Access to vetted startup deals</li>
             <li>Structured investment process</li>
             <li>Support from trained Cap Advisors</li>
@@ -148,13 +167,13 @@ const CapAdvisor = () => {
 
         {/* Visual Cards */}
         <div className="mt-16 flex justify-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {/* Card 1 */}
             <div
-              className="aspect-square bg-cover bg-center text-white rounded-xl shadow-lg p-6 text-center relative"
+              className="aspect-square bg-cover bg-center text-white rounded-xl shadow-lg p-6 text-center relative max-w-xs mx-auto"
               style={{ backgroundImage: `url(${cardIqueCap})` }}
             >
-              <div className="absolute inset-0 bg-black/40 bg-opacity-60 rounded-xl" />
+              <div className="absolute inset-0 bg-black/40 rounded-xl" />
               <div className="relative z-10 flex items-center justify-center h-full">
                 <p className="font-bold text-2xl sm:text-3xl">
                   Backed by IqueCap
@@ -164,10 +183,10 @@ const CapAdvisor = () => {
 
             {/* Card 2 */}
             <div
-              className="aspect-square bg-cover bg-center text-white rounded-xl shadow-lg p-6 text-center relative"
+              className="aspect-square bg-cover bg-center text-white rounded-xl shadow-lg p-6 text-center relative max-w-xs mx-auto"
               style={{ backgroundImage: `url(${cardOnline})` }}
             >
-              <div className="absolute inset-0 bg-black/40 bg-opacity-60 rounded-xl" />
+              <div className="absolute inset-0 bg-black/40 rounded-xl" />
               <div className="relative z-10 flex items-center justify-center h-full">
                 <p className="font-bold text-2xl sm:text-3xl">
                   Fully Online, Easy-to-Learn Format
@@ -177,6 +196,7 @@ const CapAdvisor = () => {
           </div>
         </div>
       </section>
+
       {/* Why Become a CAP Advisor */}
       <section className="py-16 px-6 bg-white  m  ">
         <div className="max-w-7xl mx-auto">
@@ -324,7 +344,7 @@ const CapAdvisor = () => {
             <ul className="space-y-4 text-lg flex flex-col items-center">
               <li className="flex items-center gap-3">
                 <FaCheckCircle className="text-emerald-300 text-xl" />
-                <span>Commission on every successful investment closure</span>
+                <span>Incentive on every successful investment closure</span>
               </li>
               <li className="flex items-center gap-3">
                 <FaCheckCircle className="text-emerald-300 text-xl" />
@@ -387,7 +407,7 @@ const CapAdvisor = () => {
           </div>
         </div>
       </section>
-   
+
       <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left: Contact Info */}

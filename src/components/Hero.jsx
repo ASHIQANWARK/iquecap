@@ -63,6 +63,12 @@ const HeroSection = () => {
           >
             Start Investing
           </button>
+          <button
+            onClick={() => navigate("/capacademy")}
+            className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-orange-400 hover:to-yellow-400 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+          >
+            Become A Cap Advisor
+          </button>
         </div>
       </motion.div>
     </section>
