@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://iquecap.com/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://iquecap.com/about</loc>
+  </url>
+  <url>
+    <loc>https://iquecap.com/services</loc>
+  </url>
+  <url>
+    <loc>https://iquecap.com/capacademy</loc>
+  </url>
+  <url>
+    <loc>https://iquecap.com/contact</loc>
+  </url>
+</urlset>
