@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom'; // Replace BrowserRouter with HashRouter
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // <-- Updated
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -23,7 +23,7 @@ function App() {
         <Route path="/team" element={<Team />} />
         <Route path="/contact" element={<Contacts />} />
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-        <Route path="/capacademy" element={< CapAdvisor />} />
+        <Route path="/capacademy" element={<CapAdvisor />} />
       </Routes>
       <Footer />
     </Router>
