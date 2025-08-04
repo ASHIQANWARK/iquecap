@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 import {
   FaHome,
   FaCertificate,
@@ -21,6 +22,15 @@ import programImg from "../assets/images/img14.jpg";
 const CapAdvisor = () => {
   return (
     <div className="text-gray-800">
+      {/* Helmet SEO Tags */}
+      <Helmet>
+        <title>CAP Academy | IqueCap</title>
+        <meta
+          name="description"
+          content="CAP Academy empowers young talents through industry-driven learning, mentorship, and career growth initiatives."
+        />
+        <link rel="canonical" href="https://iquecap.com/capacademy" />
+      </Helmet>
       {/* Hero Section */}
       <section className="pt-28 w-full bg-gradient-to-br from-emerald-700 to-emerald-800 text-white pb-16 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12">
