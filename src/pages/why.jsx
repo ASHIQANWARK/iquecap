@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "framer-motion";
 import {
   FaCheckCircle,
@@ -11,7 +12,6 @@ import {
   FaDollarSign,
   FaShieldAlt,
 } from "react-icons/fa";
-import bgImage from "../assets/images/hero2.jpg"; // Replace with your background image path
 
 const items = [
   { text: "Comprehensive Support", icon: <FaUsers className="text-emerald-300" /> },
@@ -28,15 +28,8 @@ const items = [
 
 const WhyIqueCap = () => {
   return (
-    <div
-      className="w-full relative py-20 px-6 bg-black/30 bg-blend-darken bg-cover bg-center"
-      style={{
-        backgroundImage: `url(${bgImage})`,
-      }}
-    >
-      <div className="absolute inset-0 bg-black/30  z-0" />
+    <section className="py-20 px-4 bg-white">
       <div className="relative z-10 flex flex-col items-center justify-center max-w-7xl mx-auto">
-
         {/* Title */}
         <motion.div
           className="text-center mb-12 px-4"
@@ -45,14 +38,14 @@ const WhyIqueCap = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-emerald-900">
             Why Choose{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-emerald-300">
               iQue CAP
             </span>
           </h2>
           <div className="mt-3 mx-auto w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-300 rounded-full" />
-          <p className="text-base md:text-lg text-gray-300 mt-5 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-base md:text-lg text-gray-700 mt-5 leading-relaxed max-w-3xl mx-auto">
             We provide top-tier investment opportunities, expert guidance, and a strong network for your financial growth.
           </p>
         </motion.div>
@@ -89,7 +82,7 @@ const WhyIqueCap = () => {
           </div>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

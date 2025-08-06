@@ -29,15 +29,15 @@ const HeroSection = () => {
         />
       )}
 
-      {/* Optional Decorative Image Overlay */}
+      {/* Decorative Overlay Image */}
       <img
         src={overlaySVG}
         alt="Decorative Overlay"
         className="absolute inset-0 w-full h-full object-cover opacity-20 z-10 pointer-events-none"
       />
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/30 to-black/30 z-10" />
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/40 z-10" />
 
       {/* Hero Content */}
       <motion.div
@@ -46,26 +46,28 @@ const HeroSection = () => {
         transition={{ duration: 1 }}
         className="relative z-20 text-center px-4 md:px-8 max-w-4xl"
       >
-        <h1 className="text-white text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg tracking-tight">
-          <span className="bg-gradient-to-r from-emerald-400 to-white bg-clip-text text-transparent">
+        <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight drop-shadow-lg tracking-tight">
+          <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
             {slide.title}
           </span>
         </h1>
 
-        <p className="mt-6 text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
+        <p className="mt-6 text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
           {slide.description}
         </p>
 
-        <div className="mt-8 flex justify-center">
+        {/* Buttons */}
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
             onClick={() => navigate("/contact")}
-            className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-orange-400 hover:to-yellow-400 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-teal-400 hover:to-emerald-400 text-white px-8 py-3 rounded-full text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
           >
             Start Investing
           </button>
+
           <button
             onClick={() => navigate("/capacademy")}
-            className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-orange-400 hover:to-yellow-400 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-teal-400 hover:to-emerald-400 text-white px-8 py-3 rounded-full text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
           >
             Become A Cap Advisor
           </button>

@@ -1,9 +1,8 @@
- import React from "react";
+import React from "react";
 import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa6";
+import { motion } from "framer-motion";
 import shaazImage from "../assets/images/Shaaz.jpg";
 import shradhaImage from "../assets/images/shradha.jpg";
-import { motion } from "framer-motion";
-import rizwanImage from "../assets/images/rizwan-img.jpg";
 
 const team = [
   {
@@ -12,7 +11,7 @@ const team = [
     image: shaazImage,
     socials: {
       instagram: "https://www.instagram.com/shaazbinmaharoof?igsh=MXVpaXplZTRkdGRiNA==",
-      linkedin: "https://www.linkedin.com/in/shaaz-bin-maharoof-0a0463279?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      linkedin: "https://www.linkedin.com/in/shaaz-bin-maharoof-0a0463279",
       facebook: "https://www.facebook.com/profile.php?id=61572517916783",
     },
   },
@@ -22,18 +21,7 @@ const team = [
     image: shradhaImage,
     socials: {
       instagram: "https://www.instagram.com/ique.cap?igsh=b212OWl4eTZvMWt1",
-      linkedin: "ttps://www.linkedin.com/company/ique-cap/",
-      facebook: "https://www.facebook.com/profile.php?id=61572517916783",
-    },
-  },
-  
-  {
-    name: "Rizwan",
-    role: "Senior Sales Manager",
-    image: rizwanImage,
-    socials: {
-      instagram: "https://www.instagram.com/ique.cap?igsh=b212OWl4eTZvMWt1",
-      linkedin: "ttps://www.linkedin.com/company/ique-cap/",
+      linkedin: "https://www.linkedin.com/company/ique-cap/",
       facebook: "https://www.facebook.com/profile.php?id=61572517916783",
     },
   },
@@ -41,45 +29,50 @@ const team = [
 
 const Team = () => {
   return (
-    <div className="py-16">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl text-center text-emerald-900 font-bold mb-12">
+    <section className="py-16 bg-white">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <h2 className="text-4xl md:text-5xl font-bold text-center text-emerald-900 mb-4">
           Our Team
         </h2>
+
         <motion.div
-                className="mt-1 mb-10 mx-auto w-24 h-1 bg-gradient-to-r from-yellow-400 to-emerald-300 rounded-full"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          className="w-24 h-1 mx-auto bg-gradient-to-r from-yellow-400 to-emerald-400 rounded-full mb-12"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        />
+
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {team.map((member, index) => (
             <div
               key={index}
-              className="bg-gradient-to-b from-teal-400 via-emerald-500 to-emerald-900 rounded-2xl shadow-lg overflow-hidden transition-all hover:shadow-2xl hover:scale-105 w-full"
+              className="bg-gradient-to-b from-teal-400 via-emerald-500 to-emerald-900 rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105"
             >
-              {/* Profile Image */}
-              <div className="w-full h-60 bg-emerald-950 flex items-center justify-center">
+              {/* Image */}
+              <div className="w-full h-60 bg-emerald-950 flex items-center justify-center overflow-hidden">
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="h-full object-contain rounded-t-2xl"
-                  onError={(e) => (e.target.src = "https://via.placeholder.com/200")}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "https://via.placeholder.com/300x300?text=No+Image";
+                  }}
+                  className="object-cover h-full w-full"
                 />
               </div>
 
-              {/* Member Info */}
-              <div className="flex flex-col items-center py-4 px-3">
-                <h3 className="text-lg font-semibold text-white text-center">{member.name}</h3>
-                <p className="text-gray-200 text-sm font-sans text-center">{member.role}</p>
+              {/* Info */}
+              <div className="py-5 px-4 text-center text-white">
+                <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
+                <p className="text-sm text-gray-200">{member.role}</p>
 
-                <div className="flex space-x-3 mt-3">
+                <div className="flex justify-center space-x-4 mt-3">
                   {member.socials.instagram && (
                     <a
                       href={member.socials.instagram}
-                      className="text-white hover:text-[#E1306C] transition"
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="hover:text-[#E1306C] transition"
                     >
                       <FaInstagram size={20} />
                     </a>
@@ -87,9 +80,9 @@ const Team = () => {
                   {member.socials.linkedin && (
                     <a
                       href={member.socials.linkedin}
-                      className="text-white hover:text-[#0077B5] transition"
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="hover:text-[#0077B5] transition"
                     >
                       <FaLinkedin size={20} />
                     </a>
@@ -97,9 +90,9 @@ const Team = () => {
                   {member.socials.facebook && (
                     <a
                       href={member.socials.facebook}
-                      className="text-white hover:text-[#1877F2] transition"
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="hover:text-[#1877F2] transition"
                     >
                       <FaFacebook size={20} />
                     </a>
@@ -110,7 +103,7 @@ const Team = () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
