@@ -31,59 +31,7 @@ const CapAdvisor = () => {
         />
         <link rel="canonical" href="https://iquecap.com/capacademy" />
       </Helmet>
-      {/* Hero Section */}
-      <section className="pt-28 w-full bg-gradient-to-br from-emerald-700 to-emerald-800 text-white pb-16 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12">
-          {/* Text Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            className="space-y-6"
-          >
-            <h1 className="text-4xl sm:text-5xl font-bold leading-tight tracking-tight drop-shadow-lg">
-              CAP Academy
-            </h1>
-            <h2 className="text-2xl sm:text-3xl italic font-light text-emerald-300">
-              Learn. Earn. Grow.
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-200 leading-relaxed space-y-2">
-              Empowering India’s Next Generation of Investment Advisors. <br />
-              Become a certified Cap Advisor and connect investors to India’s
-              top startups. <br />
-              <br />
-              Whether you're a student, working professional, or aspiring
-              entrepreneur, CAP Academy equips you with the skills to thrive in
-              the world of private markets. <br />
-              Through structured training, real-world exposure, and mentorship,
-              we help you become a trusted financial guide for others — while
-              building your own path to financial growth.
-            </p>
-
-            <div className="pt-4">
-              <a
-                href="https://forms.gle/5ydJrcSRdT59B2Zm8"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className="bg-white text-emerald-800 font-semibold px-6 py-3 rounded-xl shadow hover:bg-emerald-100 transition">
-                  Join as Advisor
-                </button>
-              </a>
-            </div>
-          </motion.div>
-
-          {/* Right Side Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            className="flex justify-center"
-          >
-            <img src={heroBg} alt="CAP Academy" className="w-full max-w-md  " />
-          </motion.div>
-        </div>
-      </section>
+        
       {/* Breadcrumb Section */}
       <div className="bg-white py-4 px-6 shadow-sm">
         <div className="max-w-7xl mx-auto text-sm text-gray-600 font-medium">
