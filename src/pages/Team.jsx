@@ -2,7 +2,7 @@ import React from "react";
 import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import shaazImage from "../assets/images/Shaaz.jpg";
-import shradhaImage from "../assets/images/shradha.jpg";
+
 
 const team = [
   {
@@ -15,16 +15,7 @@ const team = [
       facebook: "https://www.facebook.com/profile.php?id=61572517916783",
     },
   },
-  {
-    name: "Shradha .S",
-    role: "CFO",
-    image: shradhaImage,
-    socials: {
-      instagram: "https://www.instagram.com/ique.cap?igsh=b212OWl4eTZvMWt1",
-      linkedin: "https://www.linkedin.com/company/ique-cap/",
-      facebook: "https://www.facebook.com/profile.php?id=61572517916783",
-    },
-  },
+  
 ];
 
 const Team = () => {

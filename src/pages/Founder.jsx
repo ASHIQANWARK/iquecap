@@ -10,8 +10,7 @@ const Founder = () => {
       <div className="relative max-w-6xl mx-auto text-center z-10">
         <h2 className="text-4xl text-emerald-900 font-bold mb-6">Meet Our Founder</h2>
         <p className="text-lg text-emerald-900 max-w-2xl mx-auto mb-12 italic">
-          “At iQue Cap, we're not just funding startups—we're investing in visionary founders
-          who are shaping tomorrow’s economy.” – Shaaz Bin Maharoof
+          “At iQue Cap , We are not just another Investment Firm, We are creating a safe space for the money to flow , Helping unlimited Individuals choosing the right Investment Options” – Shaaz Bin Maharoof
         </p>
 
         <div className="mb-16">

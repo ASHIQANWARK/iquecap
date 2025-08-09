@@ -31,7 +31,60 @@ const CapAdvisor = () => {
         />
         <link rel="canonical" href="https://iquecap.com/capacademy" />
       </Helmet>
-        
+      
+       <section className="bg-gradient-to-r from-emerald-700 to-emerald-500 text-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-4xl sm:text-5xl font-bold leading-tight tracking-tight drop-shadow-lg">
+              CAP Academy
+            </h1>
+            <h2 className="text-2xl sm:text-3xl italic font-light text-emerald-200 mt-2">
+              Learn. Earn. Grow.
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-100 leading-relaxed mt-4">
+              Empowering India’s Next Generation of Investment Advisors. <br />
+              Become a certified CAP Advisor and connect investors to India’s
+              top startups. Access world-class training, mentorship, and
+              industry insights that put you ahead in the game.
+            </p>
+            <p className="mt-4 text-gray-200">
+              At CAP Academy, we believe in combining practical experience with
+              structured learning. Our courses are designed by seasoned
+              professionals to equip you with skills that matter in real-world
+              investment advisory.
+            </p>
+
+            <a
+              href="https://forms.gle/5ydJrcSRdT59B2Zm8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-6 bg-white text-emerald-700 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-emerald-100 transition duration-300"
+            >
+              Join as a CAP Advisor
+            </a>
+          </motion.div>
+
+          {/* Right Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex justify-center"
+          >
+            <img
+              src={heroBg}
+              alt="CAP Academy"
+              className="w-full max-w-md rounded-lg shadow-2xl"
+            />
+          </motion.div>
+        </div>
+      </section>
+
       {/* Breadcrumb Section */}
       <div className="bg-white py-4 px-6 shadow-sm">
         <div className="max-w-7xl mx-auto text-sm text-gray-600 font-medium">
