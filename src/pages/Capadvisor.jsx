@@ -445,12 +445,12 @@ const CapAdvisor = () => {
               <div className="flex items-center gap-3">
                 <FaGlobe className="text-emerald-600" />
                 <a
-                  href="https://www.capacademy.in"
+                  href="https://iquecap.com/capacademy"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:underline"
                 >
-                  www.capacademy.in
+                  www.iquecap.com/capacademy
                 </a>
               </div>
             </div>
