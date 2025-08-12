@@ -157,7 +157,7 @@ Preferred Language: ${language}`;
       {/* Social Media Links */}
       <div className="flex gap-4 mt-6">
         <a
-          href="https://www.threads.com/?hl=en&xmt=AQF0EuLY1V6CpfnPBlMaZ_ccVqJ3PLWeIG_i46kEwHJghv8"
+          href="https://www.threads.com/@cap_academy.official?hl=en&xmt=AQF0EuLY1V6CpfnPBlMaZ_ccVqJ3PLWeIG_i46kEwHJghv8"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition"
@@ -173,7 +173,7 @@ Preferred Language: ${language}`;
           <FaInstagram className="text-white text-2xl" />
         </a>
         <a
-          href="https://www.linkedin.com/feed/?trk=guest_homepage-basic_google-one-tap-submit"
+          href="https://www.linkedin.com/in/cap-academy-943903374/"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition"
