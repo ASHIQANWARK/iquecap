@@ -30,15 +30,61 @@ import advantage2Img from "../assets/images/CAP3.jpg";
 import advantage3Img from "../assets/images/CAP3.jpg";
 import advantage4Img from "../assets/images/CAP3.jpg";
 const CapAdvisor = () => {
-  const [contactSubmitting, setContactSubmitting] = useState(false);
+ 
+ const [contactSubmitting, setContactSubmitting] = useState(false);
 
-  // Helper to open WhatsApp with prefilled message
-  const openWhatsApp = ({ name, email, phone, note }) => {
-    const message = `Hello, I'm ${name || "N/A"}. Email: ${email || "N/A"}. Phone: ${phone || "N/A"}. ${note || ""}`;
-    const url = `https://wa.me/919035093820?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
+  const indianLanguages = [
+    "Hindi",
+    "English",
+    "Bengali",
+    "Telugu",
+    "Marathi",
+    "Tamil",
+    "Urdu",
+    "Gujarati",
+    "Kannada",
+    "Odia",
+    "Malayalam",
+    "Punjabi",
+    "Assamese",
+    "Maithili",
+    "Santali"
+  ];
+
+  const openWhatsApp = ({ name, email, phone, language }) => {
+    const whatsappNumber = "919035093820"; // without +
+    const message = `Hello, I would like to know more about CAP Academy.%0A
+Name: ${name}%0A
+Email: ${email}%0A
+Phone: ${phone}%0A
+Preferred Language: ${language}`;
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setContactSubmitting(true);
+
+    const name = e.target.name.value.trim();
+    const email = e.target.email.value.trim();
+    const phone = e.target.phone.value.trim();
+    const language = e.target.language.value;
+
+    // Validation
+    if (!name) {
+      alert("Name is required");
+      setContactSubmitting(false);
+      return;
+    }
+    if (!phone || !/^[0-9]{10}$/.test(phone)) {
+      alert("Please enter a valid 10-digit phone number");
+      setContactSubmitting(false);
+      return;
+    }
+
+    openWhatsApp({ name, email, phone, language });
+    setTimeout(() => setContactSubmitting(false), 800);
+  };
   return (
     <div className="text-gray-800 antialiased">
       {/* Helmet */}
@@ -70,8 +116,8 @@ const CapAdvisor = () => {
             </h2>
 
             <p className="text-lg sm:text-xl text-gray-100 leading-relaxed">
-              Empowering India’s Next Generation of Investment Advisors. Become a
-              certified CAP Advisor and connect investors to India’s top
+              Empowering India's Next Generation of Investment Advisors. Become a
+              certified CAP Advisor and connect investors to India's top
               startups. Access world-class training, mentorship, and industry
               insights that put you ahead in the game.
             </p>
@@ -161,7 +207,7 @@ const CapAdvisor = () => {
             Our Vision
           </h3>
           <p className="text-lg text-gray-700 leading-relaxed">
-            CAP Academy is an initiative by IqueCap to create India’s largest
+            CAP Academy is an initiative by IqueCap to create India's largest
             network of trained and certified Cap Advisors. Our mission is to
             empower individuals—especially from Tier 2 and Tier 3 cities—with
             essential skills and knowledge in finance, startups, and
@@ -304,7 +350,7 @@ const CapAdvisor = () => {
               { icon: <FaRocket />, text: "Access exclusive investment opportunities" },
               { icon: <FaHandHoldingUsd />, text: "Help others grow their wealth" },
               { icon: <FaInfinity />, text: "Unlimited earning potential" },
-              { icon: <FaFlag />, text: "Be part of India’s startup growth story" },
+              { icon: <FaFlag />, text: "Be part of India's startup growth story" },
             ].map((card, idx) => (
               <div key={idx} className="bg-gradient-to-br from-emerald-600 to-emerald-900 p-6 rounded-xl shadow-md text-center">
                 <div className="w-14 h-14 mx-auto flex items-center justify-center text-white rounded-md mb-4 text-2xl">
@@ -406,67 +452,123 @@ const CapAdvisor = () => {
 
       {/* CONTACT */}
       <section className="py-20 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          {/* Left: Contact Info */}
-          <div className="space-y-8">
-            <h2 className="text-4xl font-bold text-emerald-900">Get in Touch</h2>
-            <p className="text-lg text-gray-700">Reach out to us for any queries or support. We’re here to help!</p>
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        {/* Left: Contact Info */}
+        <div className="space-y-8">
+          <h2 className="text-4xl font-bold text-emerald-900">Get in Touch</h2>
+          <p className="text-lg text-gray-700">
+            Reach out to us for any queries or support. We're here to help!
+          </p>
 
-            <div className="space-y-4 text-lg text-gray-800">
-              <div className="flex items-center gap-3">
-                <FaPhoneAlt className="text-emerald-600" />
-                <a href="tel:+919035093820" className="hover:underline">+91 90350 93820</a>
-              </div>
+          <div className="space-y-4 text-lg text-gray-800">
+            <div className="flex items-center gap-3">
+              <FaPhoneAlt className="text-emerald-600" />
+              <a href="tel:+919035093820" className="hover:underline">
+                +91 90350 93820
+              </a>
+            </div>
 
-              <div className="flex items-center gap-3">
-                <FaEnvelope className="text-emerald-600" />
-                <a href="mailto:capadvisormanager@iquecap.com" className="hover:underline">capadvisormanager@iquecap.com</a>
-              </div>
+            <div className="flex items-center gap-3">
+              <FaEnvelope className="text-emerald-600" />
+              <a
+                href="mailto:capadvisormanager@iquecap.com"
+                className="hover:underline"
+              >
+                capadvisormanager@iquecap.com
+              </a>
+            </div>
 
-              <div className="flex items-center gap-3">
-                <FaGlobe className="text-emerald-600" />
-                <a href="https://iquecap.com/capacademy" target="_blank" rel="noopener noreferrer" className="hover:underline">www.iquecap.com/capacademy</a>
-              </div>
+            <div className="flex items-center gap-3">
+              <FaGlobe className="text-emerald-600" />
+              <a
+                href="https://iquecap.com/capacademy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                www.iquecap.com/capacademy
+              </a>
             </div>
           </div>
-
-          {/* Right: Contact Form */}
-          <div className="bg-white p-8 rounded-2xl shadow-lg">
-            <h3 className="text-2xl font-semibold mb-6 text-emerald-800 text-center">Contact Us</h3>
-
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setContactSubmitting(true);
-                const name = e.target.name.value;
-                const email = e.target.email.value;
-                const phone = e.target.phone.value;
-                openWhatsApp({ name, email, phone, note: "I would like to know more about CAP Academy." });
-                setTimeout(() => setContactSubmitting(false), 800);
-              }}
-            >
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                <input type="text" name="name" required className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-600" />
-              </div>
-
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                <input type="email" name="email" required className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-600" />
-              </div>
-
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                <input type="tel" name="phone" required className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-600" />
-              </div>
-
-              <button type="submit" disabled={contactSubmitting} className="w-full bg-emerald-700 text-white py-3 rounded-md font-semibold hover:bg-emerald-800 transition duration-200">
-                {contactSubmitting ? "Opening WhatsApp..." : "Contact Us on WhatsApp"}
-              </button>
-            </form>
-          </div>
         </div>
-      </section>
+
+        {/* Right: Contact Form */}
+        <div className="bg-white p-8 rounded-2xl shadow-lg">
+          <h3 className="text-2xl font-semibold mb-6 text-emerald-800 text-center">
+            Contact Us
+          </h3>
+
+          <form onSubmit={handleSubmit}>
+            {/* Name */}
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Name *
+              </label>
+              <input
+                type="text"
+                name="name"
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-600"
+              />
+            </div>
+
+            {/* Email */}
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-600"
+              />
+            </div>
+
+            {/* Phone */}
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Phone Number *
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                required
+                pattern="[0-9]{10}"
+                title="Please enter a valid 10-digit phone number"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-600"
+              />
+            </div>
+
+            {/* Preferred Language */}
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Preferred Language
+              </label>
+              <select
+                name="language"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-600"
+              >
+                {indianLanguages.map((lang, index) => (
+                  <option key={index} value={lang}>
+                    {lang}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <button
+              type="submit"
+              disabled={contactSubmitting}
+              className="w-full bg-emerald-700 text-white py-3 rounded-md font-semibold hover:bg-emerald-800 transition duration-200"
+            >
+              {contactSubmitting
+                ? "Opening WhatsApp..."
+                : "Contact Us on WhatsApp"}
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
     </div>
   );
 };
