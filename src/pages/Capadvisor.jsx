@@ -12,8 +12,10 @@ import {
   FaCheckCircle,
   FaPhoneAlt,
   FaEnvelope,
-  FaGlobe,
+  FaGlobe,FaInstagram, FaLinkedin, FaFacebook
 } from "react-icons/fa";
+
+import { FaThreads } from "react-icons/fa6"; // Threads icon
 
 import heroBg from "../assets/images/acad1.png";
 import trainingImage from "../assets/images/img11.jpg";
@@ -99,91 +101,128 @@ Preferred Language: ${language}`;
 
       {/* HERO */}
       <section className="bg-gradient-to-r from-emerald-700 to-emerald-500 text-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -36 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
-          >
-            <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg">
-              CAP Academy
-            </h1>
+  <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    {/* Left Content */}
+    <motion.div
+      initial={{ opacity: 0, x: -36 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8 }}
+      className="space-y-6"
+    >
+      <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg">
+        CAP Academy
+      </h1>
 
-            <h2 className="text-2xl sm:text-3xl italic font-light text-emerald-200">
-              Learn. Earn. Grow.
-            </h2>
+      <h2 className="text-2xl sm:text-3xl italic font-light text-emerald-200">
+        Learn. Earn. Grow.
+      </h2>
 
-            <p className="text-lg sm:text-xl text-gray-100 leading-relaxed">
-              Empowering India's Next Generation of Investment Advisors. Become a
-              certified CAP Advisor and connect investors to India's top
-              startups. Access world-class training, mentorship, and industry
-              insights that put you ahead in the game.
-            </p>
+      <p className="text-lg sm:text-xl text-gray-100 leading-relaxed">
+        Empowering India's Next Generation of Investment Advisors. Become a
+        certified CAP Advisor and connect investors to India's top
+        startups. Access world-class training, mentorship, and industry
+        insights that put you ahead in the game.
+      </p>
 
-            <p className="text-gray-200">
-              Practical, mentor-driven learning with real-world opportunities —
-              for students, professionals, and entrepreneurial minds.
-            </p>
+      <p className="text-gray-200">
+        Practical, mentor-driven learning with real-world opportunities — for
+        students, professionals, and entrepreneurial minds.
+      </p>
 
-            <div className="flex flex-wrap gap-3 items-center">
-              <a
-                href="https://forms.gle/5ydJrcSRdT59B2Zm8"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-white text-emerald-700 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-emerald-100 transition duration-300"
-              >
-                Join as a CAP Advisor
-              </a>
+      <div className="flex flex-wrap gap-3 items-center">
+        <a
+          href="https://forms.gle/5ydJrcSRdT59B2Zm8"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-white text-emerald-700 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-emerald-100 transition duration-300"
+        >
+          Join as a CAP Advisor
+        </a>
 
-              <button
-                onClick={() =>
-                  openWhatsApp({
-                    name: "I'm interested in CAP Academy",
-                    email: "",
-                    phone: "",
-                    note: "Please share program details.",
-                  })
-                }
-                className="inline-block bg-white/10 border border-white/20 text-white px-4 py-2 rounded-full hover:bg-white/20 transition"
-              >
-                Contact on WhatsApp
-              </button>
-            </div>
+        <button
+          onClick={() =>
+            openWhatsApp({
+              name: "I'm interested in CAP Academy",
+              email: "",
+              phone: "",
+              note: "Please share program details.",
+            })
+          }
+          className="inline-block bg-white/10 border border-white/20 text-white px-4 py-2 rounded-full hover:bg-white/20 transition"
+        >
+          Contact on WhatsApp
+        </button>
+      </div>
 
-            {/* Small benefit badges */}
-            <div className="flex flex-wrap gap-3 mt-6">
-              <div className="inline-flex items-center gap-2 bg-white/8 py-2 px-3 rounded-full text-sm">
-                <FaCertificate className="text-emerald-200" />
-                <span>Certification</span>
-              </div>
-              <div className="inline-flex items-center gap-2 bg-white/8 py-2 px-3 rounded-full text-sm">
-                <FaRocket className="text-emerald-200" />
-                <span>Mentorship</span>
-              </div>
-              <div className="inline-flex items-center gap-2 bg-white/8 py-2 px-3 rounded-full text-sm">
-                <FaHandHoldingUsd className="text-emerald-200" />
-                <span>Earnings</span>
-              </div>
-            </div>
-          </motion.div>
+      {/* Social Media Links */}
+      <div className="flex gap-4 mt-6">
+        <a
+          href="https://www.threads.com/?hl=en&xmt=AQF0EuLY1V6CpfnPBlMaZ_ccVqJ3PLWeIG_i46kEwHJghv8"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition"
+        >
+          <FaThreads className="text-white text-2xl" />
+        </a>
+        <a
+          href="https://www.instagram.com/cap_academy.official/?hl=en"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition"
+        >
+          <FaInstagram className="text-white text-2xl" />
+        </a>
+        <a
+          href="https://www.linkedin.com/feed/?trk=guest_homepage-basic_google-one-tap-submit"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition"
+        >
+          <FaLinkedin className="text-white text-2xl" />
+        </a>
+        <a
+          href="https://www.facebook.com/profile.php?id=61578898209874"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition"
+        >
+          <FaFacebook className="text-white text-2xl" />
+        </a>
+      </div>
 
-          {/* Right Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 36 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex justify-center"
-          >
-            <img
-              src={heroBg}
-              alt="CAP Academy"
-              className="w-full max-w-md rounded-lg  object-cover"
-            />
-          </motion.div>
+      {/* Small benefit badges */}
+      <div className="flex flex-wrap gap-3 mt-6">
+        <div className="inline-flex items-center gap-2 bg-white/8 py-2 px-3 rounded-full text-sm">
+          <FaCertificate className="text-emerald-200" />
+          <span>Certification</span>
         </div>
-      </section>
+        <div className="inline-flex items-center gap-2 bg-white/8 py-2 px-3 rounded-full text-sm">
+          <FaRocket className="text-emerald-200" />
+          <span>Mentorship</span>
+        </div>
+        <div className="inline-flex items-center gap-2 bg-white/8 py-2 px-3 rounded-full text-sm">
+          <FaHandHoldingUsd className="text-emerald-200" />
+          <span>Earnings</span>
+        </div>
+      </div>
+    </motion.div>
+
+    {/* Right Image */}
+    <motion.div
+      initial={{ opacity: 0, x: 36 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8 }}
+      className="flex justify-center"
+    >
+      <img
+        src={heroBg}
+        alt="CAP Academy"
+        className="w-full max-w-md rounded-lg object-cover"
+      />
+    </motion.div>
+  </div>
+</section>
+
 
       {/* Breadcrumb */}
       <div className="bg-white py-4 px-6 shadow-sm">
