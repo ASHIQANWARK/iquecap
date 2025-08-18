@@ -37,7 +37,7 @@ Preferred Industries: ${preferredIndustries}
 Investment Preference: ${investmentPreference}`;
 
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(`https://wa.me/9071600134?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/9035465957?text=${encodedMessage}`, "_blank");
   };
 
   return (
@@ -67,7 +67,7 @@ Investment Preference: ${investmentPreference}`;
               </div>
               <div>
                 <h5 className="font-bold text-lg">Call Us</h5>
-                <p className="text-lg">9071600134</p>
+                <p className="text-lg">9035465957</p>
               </div>
             </div>
             <div className="flex items-center p-6 rounded-xl shadow-xl bg-white bg-opacity-40 backdrop-blur-md font-sans">
