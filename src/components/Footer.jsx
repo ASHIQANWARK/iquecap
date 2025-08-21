@@ -31,8 +31,8 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="text-gray-300 hover:text-emerald-400 transition leading-relaxed text-left"
             >
-              Door No: 84,<br />
-              3rd Cross Rd, KHB Block,<br />
+              Door no : 84, <br />
+              3rd cross, near Jyoti Nivas College Road, Koramangala Industrial Layout, 5th Block,<br />
               Koramangala, Bengaluru,<br />
               Karnataka 560095
             </a>
