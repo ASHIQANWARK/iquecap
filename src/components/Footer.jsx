@@ -43,7 +43,7 @@ const Footer = () => {
               href="mailto:support@iquecap.com"
               className="text-emerald-400 hover:text-white transition"
             >
-              support@iquecap.com
+              info@iquecap.com
             </a>
           </p>
         </div>

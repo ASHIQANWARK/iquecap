@@ -76,7 +76,7 @@ Investment Preference: ${investmentPreference}`;
               </div>
               <div>
                 <h5 className="font-bold text-lg">Email Us</h5>
-                <p className="text-lg">ceo@iquecap.com</p>
+                <p className="text-lg">info@iquecap.com</p>
               </div>
             </div>
           </div>
