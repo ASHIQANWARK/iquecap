@@ -1,4 +1,3 @@
-// src/pages/CapAdvisor.jsx
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
@@ -31,6 +30,7 @@ import advantage1Img from "../assets/images/CAP3.jpg";
 import advantage2Img from "../assets/images/CAP3.jpg";
 import advantage3Img from "../assets/images/CAP3.jpg";
 import advantage4Img from "../assets/images/CAP3.jpg";
+
 const CapAdvisor = () => {
   const [contactSubmitting, setContactSubmitting] = useState(false);
 
@@ -52,7 +52,27 @@ const CapAdvisor = () => {
     "Santali"
   ];
 
-  const handleSubmit = async (e) => {
+  // Function to open WhatsApp with pre-filled message
+  const openWhatsApp = (formData = {}) => {
+    const { name = "", email = "", phone = "", language = "", note = "" } = formData;
+    
+    // Construct the message
+    let message = "Hello, I'm interested in CAP Academy!\n\n";
+    
+    if (name) message += `Name: ${name}\n`;
+    if (email) message += `Email: ${email}\n`;
+    if (phone) message += `Phone: ${phone}\n`;
+    if (language) message += `Preferred Language: ${language}\n`;
+    if (note) message += `Note: ${note}\n`;
+    
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Open WhatsApp
+    window.open(`https://wa.me/919035093820?text=${encodedMessage}`, '_blank');
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     setContactSubmitting(true);
 
@@ -61,32 +81,15 @@ const CapAdvisor = () => {
       name: formData.get("name"),
       email: formData.get("email"),
       phone: formData.get("phone"),
-      language: formData.get("language"),
-      timestamp: new Date().toISOString()
+      language: formData.get("language")
     };
 
-    try {
-      // Submit to Google Apps Script Web App
-      const response = await fetch("https://script.google.com/a/macros/iquecap.com/s/AKfycbz4Eaw1Sl5PZt0Cd6LgOWdgv-9fUfWuN6ke-QFwlGBArBDKJR1KQGjiG9wdYh9gf9Kd/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
-
-      if (response.ok) {
-        alert("Form submitted successfully! We'll contact you soon.");
-        e.target.reset();
-      } else {
-        throw new Error("Failed to submit form");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("There was an error submitting the form. Please try again.");
-    } finally {
-      setContactSubmitting(false);
-    }
+    // Open WhatsApp with the form data
+    openWhatsApp(data);
+    
+    // Reset form and state
+    e.target.reset();
+    setContactSubmitting(false);
   };
 
   return (
@@ -103,127 +106,122 @@ const CapAdvisor = () => {
 
       {/* HERO */}
       <section className="bg-gradient-to-r from-emerald-700 to-emerald-500 text-white">
-  <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-    {/* Left Content */}
-    <motion.div
-      initial={{ opacity: 0, x: -36 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8 }}
-      className="space-y-6"
-    >
-      <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg">
-        CAP Academy
-      </h1>
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -36 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-6"
+          >
+            <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg">
+              CAP Academy
+            </h1>
 
-      <h2 className="text-2xl sm:text-3xl italic font-light text-emerald-200">
-        Learn. Earn. Grow.
-      </h2>
+            <h2 className="text-2xl sm:text-3xl italic font-light text-emerald-200">
+              Learn. Earn. Grow.
+            </h2>
 
-      <p className="text-lg sm:text-xl text-gray-100 leading-relaxed">
-        Empowering India's Next Generation of Investment Advisors. Become a
-        certified CAP Advisor and connect investors to India's top
-        startups. Access world-class training, mentorship, and industry
-        insights that put you ahead in the game.
-      </p>
+            <p className="text-lg sm:text-xl text-gray-100 leading-relaxed">
+              Empowering India's Next Generation of Investment Advisors. Become a
+              certified CAP Advisor and connect investors to India's top
+              startups. Access world-class training, mentorship, and industry
+              insights that put you ahead in the game.
+            </p>
 
-      <p className="text-gray-200">
-        Practical, mentor-driven learning with real-world opportunities — for
-        students, professionals, and entrepreneurial minds.
-      </p>
+            <p className="text-gray-200">
+              Practical, mentor-driven learning with real-world opportunities — for
+              students, professionals, and entrepreneurial minds.
+            </p>
 
-      <div className="flex flex-wrap gap-3 items-center">
-        <a
-          href="https://forms.gle/5ydJrcSRdT59B2Zm8"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block bg-white text-emerald-700 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-emerald-100 transition duration-300"
-        >
-          Join as a CAP Advisor
-        </a>
+            <div className="flex flex-wrap gap-3 items-center">
+              <a
+                href="https://forms.gle/5ydJrcSRdT59B2Zm8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-white text-emerald-700 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-emerald-100 transition duration-300"
+              >
+                Join as a CAP Advisor
+              </a>
 
-        <button
-          onClick={() =>
-            openWhatsApp({
-              name: "I'm interested in CAP Academy",
-              email: "",
-              phone: "",
-              note: "Please share program details.",
-            })
-          }
-          className="inline-block bg-white/10 border border-white/20 text-white px-4 py-2 rounded-full hover:bg-white/20 transition"
-        >
-          Contact on WhatsApp
-        </button>
-      </div>
+              <button
+                onClick={() => openWhatsApp({
+                  note: "Please share program details about CAP Academy."
+                })}
+                className="inline-block bg-white/10 border border-white/20 text-white px-4 py-2 rounded-full hover:bg-white/20 transition"
+              >
+                Contact on WhatsApp
+              </button>
+            </div>
 
-      {/* Social Media Links */}
-      <div className="flex gap-4 mt-6">
-        <a
-          href="https://www.threads.com/@cap_academy.official?hl=en&xmt=AQF0EuLY1V6CpfnPBlMaZ_ccVqJ3PLWeIG_i46kEwHJghv8"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition"
-        >
-          <FaThreads className="text-white text-2xl" />
-        </a>
-        <a
-          href="https://www.instagram.com/cap_academy.official/?hl=en"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition"
-        >
-          <FaInstagram className="text-white text-2xl" />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/cap-academy-943903374/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition"
-        >
-          <FaLinkedin className="text-white text-2xl" />
-        </a>
-        <a
-          href="https://www.facebook.com/profile.php?id=61578898209874"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition"
-        >
-          <FaFacebook className="text-white text-2xl" />
-        </a>
-      </div>
+            {/* Social Media Links */}
+            <div className="flex gap-4 mt-6">
+              <a
+                href="https://www.threads.com/@cap_academy.official?hl=en&xmt=AQF0EuLY1V6CpfnPBlMaZ_ccVqJ3PLWeIG_i46kEwHJghv8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition"
+              >
+                <FaThreads className="text-white text-2xl" />
+              </a>
+              <a
+                href="https://www.instagram.com/cap_academy.official/?hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition"
+              >
+                <FaInstagram className="text-white text-2xl" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/cap-academy-943903374/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition"
+              >
+                <FaLinkedin className="text-white text-2xl" />
+              </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61578898209874"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition"
+              >
+                <FaFacebook className="text-white text-2xl" />
+              </a>
+            </div>
 
-      {/* Small benefit badges */}
-      <div className="flex flex-wrap gap-3 mt-6">
-        <div className="inline-flex items-center gap-2 bg-white/8 py-2 px-3 rounded-full text-sm">
-          <FaCertificate className="text-emerald-200" />
-          <span>Certification</span>
+            {/* Small benefit badges */}
+            <div className="flex flex-wrap gap-3 mt-6">
+              <div className="inline-flex items-center gap-2 bg-white/8 py-2 px-3 rounded-full text-sm">
+                <FaCertificate className="text-emerald-200" />
+                <span>Certification</span>
+              </div>
+              <div className="inline-flex items-center gap-2 bg-white/8 py-2 px-3 rounded-full text-sm">
+                <FaRocket className="text-emerald-200" />
+                <span>Mentorship</span>
+              </div>
+              <div className="inline-flex items-center gap-2 bg-white/8 py-2 px-3 rounded-full text-sm">
+                <FaHandHoldingUsd className="text-emerald-200" />
+                <span>Earnings</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 36 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex justify-center"
+          >
+            <img
+              src={heroBg}
+              alt="CAP Academy"
+              className="w-full max-w-md rounded-lg object-cover"
+            />
+          </motion.div>
         </div>
-        <div className="inline-flex items-center gap-2 bg-white/8 py-2 px-3 rounded-full text-sm">
-          <FaRocket className="text-emerald-200" />
-          <span>Mentorship</span>
-        </div>
-        <div className="inline-flex items-center gap-2 bg-white/8 py-2 px-3 rounded-full text-sm">
-          <FaHandHoldingUsd className="text-emerald-200" />
-          <span>Earnings</span>
-        </div>
-      </div>
-    </motion.div>
-
-    {/* Right Image */}
-    <motion.div
-      initial={{ opacity: 0, x: 36 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8 }}
-      className="flex justify-center"
-    >
-      <img
-        src={heroBg}
-        alt="CAP Academy"
-        className="w-full max-w-md rounded-lg object-cover"
-      />
-    </motion.div>
-  </div>
-</section>
+      </section>
 
 
       {/* Breadcrumb */}
@@ -492,7 +490,6 @@ const CapAdvisor = () => {
       </section>
 
       {/* CONTACT */}
-     {/* CONTACT SECTION */}
       <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left: Contact Info */}
@@ -603,7 +600,7 @@ const CapAdvisor = () => {
                 disabled={contactSubmitting}
                 className="w-full bg-emerald-700 text-white py-3 rounded-md font-semibold hover:bg-emerald-800 transition duration-200"
               >
-                {contactSubmitting ? "Submitting..." : "Submit Form"}
+                {contactSubmitting ? "Redirecting..." : "Contact via WhatsApp"}
               </button>
             </form>
           </div>
