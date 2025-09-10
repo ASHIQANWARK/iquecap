@@ -41,7 +41,7 @@ const Navbar = () => {
     { name: "Services", path: "/services" },
     { name: "Contact", path: "/contact" },
     {name: "Cap Academy" ,path:"/capacademy"},
-    { name: "Privacy & Policy", path: "/privacypolicy" },
+    { name: "Careers", path: "/careers" },
   ];
 
   return (

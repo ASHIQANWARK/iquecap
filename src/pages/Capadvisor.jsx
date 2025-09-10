@@ -436,7 +436,7 @@ const CapAdvisor = () => {
               <li>Attend 25 days of online training</li>
               <li>Complete assignments and final quiz</li>
               <li>Get Certified as a Cap Advisor</li>
-              <li>Earn Commissions on every deal</li>
+              <li>Earn Incentive on every deal</li>
             </ol>
           </div>
 
@@ -456,7 +456,7 @@ const CapAdvisor = () => {
             <h3 className="text-2xl font-semibold mb-6">How You Earn</h3>
             <ul className="space-y-4 text-lg flex flex-col items-center">
               <li className="flex items-center gap-3"><FaCheckCircle className="text-emerald-300 text-xl" /><span>Incentive on every successful investment closure</span></li>
-              <li className="flex items-center gap-3"><FaCheckCircle className="text-emerald-300 text-xl" /><span>Daily payout bonuses</span></li>
+              <li className="flex items-center gap-3"><FaCheckCircle className="text-emerald-300 text-xl" /><span>Daily payout Incentive</span></li>
               <li className="flex items-center gap-3"><FaCheckCircle className="text-emerald-300 text-xl" /><span>Extra incentives for top performers</span></li>
               <li className="flex items-center gap-3"><FaCheckCircle className="text-emerald-300 text-xl" /><span>Monthly recognition & rewards</span></li>
               <li className="flex items-center gap-3"><FaCheckCircle className="text-emerald-300 text-xl" /><span>Long-term partnership opportunities with IqueCap</span></li>

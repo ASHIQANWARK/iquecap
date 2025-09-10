@@ -10,6 +10,7 @@ import Contacts from './pages/Contact';
 import ServicesSection from './pages/Services';
 import PrivacyPolicy from './pages/Privacypolicy';
 import CapAdvisor from './pages/Capadvisor';
+import Career from './pages/Career';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/contact" element={<Contacts />} />
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/capacademy" element={<CapAdvisor />} />
+        <Route path="/careers" element={<Career />} />
       </Routes>
       <Footer />
     </Router>

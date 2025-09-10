@@ -1,18 +1,22 @@
+// src/components/Awards.jsx
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
+// Images
 import user1 from "../assets/images/varsha.jpg";
 import user2 from "../assets/images/INDU MAAM.jpg";
 import user3 from "../assets/images/arun.jpg";
 import ceo1 from "../assets/images/art14.jpg";
 import ceo2 from "../assets/images/art17.jpg";
 import ceo3 from "../assets/images/art15.jpg";
-import bgSVG from "../assets/images/3353859.jpg"; // ✅ Your SVG Background
 import ceo from "../assets/images/shaazbinmahroof (1).jpg";
+import bgSVG from "../assets/images/3353859.jpg";
+
 const awards = [
   { count: 32, label: "Awards Earned" },
   { count: 45, label: "Startups Launched" },
@@ -21,18 +25,7 @@ const awards = [
 
 const ceoImages = [ceo, ceo1, ceo2, ceo3];
 
-const sliderSettings = {
-  dots: true,
-  infinite: true,
-  speed: 600,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 3500,
-  arrows: false,
-  adaptiveHeight: true,
-};
-
+// ✅ Optimized Animated Counter
 const AnimatedNumber = ({ value }) => {
   const [count, setCount] = useState(0);
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });
@@ -42,19 +35,16 @@ const AnimatedNumber = ({ value }) => {
       let start = 0;
       const end = value;
       const duration = 1000;
-      const step = Math.ceil(end / (duration / 40));
+      const startTime = performance.now();
 
-      const timer = setInterval(() => {
-        start += step;
-        if (start >= end) {
-          setCount(end);
-          clearInterval(timer);
-        } else {
-          setCount(start);
-        }
-      }, 40);
+      const animate = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        setCount(Math.floor(progress * end));
+        if (progress < 1) requestAnimationFrame(animate);
+      };
 
-      return () => clearInterval(timer);
+      requestAnimationFrame(animate);
     }
   }, [inView, value]);
 
@@ -67,13 +57,16 @@ const AnimatedNumber = ({ value }) => {
 
 const Awards = () => {
   return (
-    <section className="relative w-full py-20 px-6 bg-gradient-to-t from-emerald-950 to-teal-950 text-white overflow-hidden">
-      {/* ✅ Background SVG */}
-      <img
-        src={bgSVG}
-        alt="Background"
-        className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none z-0"
-      />
+    <section
+      className="relative w-full py-20 px-6 text-white overflow-hidden"
+      style={{
+        backgroundImage: `url(${bgSVG})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/80"></div>
 
       {/* Main Content */}
       <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 z-10">
@@ -97,13 +90,12 @@ const Awards = () => {
             at iQue Cap
           </motion.h2>
 
-          <p className="text-gray-300 mb-8 max-w-xl">
+          <p className="text-gray-300 mb-8 max-w-xl leading-relaxed">
             At iQue Cap, our milestones reflect years of perseverance,
             innovation, and impact. From award-winning ideas to thriving
             startups, we're building the future — together.
           </p>
 
-          {/* Stats */}
           {/* Stats */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full mb-10">
             {awards.map((award, index) => (
@@ -132,6 +124,7 @@ const Awards = () => {
                   key={idx}
                   src={user}
                   alt={`User ${idx + 1}`}
+                  loading="lazy"
                   className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-white object-cover hover:scale-105 transition-transform"
                 />
               ))}
@@ -142,7 +135,7 @@ const Awards = () => {
           </div>
         </motion.div>
 
-        {/* Right Side - Carousel */}
+        {/* Right Side - Swiper Carousel */}
         <motion.div
           className="w-full lg:w-1/2 flex justify-center"
           initial={{ opacity: 0, x: 60 }}
@@ -150,19 +143,27 @@ const Awards = () => {
           transition={{ duration: 1 }}
         >
           <div className="w-[260px] sm:w-[300px]">
-            <Slider {...sliderSettings}>
+            <Swiper
+              modules={[Autoplay, Pagination]}
+              autoplay={{ delay: 3500, disableOnInteraction: false }}
+              pagination={{ clickable: true }}
+              loop={true}
+              speed={600}
+              className="rounded-xl shadow-2xl border-2 border-emerald-500"
+            >
               {ceoImages.map((img, idx) => (
-                <div key={idx} className="p-2">
-                  <div className="overflow-hidden rounded-xl shadow-2xl border-2 border-emerald-500 bg-[#002A22]">
+                <SwiperSlide key={idx}>
+                  <div className="overflow-hidden bg-[#002A22] rounded-xl">
                     <img
                       src={img}
                       alt={`CEO ${idx + 1}`}
-                      className="w-full h-[340px] sm:h-[380px] object-cover rounded-lg  duration-500 "
+                      loading="lazy"
+                      className="w-full h-[340px] sm:h-[380px] object-cover rounded-lg duration-500"
                     />
                   </div>
-                </div>
+                </SwiperSlide>
               ))}
-            </Slider>
+            </Swiper>
           </div>
         </motion.div>
       </div>
