@@ -113,7 +113,7 @@ const Footer = () => {
           &copy; {new Date().getFullYear()} Ique Ventures. All rights reserved.
         </p>
       </div>
-    </footer>
+    </footer> 
   );
 };
 
