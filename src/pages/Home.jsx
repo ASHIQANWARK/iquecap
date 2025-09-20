@@ -4,7 +4,7 @@ import About from "../pages/About";
 import MissionVision from "../pages/Mission";
 import Chatbot from "../pages/Chatbot";
 import Why from "../pages/why";
-import Team from "../pages/Team";
+// import Team from "../pages/Team";
 import Faq from "../pages/Faq";
 
 import Awards from "../pages/Awards";
@@ -21,7 +21,7 @@ const Home = () => {
       <Awards />
       <Founder />
       <Testimonials />
-      <Team />
+      {/* <Team /> */}
       <Faq />
       <Chatbot />
     </div>

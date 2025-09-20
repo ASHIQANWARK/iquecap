@@ -7,32 +7,32 @@ import "slick-carousel/slick/slick-theme.css";
 const testimonials = [
   {
     name: "Nabeel",
-    role: "CEO",
+    role: "Invester",
     text: "The team delivered an amazing project! Their attention to detail and creativity exceeded our expectations.",
   },
   {
     name: "Hashim",
-    role: "CEO",
+    role: "Invester",
     text: "Fantastic work! They truly understand what customers need and deliver outstanding results.",
   },
   {
     name: "Shefin",
-    role: "CEO",
+    role: "Invester",
     text: "A professional and dedicated team! Highly recommended for anyone looking for top-notch development services.",
   },
   {
     name: "Keerthi",
-    role: "CEO",
+   role: "Invester",
     text: "Working with this team was an amazing experience. They are highly skilled and very professional.",
   },
   {
     name: "Abhirami",
-    role: "CEO",
+    role: "Invester",
     text: "Great work! Their expertise and attention to detail made a huge difference in our project's success.",
   },
   {
     name: "Jino",
-    role: "CEO",
+    role: "Invester",
     text: "A trustworthy and highly skilled team. They exceeded our expectations in every way.",
   },
 ];
