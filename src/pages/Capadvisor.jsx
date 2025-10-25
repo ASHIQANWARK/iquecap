@@ -19,7 +19,7 @@ import {
   FaUserTie,
   FaChartLine,
   FaUsers,
-  FaLightbulb
+  FaLightbulb,
 } from "react-icons/fa";
 import { FaThreads } from "react-icons/fa6";
 
@@ -57,22 +57,28 @@ const CapAdvisor = () => {
     "Punjabi",
     "Assamese",
     "Maithili",
-    "Santali"
+    "Santali",
   ];
 
   const openWhatsApp = (formData = {}) => {
-    const { name = "", email = "", phone = "", language = "", note = "" } = formData;
-    
+    const {
+      name = "",
+      email = "",
+      phone = "",
+      language = "",
+      note = "",
+    } = formData;
+
     let message = "Hello, I'm interested in CAP Academy!\n\n";
-    
+
     if (name) message += `Name: ${name}\n`;
     if (email) message += `Email: ${email}\n`;
     if (phone) message += `Phone: ${phone}\n`;
     if (language) message += `Preferred Language: ${language}\n`;
     if (note) message += `Note: ${note}\n`;
-    
+
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/919035093820?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/919035093820?text=${encodedMessage}`, "_blank");
   };
 
   const handleSubmit = (e) => {
@@ -84,7 +90,7 @@ const CapAdvisor = () => {
       name: formData.get("name"),
       email: formData.get("email"),
       phone: formData.get("phone"),
-      language: formData.get("language")
+      language: formData.get("language"),
     };
 
     openWhatsApp(data);
@@ -96,15 +102,15 @@ const CapAdvisor = () => {
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.5 }
+    transition: { duration: 0.5 },
   };
 
   const staggerChildren = {
     animate: {
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   // Testimonials data
@@ -112,14 +118,13 @@ const CapAdvisor = () => {
     {
       text: "This program gave me financial freedom and purpose.",
       author: "Suhara T, Kerala",
-      role: "Certified CAP Advisor"
+      role: "Certified CAP Advisor",
     },
     {
       text: "Cap Academy helped me gain confidence and income at the same time.",
       author: "Mary Jemshy, Kerala",
-      role: "Certified CAP Advisor"
+      role: "Certified CAP Advisor",
     },
-    
   ];
 
   return (
@@ -147,7 +152,7 @@ const CapAdvisor = () => {
               <span className="h-2 w-2 bg-emerald-300 rounded-full mr-2"></span>
               Empowering India's Next Generation
             </div>
-            
+
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
               CAP <span className="text-emerald-300">Academy</span>
             </h1>
@@ -157,8 +162,8 @@ const CapAdvisor = () => {
             </h2>
 
             <p className="text-lg text-gray-100 leading-relaxed max-w-lg">
-              Empowering India's Next Generation of Investment Advisors. Become a
-              certified CAP Advisor and connect investors to India's top
+              Empowering India's Next Generation of Investment Advisors. Become
+              a certified CAP Advisor and connect investors to India's top
               startups.
             </p>
 
@@ -178,9 +183,11 @@ const CapAdvisor = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => openWhatsApp({
-                  note: "Please share program details about CAP Academy."
-                })}
+                onClick={() =>
+                  openWhatsApp({
+                    note: "Please share program details about CAP Academy.",
+                  })
+                }
                 className="inline-flex items-center bg-white/10 border border-white/20 text-white px-5 py-2.5 rounded-full hover:bg-white/20 transition-all duration-300"
               >
                 Contact on WhatsApp
@@ -191,10 +198,22 @@ const CapAdvisor = () => {
               <p className="text-emerald-200 text-sm mb-3">Follow us:</p>
               <div className="flex gap-3">
                 {[
-                  { icon: <FaThreads />, url: "https://www.threads.com/@cap_academy.official?hl=en&xmt=AQF0EuLY1V6CpfnPBlMaZ_ccVqJ3PLWeIG_i46kEwHJghv8" },
-                  { icon: <FaInstagram />, url: "https://www.instagram.com/cap_academy.official/?hl=en" },
-                  { icon: <FaLinkedin />, url: "https://www.linkedin.com/in/cap-academy-943903374/" },
-                  { icon: <FaFacebook />, url: "https://www.facebook.com/profile.php?id=61578898209874" }
+                  {
+                    icon: <FaThreads />,
+                    url: "https://www.threads.com/@cap_academy.official?hl=en&xmt=AQF0EuLY1V6CpfnPBlMaZ_ccVqJ3PLWeIG_i46kEwHJghv8",
+                  },
+                  {
+                    icon: <FaInstagram />,
+                    url: "https://www.instagram.com/cap_academy.official/?hl=en",
+                  },
+                  {
+                    icon: <FaLinkedin />,
+                    url: "https://www.linkedin.com/in/cap-academy-943903374/",
+                  },
+                  {
+                    icon: <FaFacebook />,
+                    url: "https://www.facebook.com/profile.php?id=61578898209874",
+                  },
                 ].map((social, index) => (
                   <motion.a
                     key={index}
@@ -227,10 +246,7 @@ const CapAdvisor = () => {
             </div>
           </motion.div>
         </div>
-               
       </section>
-
-    
 
       {/* ABOUT SECTION */}
       <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -245,7 +261,8 @@ const CapAdvisor = () => {
             About <span className="text-emerald-600">CAP Academy</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            An initiative by IqueCap to create India's largest network of trained and certified Cap Advisors
+            An initiative by IqueCap to create India's largest network of
+            trained and certified Cap Advisors
           </p>
         </motion.div>
 
@@ -271,7 +288,7 @@ const CapAdvisor = () => {
               investments.
             </p>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -309,7 +326,9 @@ const CapAdvisor = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold">$140+ Billion</h4>
-                  <p className="text-gray-600">invested in Indian Startups (till 2025)</p>
+                  <p className="text-gray-600">
+                    invested in Indian Startups (till 2025)
+                  </p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -327,7 +346,9 @@ const CapAdvisor = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold">5 million+</h4>
-                  <p className="text-gray-600">retail investors exploring alternative assets</p>
+                  <p className="text-gray-600">
+                    retail investors exploring alternative assets
+                  </p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -336,12 +357,14 @@ const CapAdvisor = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold">Tier 2/3 cities</h4>
-                  <p className="text-gray-600">seeing 50% YoY investor growth</p>
+                  <p className="text-gray-600">
+                    seeing 50% YoY investor growth
+                  </p>
                 </div>
               </li>
             </ul>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -379,7 +402,7 @@ const CapAdvisor = () => {
               companies and grow with them as investors.
             </p>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -411,32 +434,34 @@ const CapAdvisor = () => {
               The IqueCap Advantage
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              With IqueCap, you get everything you need to succeed as a CAP Advisor
+              With IqueCap, you get everything you need to succeed as a CAP
+              Advisor
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { 
-                title: "Vetted Startup Deals", 
-                description: "Access to carefully selected investment opportunities",
-                icon: <FaCheckCircle className="text-2xl" />
+              {
+                title: "Vetted Startup Deals",
+                description:
+                  "Access to carefully selected investment opportunities",
+                icon: <FaCheckCircle className="text-2xl" />,
               },
-              { 
-                title: "Structured Process", 
+              {
+                title: "Structured Process",
                 description: "Clear, step-by-step investment methodology",
-                icon: <FaChartLine className="text-2xl" />
+                icon: <FaChartLine className="text-2xl" />,
               },
-              { 
-                title: "Expert Support", 
+              {
+                title: "Expert Support",
                 description: "Guidance from trained Cap Advisors",
-                icon: <FaUserTie className="text-2xl" />
+                icon: <FaUserTie className="text-2xl" />,
               },
-              { 
-                title: "Transparent Updates", 
+              {
+                title: "Transparent Updates",
                 description: "Regular reports and progress tracking",
-                icon: <FaLightbulb className="text-2xl" />
-              }
+                icon: <FaLightbulb className="text-2xl" />,
+              },
             ].map((feature, index) => (
               <motion.div
                 key={index}
@@ -449,7 +474,9 @@ const CapAdvisor = () => {
                 <div className="bg-emerald-100 w-12 h-12 rounded-lg flex items-center justify-center text-emerald-600 mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-emerald-800 mb-2">{feature.title}</h3>
+                <h3 className="text-xl font-semibold text-emerald-800 mb-2">
+                  {feature.title}
+                </h3>
                 <p className="text-gray-600">{feature.description}</p>
               </motion.div>
             ))}
@@ -461,21 +488,21 @@ const CapAdvisor = () => {
       <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
-            { 
-              image: cardIqueCap, 
+            {
+              image: cardIqueCap,
               title: "Backed by IqueCap",
-              description: "Industry expertise and support"
+              description: "Industry expertise and support",
             },
-            { 
-              image: cardOnline, 
+            {
+              image: cardOnline,
               title: "Fully Online Learning",
-              description: "Flexible, accessible from anywhere"
+              description: "Flexible, accessible from anywhere",
             },
-            { 
-              image: cardCommunity, 
+            {
+              image: cardCommunity,
               title: "Thriving Community",
-              description: "Network with peers and experts"
-            }
+              description: "Network with peers and experts",
+            },
           ].map((card, index) => (
             <motion.div
               key={index}
@@ -487,14 +514,16 @@ const CapAdvisor = () => {
               style={{ aspectRatio: "4/5" }}
             >
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-all duration-500 z-10"></div>
-              <img 
-                src={card.image} 
+              <img
+                src={card.image}
                 alt={card.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white z-20">
                 <h3 className="text-xl font-bold mb-2">{card.title}</h3>
-                <p className="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">{card.description}</p>
+                <p className="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  {card.description}
+                </p>
               </div>
             </motion.div>
           ))}
@@ -515,18 +544,47 @@ const CapAdvisor = () => {
               Why Become a Cap Advisor?
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Discover the benefits of joining India's premier investment advisor program
+              Discover the benefits of joining India's premier investment
+              advisor program
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { icon: <FaHome />, title: "Work From Home", description: "Be your own boss and set your own schedule" },
-              { icon: <FaCertificate />, title: "Get Certified", description: "Earn a professional certification from a reputable platform" },
-              { icon: <FaRocket />, title: "Exclusive Opportunities", description: "Access investment deals not available to the general public" },
-              { icon: <FaHandHoldingUsd />, title: "Help Others Grow", description: "Guide investors toward wealth-building opportunities" },
-              { icon: <FaInfinity />, title: "Unlimited Earnings", description: "No cap on your income potential" },
-              { icon: <FaFlag />, title: "Be a Pioneer", description: "Participate in India's startup growth story from the ground up" }
+              {
+                icon: <FaHome />,
+                title: "Work From Home",
+                description: "Be your own boss and set your own schedule",
+              },
+              {
+                icon: <FaCertificate />,
+                title: "Get Certified",
+                description:
+                  "Earn a professional certification from a reputable platform",
+              },
+              {
+                icon: <FaRocket />,
+                title: "Exclusive Opportunities",
+                description:
+                  "Access investment deals not available to the general public",
+              },
+              {
+                icon: <FaHandHoldingUsd />,
+                title: "Help Others Grow",
+                description:
+                  "Guide investors toward wealth-building opportunities",
+              },
+              {
+                icon: <FaInfinity />,
+                title: "Unlimited Earnings",
+                description: "No cap on your income potential",
+              },
+              {
+                icon: <FaFlag />,
+                title: "Be a Pioneer",
+                description:
+                  "Participate in India's startup growth story from the ground up",
+              },
             ].map((benefit, index) => (
               <motion.div
                 key={index}
@@ -560,7 +618,7 @@ const CapAdvisor = () => {
               <h2 className="text-3xl sm:text-4xl font-bold text-emerald-900 mb-6">
                 Program Highlights
               </h2>
-              
+
               <ul className="space-y-4">
                 {[
                   "25-day intensive online training",
@@ -568,7 +626,7 @@ const CapAdvisor = () => {
                   "Learn basics of investment, startups, and pitch evaluation",
                   "Guidance on lead generation and investor handling",
                   "Real-time support and feedback from mentors",
-                  "Interactive quizzes, case studies, and practice decks"
+                  "Interactive quizzes, case studies, and practice decks",
                 ].map((item, index) => (
                   <li key={index} className="flex items-start">
                     <div className="bg-emerald-100 p-2 rounded-full mr-4 mt-1">
@@ -579,7 +637,7 @@ const CapAdvisor = () => {
                 ))}
               </ul>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -631,7 +689,7 @@ const CapAdvisor = () => {
                 className="relative rounded-xl shadow-lg w-full h-[400px] object-cover"
               />
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -640,11 +698,36 @@ const CapAdvisor = () => {
             >
               <div className="space-y-8">
                 {[
-                  { step: "01", title: "Register and Pay ₹10,000", description: "Secure your spot in the program with a simple registration" },
-                  { step: "02", title: "25 Days Online Training", description: "Complete our comprehensive training program at your own pace" },
-                  { step: "03", title: "Assignments & Final Quiz", description: "Demonstrate your knowledge through practical assignments" },
-                  { step: "04", title: "Get Certified", description: "Receive your official CAP Advisor certification" },
-                  { step: "05", title: "Start Earning", description: "Begin earning incentives on every successful deal" }
+                  {
+                    step: "01",
+                    title: "Register and Pay ₹10,000",
+                    description:
+                      "Secure your spot in the program with a simple registration",
+                  },
+                  {
+                    step: "02",
+                    title: "25 Days Online Training",
+                    description:
+                      "Complete our comprehensive training program at your own pace",
+                  },
+                  {
+                    step: "03",
+                    title: "Assignments & Final Quiz",
+                    description:
+                      "Demonstrate your knowledge through practical assignments",
+                  },
+                  {
+                    step: "04",
+                    title: "Get Certified",
+                    description:
+                      "Receive your official CAP Advisor certification",
+                  },
+                  {
+                    step: "05",
+                    title: "Start Earning",
+                    description:
+                      "Begin earning incentives on every successful deal",
+                  },
                 ].map((item, index) => (
                   <div key={index} className="flex">
                     <div className="flex-shrink-0 mr-4">
@@ -653,7 +736,9 @@ const CapAdvisor = () => {
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-emerald-800">{item.title}</h3>
+                      <h3 className="text-lg font-semibold text-emerald-800">
+                        {item.title}
+                      </h3>
                       <p className="text-gray-600">{item.description}</p>
                     </div>
                   </div>
@@ -673,21 +758,25 @@ const CapAdvisor = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Earnings & Incentives</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              Earnings & Incentives
+            </h2>
             <p className="text-lg text-emerald-200 mb-12 max-w-2xl mx-auto">
               Unlock exciting rewards as you grow with CAP Academy
             </p>
 
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 text-left">
-              <h3 className="text-2xl font-semibold mb-8 text-center">How You Earn</h3>
-              
+              <h3 className="text-2xl font-semibold mb-8 text-center">
+                How You Earn
+              </h3>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
                   "Incentive on every successful investment closure",
                   "Daily payout Incentive",
                   "Extra incentives for top performers",
                   "Monthly recognition & rewards",
-                  "Long-term partnership opportunities with IqueCap"
+                  "Long-term partnership opportunities with IqueCap",
                 ].map((item, index) => (
                   <div key={index} className="flex items-start">
                     <div className="bg-emerald-500/20 p-2 rounded-full mr-4 flex-shrink-0">
@@ -697,7 +786,7 @@ const CapAdvisor = () => {
                   </div>
                 ))}
               </div>
-              
+
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="mt-10 text-center"
@@ -743,26 +832,34 @@ const CapAdvisor = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className={`bg-gradient-to-r from-emerald-50 to-teal-50 p-8 rounded-2xl shadow-md border-l-4 border-emerald-500 ${activeTestimonial === index ? '' : 'opacity-70'}`}
+                  className={`bg-gradient-to-r from-emerald-50 to-teal-50 p-8 rounded-2xl shadow-md border-l-4 border-emerald-500 ${
+                    activeTestimonial === index ? "" : "opacity-70"
+                  }`}
                   onMouseEnter={() => setActiveTestimonial(index)}
                 >
-                  <p className="text-lg text-gray-800 italic mb-6">"{testimonial.text}"</p>
+                  <p className="text-lg text-gray-800 italic mb-6">
+                    "{testimonial.text}"
+                  </p>
                   <div>
-                    <p className="font-semibold text-emerald-700">{testimonial.author}</p>
-                    <p className="text-sm text-emerald-600">{testimonial.role}</p>
+                    <p className="font-semibold text-emerald-700">
+                      {testimonial.author}
+                    </p>
+                    <p className="text-sm text-emerald-600">
+                      {testimonial.role}
+                    </p>
                   </div>
                 </motion.div>
               ))}
             </div>
-            
+
             <div className="mt-12 bg-emerald-100 text-emerald-900 py-6 px-8 rounded-xl shadow-md text-center">
-              <h3 className="text-xl font-bold">You can be the next success story.</h3>
+              <h3 className="text-xl font-bold">
+                You can be the next success story.
+              </h3>
             </div>
           </div>
         </div>
       </section>
-
-      
 
       {/* CONTACT SECTION */}
       <section className="py-16 md:py-24 bg-gray-50">
@@ -776,9 +873,12 @@ const CapAdvisor = () => {
               className="space-y-8"
             >
               <div>
-                <h2 className="text-3xl sm:text-4xl font-bold text-emerald-900 mb-4">Get in Touch</h2>
+                <h2 className="text-3xl sm:text-4xl font-bold text-emerald-900 mb-4">
+                  Get in Touch
+                </h2>
                 <p className="text-lg text-gray-700">
-                  Reach out to us for any queries or support. We're here to help!
+                  Reach out to us for any queries or support. We're here to
+                  help!
                 </p>
               </div>
 
@@ -788,8 +888,13 @@ const CapAdvisor = () => {
                     <FaPhoneAlt className="text-emerald-600 text-xl" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-gray-800">Call Us</h3>
-                    <a href="tel:+919035093820" className="text-gray-600 hover:text-emerald-700 transition-colors">
+                    <h3 className="font-semibold text-lg text-gray-800">
+                      Call Us
+                    </h3>
+                    <a
+                      href="tel:+919035093820"
+                      className="text-gray-600 hover:text-emerald-700 transition-colors"
+                    >
                       +91 90350 93820
                     </a>
                   </div>
@@ -800,8 +905,13 @@ const CapAdvisor = () => {
                     <FaEnvelope className="text-emerald-600 text-xl" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-gray-800">Email Us</h3>
-                    <a href="mailto:capadvisormanager@iquecap.com" className="text-gray-600 hover:text-emerald-700 transition-colors">
+                    <h3 className="font-semibold text-lg text-gray-800">
+                      Email Us
+                    </h3>
+                    <a
+                      href="mailto:capadvisormanager@iquecap.com"
+                      className="text-gray-600 hover:text-emerald-700 transition-colors"
+                    >
                       capadvisormanager@iquecap.com
                     </a>
                   </div>
@@ -812,8 +922,15 @@ const CapAdvisor = () => {
                     <FaGlobe className="text-emerald-600 text-xl" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-gray-800">Visit Us</h3>
-                    <a href="https://iquecap.com/capacademy" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-emerald-700 transition-colors">
+                    <h3 className="font-semibold text-lg text-gray-800">
+                      Visit Us
+                    </h3>
+                    <a
+                      href="https://iquecap.com/capacademy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-600 hover:text-emerald-700 transition-colors"
+                    >
                       www.iquecap.com/capacademy
                     </a>
                   </div>
@@ -821,13 +938,27 @@ const CapAdvisor = () => {
               </div>
 
               <div className="pt-4">
-                <p className="text-emerald-800 font-medium mb-3">Follow us on social media:</p>
+                <p className="text-emerald-800 font-medium mb-3">
+                  Follow us on social media:
+                </p>
                 <div className="flex gap-3">
                   {[
-                    { icon: <FaThreads />, url: "https://www.threads.com/@cap_academy.official?hl=en&xmt=AQF0EuLY1V6CpfnPBlMaZ_ccVqJ3PLWeIG_i46kEwHJghv8" },
-                    { icon: <FaInstagram />, url: "https://www.instagram.com/cap_academy.official/?hl=en" },
-                    { icon: <FaLinkedin />, url: "https://www.linkedin.com/in/cap-academy-943903374/" },
-                    { icon: <FaFacebook />, url: "https://www.facebook.com/profile.php?id=61578898209874" }
+                    {
+                      icon: <FaThreads />,
+                      url: "https://www.threads.com/@cap_academy.official?hl=en&xmt=AQF0EuLY1V6CpfnPBlMaZ_ccVqJ3PLWeIG_i46kEwHJghv8",
+                    },
+                    {
+                      icon: <FaInstagram />,
+                      url: "https://www.instagram.com/cap_academy.official/?hl=en",
+                    },
+                    {
+                      icon: <FaLinkedin />,
+                      url: "https://www.linkedin.com/in/cap-academy-943903374/",
+                    },
+                    {
+                      icon: <FaFacebook />,
+                      url: "https://www.facebook.com/profile.php?id=61578898209874",
+                    },
                   ].map((social, index) => (
                     <a
                       key={index}
@@ -848,92 +979,28 @@ const CapAdvisor = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-2xl shadow-lg"
+              className="bg-white p-8 rounded-2xl shadow-lg flex flex-col items-center justify-center"
             >
               <h3 className="text-2xl font-semibold mb-6 text-emerald-800 text-center">
-                Contact Us
+                Contact Form
               </h3>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    required
-                    pattern="[0-9]{10}"
-                    title="Please enter a valid 10-digit phone number"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Preferred Language
-                  </label>
-                  <select
-                    name="language"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent"
-                  >
-                    {indianLanguages.map((lang, index) => (
-                      <option key={index} value={lang}>
-                        {lang}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  type="submit"
-                  disabled={contactSubmitting}
-                  className="w-full bg-emerald-700 text-white py-3 rounded-lg font-semibold hover:bg-emerald-800 transition-all duration-300 flex items-center justify-center"
-                >
-                  {contactSubmitting ? (
-                    <>
-                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Redirecting...
-                    </>
-                  ) : (
-                    "Contact via WhatsApp"
-                  )}
-                </motion.button>
-              </form>
+              <p className="text-gray-600 mb-6 text-center">
+                Fill out our Google Form to get in touch with us
+              </p>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="https://docs.google.com/forms/d/e/1FAIpQLSf_7KkLeJU6-BsuE-0qgZeFOLUZ3x21Dm_uIv-gActy4mhnUA/viewform?usp=sharing&ouid=102317791087597349157"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-emerald-700 text-white py-3 rounded-lg font-semibold hover:bg-emerald-800 transition-all duration-300 flex items-center justify-center"
+              >
+                Apply Now 
+              </motion.a>
             </motion.div>
           </div>
         </div>
       </section>
-
-     
     </div>
   );
 };
