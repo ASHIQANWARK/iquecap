@@ -64,7 +64,7 @@ const WhyIqueCap = () => {
   };
 
   return (
-    <section className="relative py-24 px-4 bg-gradient-to-t from-emerald-950 to-teal-950 overflow-hidden">
+    <section className="relative py-24 px-4 bg-gradient-to-r from-[#015c64] to-[#0eca85] overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5">
         <div className="absolute top-10% left-10% w-72 h-72 bg-amber-400 rounded-full filter blur-3xl"></div>

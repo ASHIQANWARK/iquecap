@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight, MapPin, Clock, ArrowRight, Sparkles, Users, Target, Zap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import BgImage from "../assets/images/CAP1.jpg";
 
 const Career = () => {
   const [activeJob, setActiveJob] = useState(0);
@@ -11,7 +10,6 @@ const Career = () => {
   useEffect(() => {
     setIsVisible(true);
     
-    // Auto-rotate jobs every 5 seconds
     const interval = setInterval(() => {
       setActiveJob((prev) => (prev + 1) % jobs.length);
     }, 5000);
@@ -63,28 +61,12 @@ const Career = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-900 to-slate-900 text-white overflow-hidden">
-      {/* Animated background elements */}
-      <div className="fixed inset-0 overflow-hidden z-0">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-emerald-500 rounded-full mix-blend-soft-light filter blur-3xl animate-pulse-slow"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-teal-500 rounded-full mix-blend-soft-light filter blur-3xl animate-pulse-medium"></div>
-        </div>
-      </div>
-
+    <div className="min-h-screen bg-gradient-to-b from-[#0d9866] to-[#01454b] text-white overflow-hidden">
       {/* Main content */}
-      <div className="relative z-10">
+      <div className="relative">
         {/* Hero Section */}
-        <section 
-          className="relative min-h-[60vh] flex items-center justify-center px-4 py-16"
-          style={{
-            backgroundImage: `linear-gradient(rgba(5, 46, 22, 0.85), rgba(15, 23, 42, 0.9)), url(${BgImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed'
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-emerald-900/50"></div>
+        <section className="relative min-h-[70vh] flex items-center justify-center px-4 py-16 bg-gradient-to-l from-[#0d9866]  to-[#01454b]">
+          
           
           <motion.div 
             initial="hidden"
@@ -92,7 +74,7 @@ const Career = () => {
             variants={staggerChildren}
             className="relative z-10 max-w-6xl mx-auto text-center"
           >
-            <motion.div variants={fadeIn} className="flex items-center justify-center text-emerald-200 text-sm mb-6">
+            <motion.div variants={fadeIn} className="flex items-center justify-center text-white text-sm mb-6">
               <Link to="/" className="hover:text-white transition-colors duration-300">Home</Link>
               <ChevronRight className="mx-2 w-4 h-4" />
               <span className="text-white font-medium">Careers</span>
@@ -100,14 +82,14 @@ const Career = () => {
 
             <motion.h1 
               variants={fadeIn}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-white bg-clip-text text-transparent"
             >
-              Build Your Career at <span className="text-emerald-400">Ique Cap</span>
+              Build Your Career at <span className="text-teal-300">Ique Cap</span>
             </motion.h1>
 
             <motion.p 
               variants={fadeIn}
-              className="text-lg md:text-xl text-emerald-100 max-w-3xl mx-auto leading-relaxed mb-8"
+              className="text-lg md:text-xl text-white max-w-3xl mx-auto leading-relaxed mb-8"
             >
               We're in an exciting phase of growth and looking for ambitious, innovative professionals who want to make an impact.
             </motion.p>
@@ -119,7 +101,7 @@ const Career = () => {
                 href={formLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-3  text-white font-medium rounded-full hover:bg-emerald-600 transition-colors duration-300 flex items-center"
+                className="px-8 py-3 bg-emerald-600 text-white font-medium rounded-full hover:bg-emerald-700 transition-all duration-300 flex items-center shadow-lg hover:shadow-xl"
               >
                 View Open Positions
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -129,7 +111,7 @@ const Career = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="#open-positions"
-                className="px-8 py-3 bg-transparent border border-emerald-500 text-emerald-300 font-medium rounded-full hover:bg-emerald-500/10 transition-colors duration-300"
+                className="px-8 py-3 bg-transparent border border-emerald-600 text-emerald-600 font-medium rounded-full hover:bg-emerald-50 transition-all duration-300"
               >
                 Learn More
               </motion.a>
@@ -138,7 +120,7 @@ const Career = () => {
         </section>
 
         {/* Benefits Section */}
-        <section className="py-16 px-4 relative">
+        <section className="py-20 px-4 bg-white">
           <div className="max-w-6xl mx-auto">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
@@ -147,8 +129,8 @@ const Career = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Join Ique Cap?</h2>
-              <p className="text-lg text-emerald-200 max-w-2xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Why Join Ique Cap?</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 We offer more than just a job - we provide a platform for growth, innovation, and impact.
               </p>
             </motion.div>
@@ -161,14 +143,14 @@ const Career = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  whileHover={{ y: -10, transition: { duration: 0.2 } }}
-                  className="bg-slate-800/50 backdrop-blur-md p-6 rounded-xl border border-slate-700 hover:border-emerald-500 transition-colors duration-300"
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                  className="bg-white p-6 rounded-xl border border-gray-200 hover:border-emerald-500 transition-all duration-300 shadow-sm hover:shadow-lg"
                 >
-                  <div className="text-emerald-400 mb-4 flex justify-center">
+                  <div className="text-emerald-600 mb-4 flex justify-center">
                     {benefit.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 text-center">{benefit.title}</h3>
-                  <p className="text-slate-300 text-center">{benefit.description}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-center text-gray-900">{benefit.title}</h3>
+                  <p className="text-gray-600 text-center text-sm leading-relaxed">{benefit.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -176,7 +158,7 @@ const Career = () => {
         </section>
 
         {/* Open Positions Section */}
-        <section id="open-positions" className="py-16 px-4 bg-slate-900/30">
+        <section id="open-positions" className="py-20 px-4 bg-gray-50">
           <div className="max-w-6xl mx-auto">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
@@ -185,8 +167,8 @@ const Career = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Current Openings</h2>
-              <p className="text-lg text-emerald-200 max-w-2xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Current Openings</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Explore our available positions and find where you fit in our growing team.
               </p>
             </motion.div>
@@ -201,22 +183,22 @@ const Career = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ y: -5 }}
-                  className="bg-slate-800/50 backdrop-blur-md border border-slate-700 rounded-xl p-6 flex flex-col justify-between hover:border-emerald-500 hover:shadow-lg transition-all duration-300"
+                  className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col justify-between hover:border-emerald-500 hover:shadow-lg transition-all duration-300"
                 >
                   <div>
-                    <h3 className="text-xl font-bold mb-3 text-emerald-400">{job.title}</h3>
+                    <h3 className="text-xl font-bold mb-3 text-emerald-600">{job.title}</h3>
                     
-                    <div className="flex items-center text-slate-300 text-sm mb-3">
-                      <MapPin className="w-4 h-4 mr-1" />
+                    <div className="flex items-center text-gray-600 text-sm mb-3">
+                      <MapPin className="w-4 h-4 mr-2" />
                       {job.location}
                     </div>
                     
-                    <div className="flex items-center text-slate-300 text-sm mb-4">
-                      <Clock className="w-4 h-4 mr-1" />
+                    <div className="flex items-center text-gray-600 text-sm mb-4">
+                      <Clock className="w-4 h-4 mr-2" />
                       {job.type} • {job.experience}
                     </div>
                     
-                    <p className="text-slate-300 mb-6 leading-relaxed">{job.description}</p>
+                    <p className="text-gray-600 mb-6 leading-relaxed text-sm">{job.description}</p>
                   </div>
                   
                   <motion.a
@@ -225,7 +207,7 @@ const Career = () => {
                     href={formLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full text-center px-5 py-3 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-300"
+                    className="w-full text-center px-5 py-3 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-all duration-300 shadow-md hover:shadow-lg"
                   >
                     Apply Now
                   </motion.a>
@@ -242,22 +224,22 @@ const Career = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -50 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-slate-800/50 backdrop-blur-md border border-slate-700 rounded-xl p-6 flex flex-col justify-between"
+                  className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col justify-between shadow-lg"
                 >
                   <div>
-                    <h3 className="text-xl font-bold mb-3 text-emerald-400">{jobs[activeJob].title}</h3>
+                    <h3 className="text-xl font-bold mb-3 text-emerald-600">{jobs[activeJob].title}</h3>
                     
-                    <div className="flex items-center text-slate-300 text-sm mb-3">
-                      <MapPin className="w-4 h-4 mr-1" />
+                    <div className="flex items-center text-gray-600 text-sm mb-3">
+                      <MapPin className="w-4 h-4 mr-2" />
                       {jobs[activeJob].location}
                     </div>
                     
-                    <div className="flex items-center text-slate-300 text-sm mb-4">
-                      <Clock className="w-4 h-4 mr-1" />
+                    <div className="flex items-center text-gray-600 text-sm mb-4">
+                      <Clock className="w-4 h-4 mr-2" />
                       {jobs[activeJob].type} • {jobs[activeJob].experience}
                     </div>
                     
-                    <p className="text-slate-300 mb-6 leading-relaxed">{jobs[activeJob].description}</p>
+                    <p className="text-gray-600 mb-6 leading-relaxed text-sm">{jobs[activeJob].description}</p>
                   </div>
                   
                   <motion.a
@@ -266,7 +248,7 @@ const Career = () => {
                     href={formLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full text-center px-5 py-3 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors duration-300"
+                    className="w-full text-center px-5 py-3 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-all duration-300"
                   >
                     Apply Now
                   </motion.a>
@@ -279,7 +261,7 @@ const Career = () => {
                   <button
                     key={index}
                     onClick={() => setActiveJob(index)}
-                    className={`w-3 h-3 rounded-full ${activeJob === index ? 'bg-emerald-500' : 'bg-slate-600'}`}
+                    className={`w-3 h-3 rounded-full ${activeJob === index ? 'bg-emerald-500' : 'bg-gray-300'}`}
                     aria-label={`Go to job ${index + 1}`}
                   />
                 ))}
@@ -292,10 +274,10 @@ const Career = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-center  p-8 rounded-2xl border border-emerald-500/30"
+              className="text-center bg-white p-8 rounded-2xl border border-emerald-200 shadow-lg"
             >
-              <h3 className="text-2xl font-bold mb-4">Don't see your perfect role?</h3>
-              <p className="text-emerald-100 mb-6 max-w-2xl mx-auto">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Don't see your perfect role?</h3>
+              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
                 We're always interested in meeting talented professionals. Send us your resume and we'll contact you when a suitable position opens up.
               </p>
               <motion.a
@@ -304,7 +286,7 @@ const Career = () => {
                 href={formLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-emerald-500 text-white font-medium rounded-full hover:bg-emerald-600 transition-colors duration-300"
+                className="inline-flex items-center px-6 py-3 bg-emerald-600 text-white font-medium rounded-full hover:bg-emerald-700 transition-all duration-300 shadow-md hover:shadow-lg"
               >
                 Submit Your Resume
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -314,7 +296,7 @@ const Career = () => {
         </section>
 
         {/* Culture Section */}
-        <section className="py-16 px-4">
+        <section className="py-20 px-4 bg-white">
           <div className="max-w-6xl mx-auto">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
@@ -323,8 +305,8 @@ const Career = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Culture</h2>
-              <p className="text-lg text-emerald-200 max-w-2xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Our Culture</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 At Ique Cap, we believe in fostering an environment where innovation thrives and people grow.
               </p>
             </motion.div>
@@ -334,17 +316,17 @@ const Career = () => {
                 {
                   title: "Collaboration",
                   description: "We work together across teams to achieve common goals and celebrate shared successes.",
-                  color: "bg-emerald-500/20"
+                  color: "bg-emerald-50 border-emerald-200"
                 },
                 {
                   title: "Innovation",
                   description: "We encourage creative thinking and are always exploring new ways to solve problems.",
-                  color: "bg-teal-500/20"
+                  color: "bg-blue-50 border-blue-200"
                 },
                 {
                   title: "Growth",
                   description: "We invest in our people's development and provide opportunities for continuous learning.",
-                  color: "bg-sky-500/20"
+                  color: "bg-purple-50 border-purple-200"
                 }
               ].map((item, index) => (
                 <motion.div
@@ -353,10 +335,10 @@ const Career = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className={`p-6 rounded-2xl ${item.color} border border-white/10 backdrop-blur-sm`}
+                  className={`p-6 rounded-2xl ${item.color} border-2 text-center`}
                 >
-                  <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                  <p className="text-slate-300">{item.description}</p>
+                  <h3 className="text-xl font-semibold mb-3 text-gray-900">{item.title}</h3>
+                  <p className="text-gray-600">{item.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -364,7 +346,7 @@ const Career = () => {
         </section>
 
         {/* Final CTA Section */}
-        <section className="py-20 px-4 ">
+        <section className="py-20 px-4 bg-gradient-to-r from-emerald-50 to-blue-50">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -372,8 +354,8 @@ const Career = () => {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Join Our Team?</h2>
-            <p className="text-lg text-emerald-100 mb-8 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Ready to Join Our Team?</h2>
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
               Take the first step toward an exciting career at Ique Cap. Apply today and help us shape the future.
             </p>
             <motion.a
@@ -382,7 +364,7 @@ const Career = () => {
               href={formLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-8 py-4 bg-emerald-500 text-white font-semibold rounded-full hover:bg-emerald-600 transition-colors duration-300 text-lg"
+              className="inline-flex items-center px-8 py-4 bg-emerald-600 text-white font-semibold rounded-full hover:bg-emerald-700 transition-all duration-300 text-lg shadow-lg hover:shadow-xl"
             >
               View All Open Positions
               <ArrowRight className="ml-2 w-5 h-5" />

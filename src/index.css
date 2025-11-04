@@ -1,32 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
-
 @import "tailwindcss";
 
+@theme {
+  --font-heading: 'Instrument Sans', sans-serif;
+  --font-body: 'Instrument Sans', sans-serif;
+}
 
-/* Apply fonts using plain CSS */
-
+/* Apply fonts globally */
 body {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  color: #111; /* Optional: default text color */
+  font-family: var(--font-body);
 }
 
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: 2.5rem;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-h2 {
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 2.75rem;
-  margin-bottom: 0.75rem;
-}
-
-h3, h4, h5, h6 {
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }

@@ -101,7 +101,7 @@ const Awards = () => {
             {awards.map((award, index) => (
               <motion.div
                 key={index}
-                className="bg-gradient-to-br from-[#014233] to-[#011F16] px-10 py-8 rounded-2xl text-center shadow-xl backdrop-blur-md w-full max-w-sm mx-auto"
+                className="bg-gradient-to-r from-[#015c64] to-[#0eca85] px-10 py-8 rounded-2xl text-center shadow-xl backdrop-blur-md w-full max-w-sm mx-auto"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2 }}

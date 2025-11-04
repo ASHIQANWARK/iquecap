@@ -13,7 +13,7 @@ import Founder from "./Founder";
 
 const Home = () => {
   return (
-    <div className=" min-h-screen">
+    <div className=" min-h-screen bg-gradient-to-l from-[#0d9866]  to-[#01454b]  ">
       <Hero />
       <About />
       <MissionVision />

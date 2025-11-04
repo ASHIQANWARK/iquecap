@@ -60,14 +60,14 @@ const HeroSection = () => {
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
             onClick={() => navigate("/contact")}
-            className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-teal-400 hover:to-emerald-400 text-white px-8 py-3 rounded-full text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            className="bg-gradient-to-r from-[#015c64] to-[#0eca85] hover:from-[#015c64] hover:to-emerald-400 text-white px-8 py-3 rounded-full text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
           >
             Start Investing
           </button>
 
           <button
             onClick={() => navigate("/capacademy")}
-            className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-teal-400 hover:to-emerald-400 text-white px-8 py-3 rounded-full text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            className="bg-gradient-to-r from-[#015c64] to-[#0eca85] hover:from-[#015c64] hover:to-emerald-400 text-white px-8 py-3 rounded-full text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
           >
             Become A Cap Advisor
           </button>
