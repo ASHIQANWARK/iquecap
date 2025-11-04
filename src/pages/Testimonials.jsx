@@ -55,7 +55,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="w-full bg-gradient-to-l from-[#0d9866]  to-[#01454b] flex flex-col items-center justify-center py-14 px-6 overflow-hidden">
+    <section className="w-full bg-gradient-to-r from-[#015c64] to-[#0eca85] flex flex-col items-center justify-center py-14 px-6 overflow-hidden">
       {/* Heading */}
       <motion.h2
         className="text-3xl md:text-4xl font-extrabold text-white mb-4 text-center leading-tight"
