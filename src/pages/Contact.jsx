@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { MapPin, Phone, Mail, Globe, Navigation, Building } from "lucide-react";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -43,24 +44,15 @@ Investment Preference: ${investmentPreference}`;
 
   // Company address
   const companyAddress = {
-    doorNo: "Door no : 84, 3rd cross",
-    landmark: "near Jyoti Nivas College Road",
-    area: "Koramangala Industrial Layout, 5th Block, Koramangala",
+    doorNo: "Startup Park,",
+    landmark: "near Madiwala Police Station",
+    area: "Sidharata Colony, Santhosapuram, Koramangala 2nd Block,",
     city: "Bengaluru",
     state: "Karnataka",
-    pincode: "560095"
+    pincode: "560068"
   };
 
   const fullAddress = `${companyAddress.doorNo}, ${companyAddress.landmark}, ${companyAddress.area}, ${companyAddress.city}, ${companyAddress.state} ${companyAddress.pincode}`;
-  
-  // Google Maps embed URL for iQue Cap office
-  // Updated Google Maps embed URL for iQue Cap office
-  const googleMapsUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.881678306033!2d77.6129163!3d12.9325834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15902e8891a7%3A0x96a43ede2ca92611!2siQue%20cap!5e0!3m2!1sen!2sin!4v1700000000000";
-
-  // Updated openInGoogleMaps function with the correct link
-  const openInGoogleMaps = () => {
-    window.open("https://www.google.com/maps/place/iQue+cap/@12.9325834,77.6129163,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae15902e8891a7:0x96a43ede2ca92611!8m2!3d12.9325834!4d77.6154912!16s%2Fg%2F11ltl9yhl1?entry=ttu&g_ep=EgoyMDI1MTAyOS4yIKXMDSoASAFQAw%3D%3D", "_blank");
-  };
 
   return (
     <section className="min-h-screen py-16 bg-gradient-to-b from-[#0d9866]  to-[#01454b] overflow-x-hidden">
@@ -79,7 +71,7 @@ Investment Preference: ${investmentPreference}`;
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           {/* Contact Info & Map Side */}
           <div className="space-y-6">
-            {/* Address Card with Small Map */}
+            {/* Address Card */}
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:border-emerald-400 transition-all duration-300">
               <div className="flex items-start space-x-4 mb-4">
                 <div className="bg-emerald-500 p-3 rounded-xl">
@@ -94,29 +86,40 @@ Investment Preference: ${investmentPreference}`;
                     <p>{companyAddress.city}, {companyAddress.state}</p>
                     <p className="font-semibold">{companyAddress.pincode}</p>
                   </div>
-                  <button
-                    onClick={openInGoogleMaps}
-                    className="mt-3 flex items-center text-emerald-300 hover:text-white transition-colors text-sm font-medium"
-                  >
-                    <Navigation className="w-4 h-4 mr-2" />
-                    Get Directions
-                  </button>
                 </div>
               </div>
-              
-              {/* Small Map */}
-              <div className="mt-4 bg-white rounded-xl overflow-hidden shadow-lg">
+            </div>
+
+            {/* Map Section */}
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+              <h3 className="text-xl font-semibold text-white mb-4">Find Us Here</h3>
+              <p className="text-gray-300 mb-4 text-sm">
+                Startup Park, Sidharata Colony, Santhosapuram, Koramangala 2nd
+                Block, Koramangala, Bengaluru, Karnataka 560068
+              </p>
+              <div className="rounded-xl overflow-hidden shadow-2xl">
                 <iframe
-                  src={googleMapsUrl}
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.7832!2d77.6246!3d12.9356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae150058b75f01%3A0xd3b7950ec31e6322!2sStartup%20park!5e0!3m2!1sen!2sin!4v1719724986017!5m2!1sen!2sin"
                   width="100%"
-                  height="200"
+                  height="300"
                   style={{ border: 0 }}
-                  allowFullScreen
+                  allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Ique Cap Office Location"
-                  className="w-full"
+                  className="rounded-lg"
+                  title="Incube Nation Office Location - Koramangala, Bengaluru"
                 ></iframe>
+              </div>
+              <div className="mt-4 flex justify-center">
+                <a
+                  href="https://maps.google.com/maps?q=84,+3rd+Cross+Rd,+KHB+Block,+Koramangala,+Bengaluru,+Karnataka+560095"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-300 hover:text-white transition-colors text-sm font-medium flex items-center space-x-2"
+                >
+                  <FaMapMarkerAlt size={16} />
+                  <span>Open in Google Maps</span>
+                </a>
               </div>
             </div>
 

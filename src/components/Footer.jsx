@@ -80,15 +80,12 @@ const Footer = () => {
             <div className="flex items-start space-x-3">
               <FaMapMarkerAlt className="mt-1 text-emerald-400 flex-shrink-0" />
               <a
-                href="https://maps.app.goo.gl/gUVSFZxBn5bCCuqT7"
+                href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.7832!2d77.6246!3d12.9356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae150058b75f01%3A0xd3b7950ec31e6322!2sStartup%20park!5e0!3m2!1sen!2sin!4v1719724986017!5m2!1sen!2sin"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-emerald-100 hover:text-white transition text-sm leading-relaxed text-left"
               >
-                Door no: 84, 3rd cross,<br />
-                Near Jyoti Nivas College Road,<br />
-                Koramangala, Bengaluru,<br />
-                Karnataka 560095
+               Startup Park, Sidharata Colony, Santhosapuram, Koramangala 2nd Block, Koramangala, Bengaluru, Karnataka 560068
               </a>
             </div>
             <div className="flex items-center space-x-3">
