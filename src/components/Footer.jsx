@@ -100,10 +100,10 @@ const Footer = () => {
             <div className="flex items-center space-x-3">
               <FaEnvelope className="text-emerald-400" />
               <a
-                href="mailto:info@iquecap.com"
+                href="mailto:support@iquecap.com"
                 className="text-emerald-100 hover:text-white transition text-sm"
               >
-                info@iquecap.com
+                support@iquecap.com
               </a>
             </div>
           </div>

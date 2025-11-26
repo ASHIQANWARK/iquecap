@@ -146,7 +146,7 @@ Investment Preference: ${investmentPreference}`;
                   </div>
                   <div>
                     <h4 className="text-white font-semibold text-sm">Email Us</h4>
-                    <p className="text-emerald-100 text-xs">info@iquecap.com</p>
+                    <p className="text-emerald-100 text-xs">support@iquecap.com</p>
                   </div>
                 </div>
               </div>
