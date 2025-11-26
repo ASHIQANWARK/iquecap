@@ -215,22 +215,7 @@ const ServicesSection = () => {
           ))}
         </div>
 
-        {/* CTA section */}
-        <div
-          className={`mt-16 text-center transition-all duration-1000 delay-500 ${
-            isVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          <p className="text-slate-300 mb-6">
-            Ready to explore your investment opportunities?
-          </p>
-          <button className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-600 hover:to-teal-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl flex items-center mx-auto">
-            Schedule a Consultation
-            <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-          </button>
-        </div>
+       
       </div>
     </div>
   );
