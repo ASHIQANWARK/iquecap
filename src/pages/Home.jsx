@@ -11,10 +11,12 @@ import Awards from "../pages/Awards";
 import Testimonials from "../pages/Testimonials";
 import Founder from "./Founder";
 
+
 const Home = () => {
   return (
     <div className=" min-h-screen ">
       <Hero />
+   
       <Awards />
       <Why />
       <Testimonials />

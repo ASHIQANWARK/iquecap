@@ -15,8 +15,7 @@ import longTermImg from "../assets/images/LONG.webp";
 import equityImg from "../assets/images/equity.jpg";
 import franchiseImg from "../assets/images/img12.jpg";
 import cipImg from "../assets/images/CIP.png";
-import shortTermBrochure from "../assets/images/CAPShortterm1.pdf";
-import longTermBrochure from "../assets/images/CAPlongterm1.pdf";
+
 
 const services = [
   {
@@ -25,7 +24,7 @@ const services = [
       "Maximize your earnings with our exclusive short-term investment plans. Experience rapid growth with minimal risks.",
     icon: <FaChartLine className="text-blue-400 text-4xl" />,
     image: shortTermImg,
-    brochure: shortTermBrochure,
+ 
     color: "from-teal-900 to-teal-700",
     accent: "blue",
   },
@@ -35,7 +34,7 @@ const services = [
       "Secure a financially stable future with guaranteed fixed returns on long-term investments, ensuring steady growth.",
     icon: <FaBuilding className="text-emerald-400 text-4xl" />,
     image: longTermImg,
-    brochure: longTermBrochure,
+ 
     color: "from-teal-900 to-teal-700",
     accent: "emerald",
   },

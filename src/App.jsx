@@ -12,6 +12,7 @@ import PrivacyPolicy from './pages/Privacypolicy';
 import CapAdvisor from './pages/Capadvisor';
 import Career from './pages/Career';
 
+
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/capacademy" element={<CapAdvisor />} />
         <Route path="/careers" element={<Career />} />
+
       </Routes>
       <Footer />
     </Router>
