@@ -15,7 +15,7 @@ export default function MaharashtraBranch() {
             backgroundImage: `url('/assets/images/maharashtra-banner.jpg')`,
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-l from-[#0d9866]  to-[#01454b] opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-l from-[#0d9866]  to-[#01454b] opacity-80" /> 
         <div className="relative z-10 h-full flex items-center justify-center">
           <div className="text-center text-white">
             <div className="flex items-center justify-center mb-4">

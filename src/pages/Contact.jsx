@@ -39,7 +39,7 @@ Preferred Industries: ${preferredIndustries}
 Investment Preference: ${investmentPreference}`;
 
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(`https://wa.me/9036354890?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/9036913399?text=${encodedMessage}`, "_blank");
   };
 
   // Company address
@@ -133,7 +133,7 @@ Investment Preference: ${investmentPreference}`;
                   </div>
                   <div>
                     <h4 className="text-white font-semibold text-sm">Call Us</h4>
-                    <p className="text-emerald-100 text-xs">+91 90363 54890</p>
+                    <p className="text-emerald-100 text-xs">+91 9036913399</p>
                   </div>
                 </div>
               </div>
