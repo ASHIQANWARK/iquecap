@@ -11,6 +11,7 @@ import ServicesSection from './pages/Services';
 import PrivacyPolicy from './pages/Privacypolicy';
 import CapAdvisor from './pages/Capadvisor';
 import Career from './pages/Career';
+import FAQSection from "./pages/Faq";
 
 
 const ScrollToTop = () => {
@@ -39,6 +40,7 @@ function App() {
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/capacademy" element={<CapAdvisor />} />
         <Route path="/careers" element={<Career />} />
+        <Route path="/faqs" element={<FAQSection />} />
 
       </Routes>
       <Footer />

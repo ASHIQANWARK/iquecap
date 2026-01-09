@@ -5,11 +5,11 @@ import MissionVision from "../pages/Mission";
 import Chatbot from "../pages/Chatbot";
 import Why from "../pages/why";
 // import Team from "../pages/Team";
-import Faq from "../pages/Faq";
+
 
 import Awards from "../pages/Awards";
 import Testimonials from "../pages/Testimonials";
-import Founder from "./Founder";
+
 
 
 const Home = () => {
@@ -21,7 +21,7 @@ const Home = () => {
       <Why />
       <Testimonials />
       {/* <Team /> */}
-      <Faq />
+      
       <Chatbot />
     </div>
   );

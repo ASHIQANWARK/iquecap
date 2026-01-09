@@ -42,6 +42,7 @@ const Navbar = () => {
     { name: "Services", path: "/services",},
     { name: "Cap Academy", path: "/capacademy" },
     { name: "Careers", path: "/careers" },
+    {name: "FAQ'S", path:"/faqs"},
     
   ];
 
