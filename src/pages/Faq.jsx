@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { ChevronDown, ChevronUp, HelpCircle, Phone, Mail, MessageCircle } from "lucide-react";
+import { ChevronDown, ChevronUp, HelpCircle } from "lucide-react";
 
 const faqs = [
   {
@@ -99,7 +99,6 @@ const faqs = [
   },
 ];
 
-
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -108,21 +107,15 @@ export default function FAQSection() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
       { threshold: 0.2 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    if (sectionRef.current) observer.observe(sectionRef.current);
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, []);
 
@@ -131,48 +124,61 @@ export default function FAQSection() {
   };
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="relative py-16 px-4 md:px-8 lg:px-20 overflow-hidden bg-gradient-to-r from-[#015c64] to-[#0eca85]"
     >
       <div className="max-w-4xl mx-auto relative z-10">
-        {/* Heading Section */}
-        <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        {/* Heading */}
+        <div
+          className={`text-center mb-12 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
           <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/20 text-white font-medium text-sm mb-4">
             <HelpCircle className="mr-2" size={16} />
             Frequently Asked Questions
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">
-            Get Answers to Common Questions
+            Investor FAQs
           </h1>
           <p className="text-lg text-white/90 max-w-2xl mx-auto">
-            Everything you need to know about investing with iQue Capital. Can't find the answer you're looking for? Contact our support team.
+            Everything you need to know about investing with iQueCap.
           </p>
         </div>
 
         {/* FAQ Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {faqs.map((faq, index) => (
-            <div 
-              key={index} 
-              className={`bg-white backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 transition-all duration-300 ${openIndex === index ? 'ring-2 ring-white/30' : ''}`}
+            <div
+              key={index}
+              className={`bg-white backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 transition-all duration-300 ${
+                openIndex === index ? "ring-2 ring-white/30" : ""
+              }`}
             >
               <button
-                className="w-full flex justify-between items-center p-5 text-left font-medium text-black focus:outline-none transition-colors duration-300 hover:text-white"
+                className="w-full flex justify-between items-center p-5 text-left font-medium text-black focus:outline-none"
                 onClick={() => toggleFAQ(index)}
                 aria-expanded={openIndex === index}
               >
-                <span className="text-lg font-semibold pr-4">{faq.question}</span>
+                <span className="text-lg font-semibold pr-4">
+                  {faq.question}
+                </span>
                 {openIndex === index ? (
-                  <ChevronUp className="text-emerald-200 flex-shrink-0" size={20} />
+                  <ChevronUp className="text-emerald-400" size={20} />
                 ) : (
-                  <ChevronDown className="text-white/70 flex-shrink-0" size={20} />
+                  <ChevronDown className="text-gray-500" size={20} />
                 )}
               </button>
-              <div 
-                className={`overflow-hidden transition-all duration-500 ease-in-out ${openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
+
+              <div
+                className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                  openIndex === index
+                    ? "max-h-96 opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
               >
-                <div className="px-5 pb-5 text-white/80">
+                <div className="px-5 pb-5 text-gray-700">
                   {faq.answer}
                 </div>
               </div>
@@ -180,24 +186,29 @@ export default function FAQSection() {
           ))}
         </div>
 
-        {/* Stats Section */}
-        <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{transitionDelay: '300ms'}}>
-          <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 text-center hover:bg-white/15 transition-all duration-300">
-            <div className="text-3xl font-bold text-white mb-2">100%</div>
-            <div className="text-sm text-white/80">Satisfied Investors</div>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 text-center hover:bg-white/15 transition-all duration-300">
-            <div className="text-3xl font-bold text-white mb-2">24/7</div>
-            <div className="text-sm text-white/80">Support Available</div>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 text-center hover:bg-white/15 transition-all duration-300">
-            <div className="text-3xl font-bold text-white mb-2">1000+</div>
-            <div className="text-sm text-white/80">Active Investments</div>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 text-center hover:bg-white/15 transition-all duration-300">
-            <div className="text-3xl font-bold text-white mb-2">2+</div>
-            <div className="text-sm text-white/80">Years Experience</div>
-          </div>
+        {/* Stats */}
+        <div
+          className={`grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: "300ms" }}
+        >
+          {[
+            ["100%", "Satisfied Investors"],
+            ["24/7", "Support Available"],
+            ["1000+", "Active Investments"],
+            ["5+", "Years Experience"],
+          ].map(([value, label], i) => (
+            <div
+              key={i}
+              className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 text-center"
+            >
+              <div className="text-3xl font-bold text-white mb-2">
+                {value}
+              </div>
+              <div className="text-sm text-white/80">{label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
