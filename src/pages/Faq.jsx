@@ -3,46 +3,102 @@ import { ChevronDown, ChevronUp, HelpCircle, Phone, Mail, MessageCircle } from "
 
 const faqs = [
   {
-    question: "How do I start investing?",
+    question: "What investment plans do you offer?",
     answer:
-      "Simply sign up on our platform, complete your profile, and start browsing available startups. Once you find a venture that interests you, follow the steps to invest.",
+      "We offer structured, fixed-return investment plans designed for predictable and transparent income over defined short-term tenures.",
   },
   {
-    question: "What Deliverables/Guarantee do I get on my investment?",
+    question: "What is the minimum and maximum investment amount?",
     answer:
-      "We provide complete transparency and detailed reports on your investments, ensuring clarity and security.",
+      "The minimum investment starts from ₹1 Lakh. There is no fixed upper limit, and higher investments may qualify for enhanced return brackets or customized terms.",
   },
   {
-    question: "How can iQue Cap help an investor?",
+    question: "What kind of returns can I expect and how are they calculated?",
     answer:
-      "We offer a curated selection of investment opportunities with risk assessments and potential returns.",
+      "Our plans offer fixed returns agreed at the time of investment. Returns are calculated based on the invested principal and tenure, with a detailed return schedule shared in your agreement.",
   },
   {
-    question: "What are the risks of investing in startups?",
+    question: "Are the returns guaranteed?",
     answer:
-      "Investing in startups comes with risks, including market fluctuations and business challenges. However, we conduct thorough due diligence to mitigate risks.",
+      "Yes, returns under our active plans are fixed and guaranteed for the chosen tenure, ensuring steady and predictable growth regardless of market conditions.",
   },
   {
-    question: "Can I withdraw my investment early?",
+    question: "What is the lock-in period for these investments?",
     answer:
-      "Investment terms vary depending on the agreement. Some investments may have lock-in periods, while others allow early withdrawal with certain conditions.",
+      "The lock-in period depends on the plan you choose. During this period, your capital remains committed to ensure operational stability and predictable returns.",
   },
   {
-    question: "How do I track my investments?",
+    question: "Can I withdraw before maturity?",
     answer:
-      "You can track your investments in real-time through your dashboard, where we provide reports, updates, and performance metrics.",
+      "Yes, early withdrawal is permitted under certain conditions. In such cases, only the principal amount is refunded and no profit is distributed.",
   },
   {
-    question: "Is there a minimum investment amount?",
+    question: "How can I make my investment payment?",
     answer:
-      "Yes, the minimum investment amount varies by startup. You can check the investment requirements on each startup's profile page.",
+      "We accept payments via NEFT, RTGS, IMPS, cheque, or demand draft. Online payment options are also available for select plans. Your BDE will share the details after confirmation.",
   },
   {
-    question: "Are there any fees for investors?",
+    question: "Can I pay in installments?",
     answer:
-      "We charge a small platform fee to maintain and improve our services. Details about fees are available on our pricing page.",
+      "Yes, partial payments are accepted. The agreement can be drafted after receiving at least 80%, but the investment activates only after full payment.",
+  },
+  {
+    question: "When is my investment considered active?",
+    answer:
+      "Your investment becomes active on the date the full payment is credited to our account. This date is reflected in your agreement and return schedule.",
+  },
+  {
+    question: "When will I receive payment confirmation?",
+    answer:
+      "Official confirmation is shared via email or WhatsApp within 24–48 hours of the amount being credited.",
+  },
+  {
+    question: "When will my agreement be prepared?",
+    answer:
+      "Agreements are prepared once payment is confirmed and KYC documents are verified to ensure all details are accurate before signing.",
+  },
+  {
+    question: "What details are included in the agreement?",
+    answer:
+      "The agreement includes investor details, investment amount, tenure, rate of return, payout schedule, withdrawal terms, and authorized signatures.",
+  },
+  {
+    question: "How long does it take to receive the signed agreement?",
+    answer:
+      "The signed agreement is usually issued within 3–5 working days after payment and KYC verification.",
+  },
+  {
+    question: "When do I start receiving returns?",
+    answer:
+      "Returns begin from the month following your investment activation date, as mentioned in your agreement.",
+  },
+  {
+    question: "How are returns credited?",
+    answer:
+      "Returns are transferred directly to your registered bank account based on your plan’s payout schedule.",
+  },
+  {
+    question: "Are KYC documents mandatory?",
+    answer:
+      "Yes, submission of PAN card and valid address proof is mandatory before finalizing your investment.",
+  },
+  {
+    question: "How long has IQueCap been in operation?",
+    answer:
+      "IQueCap has been operational since 2019 and has served over 2,000 investors with a strong track record of transparency and compliance.",
+  },
+  {
+    question: "Is IQueCap registered with SEBI or RBI?",
+    answer:
+      "IQueCap is registered under the Ministry of Corporate Affairs (MCA). Our business model does not require SEBI or RBI registration.",
+  },
+  {
+    question: "Can investors visit the office or meet a Relationship Manager?",
+    answer:
+      "Yes, investors are welcome to meet our Relationship Managers or visit our office for discussions, agreement clarifications, and payout reviews.",
   },
 ];
+
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
