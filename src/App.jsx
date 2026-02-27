@@ -12,6 +12,10 @@ import PrivacyPolicy from './pages/Privacypolicy';
 import CapAdvisor from './pages/Capadvisor';
 import Career from './pages/Career';
 import FAQSection from "./pages/Faq";
+// import KeralaBranch from "./pages/Kerala";
+// import TamilNaduBranch from "./pages/Tamil";
+// import KarnatakaBranch from "./pages/Karnataka";
+// import MaharashtraBranch from "./pages/Maharashtra";
 
 
 const ScrollToTop = () => {
@@ -41,7 +45,10 @@ function App() {
         <Route path="/capacademy" element={<CapAdvisor />} />
         <Route path="/careers" element={<Career />} />
         <Route path="/faqs" element={<FAQSection />} />
-
+        {/* <Route path="/kerala" element={<KeralaBranch />} />
+        <Route path="/tamil" element={<TamilNaduBranch />} />
+        <Route path="/karnataka" element={<KarnatakaBranch />} />
+        <Route path="/Maharashtra" element={<MaharashtraBranch />} /> */}
       </Routes>
       <Footer />
     </Router>

@@ -10,13 +10,16 @@ import Why from "../pages/why";
 import Awards from "../pages/Awards";
 import Testimonials from "../pages/Testimonials";
 
+import BranchesSection from "./Branches";
+
 
 
 const Home = () => {
   return (
     <div className=" min-h-screen ">
       <Hero />
-   
+      <BranchesSection />
+      
       <Awards />
       <Why />
       <Testimonials />
