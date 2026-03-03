@@ -102,7 +102,7 @@ export default function KarnatakaBranch() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-red-600 mb-2">
+                      <h4 className="font-semibold text-[#0d9866] mb-2">
                         Bangalore Advantage
                       </h4>
                       <p className="text-sm">
@@ -111,7 +111,7 @@ export default function KarnatakaBranch() {
                     </div>
 
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-red-600 mb-2">
+                      <h4 className="font-semibold text-[#0d9866] mb-2">
                         Early Growth Participation
                       </h4>
                       <p className="text-sm">
@@ -120,7 +120,7 @@ export default function KarnatakaBranch() {
                     </div>
 
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-red-600 mb-2">
+                      <h4 className="font-semibold text-[#0d9866] mb-2">
                         Portfolio Diversification
                       </h4>
                       <p className="text-sm">
@@ -129,7 +129,7 @@ export default function KarnatakaBranch() {
                     </div>
 
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-red-600 mb-2">
+                      <h4 className="font-semibold text-[#0d9866] mb-2">
                         Support Innovation
                       </h4>
                       <p className="text-sm">
@@ -204,7 +204,7 @@ export default function KarnatakaBranch() {
             </div>
 
             {/* CTA */}
-            <div className="bg-gradient-to-r from-red-600 to-orange-500 rounded-2xl shadow-xl p-6 text-white text-center">
+            <div className="bg-gradient-to-l from-[#0d9866] to-[#01454b] rounded-2xl shadow-xl p-6 text-white text-center">
               <h3 className="text-xl font-bold mb-3">
                 Start Your Journey with IqueCap
               </h3>
