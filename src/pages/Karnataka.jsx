@@ -103,7 +103,7 @@ export default function KarnatakaBranch() {
 
                     <div className="bg-gray-50 p-4 rounded-lg">
                       <h4 className="font-semibold text-[#0d9866] mb-2">
-                        Bangalore Advantage
+                        Advantage
                       </h4>
                       <p className="text-sm">
                         Access opportunities rooted in India’s Silicon Valley and innovation ecosystem.
