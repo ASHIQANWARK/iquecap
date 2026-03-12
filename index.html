@@ -32,7 +32,7 @@
     />
     <link rel="canonical" href="https://iquecap.com/capacademy" />
 
-    <!-- Open Graph Meta Tags for Social Sharing -->
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="IqueCap | CAP Academy" />
     <meta
       property="og:description"
@@ -42,20 +42,27 @@
     <meta property="og:url" content="https://iquecap.com/capacademy" />
     <meta property="og:type" content="website" />
 
-    <!-- Meta Pixel Code (ADDED — existing code untouched) --> 
-    <script> 
-    !function(f,b,e,v,n,t,s) 
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod? 
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)}; 
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; 
-    n.queue=[];t=b.createElement(e);t.async=!0; 
-    t.src=v;s=b.getElementsByTagName(e)[0]; 
-    s.parentNode.insertBefore(t,s)}(window, document,'script', 
-    'https://connect.facebook.net/en_US/fbevents.js'); 
-    fbq('init', '906702815103487'); 
-    fbq('track', 'PageView'); 
-    </script> 
-    <!-- End Meta Pixel Code -->
+    <!-- META PIXEL (BOTH PIXELS ADDED) -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+
+      /* EXISTING PIXEL */
+      fbq('init', '906702815103487');
+
+      /* NEW PIXEL */
+      fbq('init', '1279701957384430');
+
+      /* TRACK PAGEVIEW FOR BOTH */
+      fbq('track', 'PageView');
+    </script>
+    <!-- END META PIXEL -->
 
     <!-- Styles -->
     <link href="/src/index.css" rel="stylesheet" />
@@ -87,9 +94,8 @@
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-M4D7D7CT");
     </script>
-    <!-- End Google Tag Manager -->
 
-    <!-- Schema Markup for SEO -->
+    <!-- Schema Markup -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -100,38 +106,44 @@
         "logo": "https://iquecap.com/assets/images/logo.png"
       }
     </script>
+
   </head>
 
   <body>
-    <!-- Google Tag Manager (noscript for GTM-TFCN8J7F) -->
+
+    <!-- GTM NOSCRIPT -->
     <noscript>
       <iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-TFCN8J7F"
         height="0"
         width="0"
-        style="display: none; visibility: hidden"
+        style="display:none;visibility:hidden"
       ></iframe>
     </noscript>
 
-    <!-- Google Tag Manager (noscript for GTM-M4D7D7CT) -->
     <noscript>
       <iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-M4D7D7CT"
         height="0"
         width="0"
-        style="display: none; visibility: hidden"
+        style="display:none;visibility:hidden"
       ></iframe>
     </noscript>
 
-    <!-- Meta Pixel noscript (ADDED — existing code untouched) -->
+    <!-- META PIXEL NOSCRIPT -->
     <noscript>
       <img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=906702815103487&ev=PageView&noscript=1"/>
     </noscript>
 
+    <noscript>
+      <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1279701957384430&ev=PageView&noscript=1"/>
+    </noscript>
+
     <div id="root"></div>
 
-    <!-- Main React Script -->
     <script type="module" src="/src/main.jsx"></script>
+
   </body>
 </html>
