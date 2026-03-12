@@ -22,14 +22,17 @@
 
     <!-- Title and Meta Tags -->
     <title> IqueCap | CAP Academy </title>
+
     <meta
       name="description"
       content="CAP Academy empowers young talents through industry-driven learning, mentorship, and career growth initiatives."
     />
+
     <meta
       name="keywords"
       content="CAP Academy, career growth, mentorship, industry learning, IqueCap"
     />
+
     <link rel="canonical" href="https://iquecap.com/capacademy" />
 
     <!-- Open Graph Meta Tags -->
@@ -42,7 +45,7 @@
     <meta property="og:url" content="https://iquecap.com/capacademy" />
     <meta property="og:type" content="website" />
 
-    <!-- META PIXEL (BOTH PIXELS ADDED) -->
+    <!-- META PIXELS (ALL 3 PIXELS WORKING) -->
     <script>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -53,16 +56,19 @@
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
 
-      /* EXISTING PIXEL */
+      /* PIXEL 1 */
       fbq('init', '906702815103487');
 
-      /* NEW PIXEL */
+      /* PIXEL 2 */
       fbq('init', '1279701957384430');
 
-      /* TRACK PAGEVIEW FOR BOTH */
+      /* PIXEL 3 */
+      fbq('init', '2336701676822590');
+
+      /* TRACK PAGEVIEW */
       fbq('track', 'PageView');
     </script>
-    <!-- END META PIXEL -->
+    <!-- END META PIXELS -->
 
     <!-- Styles -->
     <link href="/src/index.css" rel="stylesheet" />
@@ -76,7 +82,10 @@
           j = d.createElement(s),
           dl = l != "dataLayer" ? "&l=" + l : "";
         j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        j.src =
+          "https://www.googletagmanager.com/gtm.js?id=" +
+          i +
+          dl;
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-TFCN8J7F");
     </script>
@@ -90,10 +99,14 @@
           j = d.createElement(s),
           dl = l != "dataLayer" ? "&l=" + l : "";
         j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        j.src =
+          "https://www.googletagmanager.com/gtm.js?id=" +
+          i +
+          dl;
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-M4D7D7CT");
     </script>
+    <!-- End Google Tag Manager -->
 
     <!-- Schema Markup -->
     <script type="application/ld+json">
@@ -106,12 +119,11 @@
         "logo": "https://iquecap.com/assets/images/logo.png"
       }
     </script>
-
   </head>
 
   <body>
 
-    <!-- GTM NOSCRIPT -->
+    <!-- Google Tag Manager (noscript) -->
     <noscript>
       <iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-TFCN8J7F"
@@ -141,8 +153,14 @@
       src="https://www.facebook.com/tr?id=1279701957384430&ev=PageView&noscript=1"/>
     </noscript>
 
+    <noscript>
+      <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=2336701676822590&ev=PageView&noscript=1"/>
+    </noscript>
+
     <div id="root"></div>
 
+    <!-- Main React Script -->
     <script type="module" src="/src/main.jsx"></script>
 
   </body>
