@@ -199,7 +199,7 @@ export default function KeralaBranch() {
                 href="tel:+919035276010"
                 className="block mt-4 text-[#0d9866] font-semibold"
               >
-                Call: 919035276010
+                Call: +91-9035276010
               </a>
             </div>
 
