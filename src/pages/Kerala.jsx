@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function KeralaBranch() {
 
-  const whatsappNumber = "919036354726";
+  const whatsappNumber = "919035276010";
   const whatsappMessage =
     "Hello IqueCap Kerala Team, I would like to know more about investment opportunities.";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
