@@ -196,10 +196,10 @@ export default function KeralaBranch() {
               </a>
 
               <a
-                href="tel:+919036354726"
+                href="tel:+919035276010"
                 className="block mt-4 text-[#0d9866] font-semibold"
               >
-                Call: 9036354726
+                Call: 919035276010
               </a>
             </div>
 
