@@ -46,13 +46,17 @@ export default function BranchesSection() {
         
         {/* Enhanced Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold bg-gradient-to-r from-white to-cyan-200 bg-clip-text text-transparent mb-4">
-            Our Branches
-          </h2>
-          <p className="text-cyan-100 text-lg max-w-2xl mx-auto">
-            Serving across multiple states with excellence and dedication
-          </p>
-        </div>
+  <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white to-cyan-200 bg-clip-text text-transparent mb-4">
+    Our Presence Across States
+  </h2>
+
+  <div className="w-24 h-1 bg-cyan-400 mx-auto rounded-full mb-6"></div>
+
+  <p className="text-cyan-100 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+    Delivering trusted solutions across multiple states through a strong network,
+    consistent quality, and a commitment to growth.
+  </p>
+</div>
 
         {/* Modern Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
