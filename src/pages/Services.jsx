@@ -9,13 +9,12 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 
-// Image imports (placeholder paths - replace with your actual paths)
+// Image imports
 import shortTermImg from "../assets/images/SHORT.jpg";
 import longTermImg from "../assets/images/LONG.webp";
 import equityImg from "../assets/images/equity.jpg";
 import franchiseImg from "../assets/images/img12.jpg";
 import cipImg from "../assets/images/CIP.png";
-
 
 const services = [
   {
@@ -24,9 +23,9 @@ const services = [
       "Maximize your earnings with our exclusive short-term investment plans. Experience rapid growth with minimal risks.",
     icon: <FaChartLine className="text-blue-400 text-4xl" />,
     image: shortTermImg,
- 
     color: "from-teal-900 to-teal-700",
     accent: "blue",
+    hideAction: true, // 👈 hides button
   },
   {
     title: "Long Term With Fixed Returns",
@@ -34,9 +33,9 @@ const services = [
       "Secure a financially stable future with guaranteed fixed returns on long-term investments, ensuring steady growth.",
     icon: <FaBuilding className="text-emerald-400 text-4xl" />,
     image: longTermImg,
- 
     color: "from-teal-900 to-teal-700",
     accent: "emerald",
+    hideAction: true, // 👈 hides button
   },
   {
     title: "Equity Based Investments",
@@ -123,10 +122,14 @@ const ServicesSection = () => {
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Premium Services</span>
+            Our{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
+              Premium Services
+            </span>
           </h2>
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            Empowering your investments with expert guidance and tailored strategies for financial growth.
+            Empowering your investments with expert guidance and tailored
+            strategies for financial growth.
           </p>
         </div>
 
@@ -149,8 +152,10 @@ const ServicesSection = () => {
               onMouseLeave={() => setActiveCard(null)}
             >
               {/* Card background */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-90 group-hover:opacity-100 transition-opacity duration-500`}></div>
-              
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-90 group-hover:opacity-100 transition-opacity duration-500`}
+              ></div>
+
               {/* Card content */}
               <div className="relative z-10 h-full flex flex-col">
                 {/* Image with overlay */}
@@ -161,7 +166,7 @@ const ServicesSection = () => {
                     alt={service.title}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
-                  
+
                   {/* Icon badge */}
                   <div className="absolute top-4 right-4 w-14 h-14 rounded-full bg-slate-900/80 backdrop-blur-sm flex items-center justify-center transform group-hover:scale-110 transition-transform duration-500">
                     {service.icon}
@@ -178,31 +183,32 @@ const ServicesSection = () => {
                   </p>
 
                   {/* Action button */}
-                  {service.brochure ? (
-                    <a
-                      href={service.brochure}
-                      download
-                      className="inline-flex items-center justify-between px-5 py-3 bg-slate-800/60 backdrop-blur-sm rounded-xl text-white font-medium hover:bg-slate-800/80 transition-all duration-300 group/btn overflow-hidden"
-                    >
-                      <span className="flex items-center">
-                        <FaDownload className="mr-2" />
-                        Download Brochure
-                      </span>
-                      <FaArrowRight className="transform -translate-x-1 group-hover/btn:translate-x-0 opacity-0 group-hover/btn:opacity-100 transition-all duration-300" />
-                      <div className="absolute inset-0 bg-gradient-to-r from-slate-700/50 to-transparent transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></div>
-                    </a>
-                  ) : (
-                    <button
-                      disabled
-                      className="inline-flex items-center justify-between px-5 py-3 bg-gradient-to-r from-slate-700/60 to-slate-800/60 backdrop-blur-sm rounded-xl text-white font-medium cursor-not-allowed opacity-80"
-                    >
-                      <span className="flex items-center">
-                        <span className="mr-2">🚧</span>
-                        Coming Soon
-                      </span>
-                      <span className="animate-pulse">⭐</span>
-                    </button>
-                  )}
+                  {!service.hideAction &&
+                    (service.brochure ? (
+                      <a
+                        href={service.brochure}
+                        download
+                        className="inline-flex items-center justify-between px-5 py-3 bg-slate-800/60 backdrop-blur-sm rounded-xl text-white font-medium hover:bg-slate-800/80 transition-all duration-300 group/btn overflow-hidden"
+                      >
+                        <span className="flex items-center">
+                          <FaDownload className="mr-2" />
+                          Download Brochure
+                        </span>
+                        <FaArrowRight className="transform -translate-x-1 group-hover/btn:translate-x-0 opacity-0 group-hover/btn:opacity-100 transition-all duration-300" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-slate-700/50 to-transparent transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></div>
+                      </a>
+                    ) : (
+                      <button
+                        disabled
+                        className="inline-flex items-center justify-between px-5 py-3 bg-gradient-to-r from-slate-700/60 to-slate-800/60 backdrop-blur-sm rounded-xl text-white font-medium cursor-not-allowed opacity-80"
+                      >
+                        <span className="flex items-center">
+                          <span className="mr-2">🚧</span>
+                          Coming Soon
+                        </span>
+                        <span className="animate-pulse">⭐</span>
+                      </button>
+                    ))}
                 </div>
               </div>
 
@@ -213,8 +219,6 @@ const ServicesSection = () => {
             </div>
           ))}
         </div>
-
-       
       </div>
     </div>
   );
