@@ -8,6 +8,7 @@ import {
   FaDownload,
   FaArrowRight,
 } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 // Image imports
 import shortTermImg from "../assets/images/SHORT.jpg";
@@ -25,7 +26,9 @@ const services = [
     image: shortTermImg,
     color: "from-teal-900 to-teal-700",
     accent: "blue",
-    hideAction: true, // 👈 hides button
+    hideAction: false,
+    link: "/contact",
+    actionText: "Contact Us",
   },
   {
     title: "Long Term With Fixed Returns",
@@ -35,7 +38,9 @@ const services = [
     image: longTermImg,
     color: "from-teal-900 to-teal-700",
     accent: "emerald",
-    hideAction: true, // 👈 hides button
+    hideAction: false,
+    link: "/contact",
+    actionText: "Contact Us",
   },
   {
     title: "Equity Based Investments",
@@ -70,6 +75,7 @@ const ServicesSection = () => {
   const [activeCard, setActiveCard] = useState(null);
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -184,11 +190,23 @@ const ServicesSection = () => {
 
                   {/* Action button */}
                   {!service.hideAction &&
-                    (service.brochure ? (
+                    (service.link ? (
+                      <button
+                        onClick={() => navigate(service.link)}
+                        className="inline-flex items-center justify-between px-5 py-3 bg-slate-800/60 backdrop-blur-sm rounded-xl text-white font-medium hover:bg-slate-800/80 transition-all duration-300 group/btn overflow-hidden relative"
+                      >
+                        <span className="flex items-center">
+                          <FaArrowRight className="mr-2" />
+                          {service.actionText || "Learn More"}
+                        </span>
+                        <FaArrowRight className="transform -translate-x-1 group-hover/btn:translate-x-0 opacity-0 group-hover/btn:opacity-100 transition-all duration-300" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-slate-700/50 to-transparent transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></div>
+                      </button>
+                    ) : service.brochure ? (
                       <a
                         href={service.brochure}
                         download
-                        className="inline-flex items-center justify-between px-5 py-3 bg-slate-800/60 backdrop-blur-sm rounded-xl text-white font-medium hover:bg-slate-800/80 transition-all duration-300 group/btn overflow-hidden"
+                        className="inline-flex items-center justify-between px-5 py-3 bg-slate-800/60 backdrop-blur-sm rounded-xl text-white font-medium hover:bg-slate-800/80 transition-all duration-300 group/btn overflow-hidden relative"
                       >
                         <span className="flex items-center">
                           <FaDownload className="mr-2" />

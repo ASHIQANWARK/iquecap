@@ -1,5 +1,13 @@
 import React from 'react';
-import { FaFacebookF, FaInstagram, FaLinkedin, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedin,
+  FaYoutube,
+  FaMapMarkerAlt,
+  FaPhone,
+  FaEnvelope
+} from 'react-icons/fa';
 import Logo from "../assets/images/iCAPL1.png";
 import { Link } from 'react-router-dom';
 
@@ -28,30 +36,44 @@ const Footer = () => {
           <p className="text-sm text-emerald-100 text-center md:text-left leading-relaxed">
             Empowering India's next generation of investment advisors and startup investors with innovative solutions and expert guidance.
           </p>
+
+          {/* Social Media Icons */}
           <div className="flex space-x-4 pt-2">
             <a
               href="https://www.facebook.com/profile.php?id=61576184956695"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white/10 p-2 rounded-lg hover:bg-emerald-600 transition-all duration-300"
+              className="bg-white/10 p-2 rounded-lg hover:bg-emerald-600 transition-all duration-300 hover:scale-110"
             >
               <FaFacebookF size={18} className="text-white" />
             </a>
+
             <a
               href="https://www.instagram.com/ique.cap?igsh=b212OWl4eTZvMWt1"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white/10 p-2 rounded-lg hover:bg-emerald-600 transition-all duration-300"
+              className="bg-white/10 p-2 rounded-lg hover:bg-emerald-600 transition-all duration-300 hover:scale-110"
             >
               <FaInstagram size={18} className="text-white" />
             </a>
+
             <a
               href="https://www.linkedin.com/company/ique-cap/"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white/10 p-2 rounded-lg hover:bg-emerald-600 transition-all duration-300"
+              className="bg-white/10 p-2 rounded-lg hover:bg-emerald-600 transition-all duration-300 hover:scale-110"
             >
               <FaLinkedin size={18} className="text-white" />
+            </a>
+
+            {/* YouTube Link Added */}
+            <a
+              href="https://www.youtube.com/@IQUECAP-o3n"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white/10 p-2 rounded-lg hover:bg-red-600 transition-all duration-300 hover:scale-110"
+            >
+              <FaYoutube size={18} className="text-white" />
             </a>
           </div>
         </div>
@@ -85,18 +107,20 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="text-emerald-100 hover:text-white transition text-sm leading-relaxed text-left"
               >
-               Startup Park, Sidharata Colony, Santhosapuram, Koramangala 2nd Block, Koramangala, Bengaluru, Karnataka 560068
+                Startup Park, Sidharata Colony, Santhosapuram, Koramangala 2nd Block, Koramangala, Bengaluru, Karnataka 560068
               </a>
             </div>
+
             <div className="flex items-center space-x-3">
               <FaPhone className="text-emerald-400" />
               <a
-                href="tel:+91 90369 13399"
+                href="tel:+919036913399"
                 className="text-emerald-100 hover:text-white transition text-sm"
               >
                 +91 90369 13399
               </a>
             </div>
+
             <div className="flex items-center space-x-3">
               <FaEnvelope className="text-emerald-400" />
               <a
@@ -134,8 +158,6 @@ const Footer = () => {
               </Link>
             </li>
           </ul>
-          
-          
         </div>
       </div>
 
