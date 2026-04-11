@@ -39,7 +39,7 @@ Preferred Industries: ${preferredIndustries}
 Investment Preference: ${investmentPreference}`;
 
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(`https://wa.me/8095041714?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/+918095041714?text=${encodedMessage}`, "_blank");
   };
 
   // Company address
@@ -133,7 +133,7 @@ Investment Preference: ${investmentPreference}`;
                   </div>
                   <div>
                     <h4 className="text-white font-semibold text-sm">Call Us</h4>
-                    <p className="text-emerald-100 text-xs">+91 8095041714 </p>
+                    <p className="text-emerald-100 text-xs">+918095041714 </p>
                   </div>
                 </div>
               </div>
