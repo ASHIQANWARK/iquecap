@@ -39,7 +39,7 @@ Preferred Industries: ${preferredIndustries}
 Investment Preference: ${investmentPreference}`;
 
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(`https://wa.me/+918095041714?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/8095041714?text=${encodedMessage}`, "_blank");
   };
 
   // Company address
@@ -221,7 +221,7 @@ Investment Preference: ${investmentPreference}`;
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Subject *
+                    Any previous Experience in startups/any investment
                   </label>
                   <input
                     type="text"
@@ -275,7 +275,7 @@ Investment Preference: ${investmentPreference}`;
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Preferred Industries *
+                      Location 
                     </label>
                     <select
                       name="preferredIndustries"
@@ -284,36 +284,16 @@ Investment Preference: ${investmentPreference}`;
                       value={formData.preferredIndustries}
                       onChange={handleChange}
                     >
-                      <option value="">Select Industry</option>
-                      <option value="Technology">Technology</option>
-                      <option value="Real Estate">Real Estate</option>
-                      <option value="Healthcare">Healthcare</option>
-                      <option value="Finance">Finance</option>
-                      <option value="Consumer Goods">Consumer Goods</option>
+                      <option value="">Select Location</option>
+                      <option value="Technology">Kerala</option>
+                      <option value="Real Estate">Tamil Nadu</option>
+                      <option value="Healthcare">Karnataka</option>
+                      <option value="Finance">Andra Pradesh</option>
                       <option value="Other">Other</option>
                     </select>
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Investment Preference 
-                    </label>
-                    <select
-                      name="investmentPreference"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
-                      required
-                      value={formData.investmentPreference}
-                      onChange={handleChange}
-                    >
-                      <option value="">Select Preference</option>
-                      <option value="Short-Term">Short-Term</option>
-                      <option value="Long-Term">Long-Term</option>
-                      <option value="Equity">Equity</option>
-                      <option value="Franchise">Franchise</option>
-                      <option value="CIP">CIP</option>
-                      <option value="OTHERS">OTHERS</option>
-                    </select>
-                  </div>
+                  
                 </div>
 
                 <button
