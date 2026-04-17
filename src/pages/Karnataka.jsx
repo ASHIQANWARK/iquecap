@@ -42,7 +42,7 @@ export default function KarnatakaLanding() {
         const data = await res.json();
 
         if (data.status === "success") {
-          alert("Submitted successfully!");
+          alert("Submitted successfully!Thank You ");
           setForm({ name: "", email: "", phone: "", place: "" });
         } else {
           alert("Something went wrong");
