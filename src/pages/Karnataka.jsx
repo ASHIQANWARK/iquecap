@@ -1,33 +1,113 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import { FaUserPlus, FaThList, FaHandHoldingUsd, FaChartLine } from "react-icons/fa";
 import { FaEye, FaBullseye } from "react-icons/fa";
 import { motion } from "framer-motion";
-import googleLogo from "../assets/images/icons8-google-logo-48.png"
-import about from "../assets/images/about-img-1-min.png"
-import about1 from "../assets/images/fun-3.png"
-import about2 from "../assets/images/serv-ico-img-2.png"
-import why from "../assets/images/2285.jpg"
-import link2 from "../assets/images/link-box-2.png"
-import link1 from "../assets/images/link-box-1.png"
-import footer from "../assets/images/image-about-ls.jpg"
+import googleLogo from "../assets/images/icons8-google-logo-48.png";
+import about from "../assets/images/about-img-1-min.png";
+import about1 from "../assets/images/fun-3.png";
+import about2 from "../assets/images/serv-ico-img-2.png";
+import why from "../assets/images/2285.jpg";
+import link2 from "../assets/images/link-box-2.png";
+import link1 from "../assets/images/link-box-1.png";
+import footer from "../assets/images/image-about-ls.jpg";
 
 export default function KarnatakaLanding() {
-  const whatsappNumber = "919035465957";
-  const whatsappMessage =
-    "Hello iQueCap Karnataka Team, I would like to know more about investment opportunities.";
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
+  const EnquiryForm = () => {
+    const [form, setForm] = useState({
+      name: "",
+      email: "",
+      phone: "",
+      place: ""
+    });
+
+    const handleChange = (e) => {
+      setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async () => {
+      if (!form.name || !form.email || !form.phone || !form.place) {
+        alert("Please fill all fields");
+        return;
+      }
+
+      try {
+        const res = await fetch("https://script.google.com/macros/s/AKfycbzEwGvYhL2uj6ouXMDT9bbHaG849lP_sExiLD9bsoWL1e81BNYuX2EZs1slm-UDI08E/exec", {
+          method: "POST",
+          body: JSON.stringify(form),
+        });
+
+        const data = await res.json();
+
+        if (data.status === "success") {
+          alert("Submitted successfully!");
+          setForm({ name: "", email: "", phone: "", place: "" });
+        } else {
+          alert("Something went wrong");
+        }
+
+      } catch (error) {
+        console.error(error);
+        alert("Submission failed");
+      }
+    };
+
+    return (
+      <div className="w-full flex justify-center md:justify-end mt-8 md:mt-0">
+        <div className="backdrop-blur-lg bg-white/10 border border-white/20 p-5 md:p-6 rounded-2xl shadow-2xl w-full max-w-sm">
+          <h3 className="text-base md:text-lg font-semibold mb-4 text-center">
+            Enquire Now with iQueCap Karnataka
+          </h3>
+
+          <input
+            name="name"
+            value={form.name}
+            onChange={handleChange}
+            placeholder="Enter Your Name"
+            className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-3 text-white placeholder:text-white/70"
+          />
+
+          <input
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+            placeholder="Enter Your Email"
+            className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-3 text-white placeholder:text-white/70"
+          />
+
+          <input
+            name="phone"
+            value={form.phone}
+            onChange={handleChange}
+            placeholder="Enter Your Phone Number"
+            className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-3 text-white placeholder:text-white/70"
+          />
+
+          <input
+            name="place"
+            value={form.place}
+            onChange={handleChange}
+            placeholder="Enter Your Place"
+            className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-4 text-white placeholder:text-white/70"
+          />
+
+          <button
+            onClick={handleSubmit}
+            className="w-full bg-green-400 text-black py-3 rounded-lg font-semibold hover:bg-green-300 transition"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="font-sans text-white w-full overflow-x-hidden">
-
       {/* ================= HERO ================= */}
       <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 pb-12 md:py-0 md:pt-0">
-
         {/* DARK GREEN GRADIENT BACKGROUND */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#012f33] via-[#01454b] to-[#021f22]" />
 
@@ -37,7 +117,6 @@ export default function KarnatakaLanding() {
 
         {/* CONTENT */}
         <div className="relative z-10 max-w-6xl w-full grid md:grid-cols-2 gap-8 md:gap-6 items-center">
-
           {/* LEFT CONTENT */}
           <div className="space-y-4 md:space-y-5 text-center md:text-left">
             <p className="text-xs md:text-sm lg:text-base text-gray-200 tracking-wide">
@@ -60,45 +139,13 @@ export default function KarnatakaLanding() {
           </div>
 
           {/* RIGHT FORM */}
-          <div className="w-full flex justify-center md:justify-end mt-8 md:mt-0">
-            <div className="backdrop-blur-lg bg-white/10 border border-white/20 p-5 md:p-6 rounded-2xl shadow-2xl w-full max-w-sm mx-4 md:mx-0">
-
-              <h3 className="text-base md:text-lg font-semibold mb-4 md:mb-5 text-center">
-                Enquire Now with iQueCap Karnataka
-              </h3>
-
-              <input
-                className="w-full bg-white/20 border border-white/30 placeholder-gray-300 text-white p-2.5 md:p-3 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-green-400 text-sm md:text-base"
-                placeholder="Enter Your Name"
-              />
-
-              <input
-                className="w-full bg-white/20 border border-white/30 placeholder-gray-300 text-white p-2.5 md:p-3 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-green-400 text-sm md:text-base"
-                placeholder="Enter Your Email"
-              />
-
-              <input
-                className="w-full bg-white/20 border border-white/30 placeholder-gray-300 text-white p-2.5 md:p-3 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-green-400 text-sm md:text-base"
-                placeholder="Enter Your Phone Number"
-              />
-
-              <a
-                href={whatsappLink}
-                target="_blank"
-                rel="noreferrer"
-                className="block bg-green-400 text-black text-center py-2.5 md:py-3 rounded-lg font-semibold hover:bg-green-300 transition duration-300 shadow-lg text-sm md:text-base"
-              >
-                Connect with iQueCap Karnataka
-              </a>
-            </div>
-          </div>
+          <EnquiryForm />
         </div>
       </section>
 
       {/* ================= ABOUT ================= */}
       <section className="py-12 md:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-
           {/* LEFT TEXT */}
           <div className="space-y-5 md:space-y-6 order-2 md:order-1">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
@@ -147,7 +194,6 @@ export default function KarnatakaLanding() {
 
           {/* RIGHT IMAGE SECTION */}
           <div className="relative flex justify-center order-1 md:order-2">
-            
             {/* MAIN IMAGE */}  
             <img
               src={about}
@@ -181,7 +227,6 @@ export default function KarnatakaLanding() {
       {/* ================= GOOGLE REVIEWS ================= */}
       <section className="py-12 md:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
-
           {/* LEFT HEADER */}
           <div className="space-y-3 md:space-y-4 text-center sm:text-left">
             <div className="flex items-center gap-2 justify-center sm:justify-start">
@@ -250,16 +295,10 @@ export default function KarnatakaLanding() {
         </div>
       </section>
 
-    {/* ================= WHY CHOOSE - MODERN ADVANCED DESIGN ================= */}
+      {/* ================= WHY CHOOSE - MODERN ADVANCED DESIGN ================= */}
       <section className="py-12 md:py-24 px-4 sm:px-6 relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100">
-        
-        
-
         <div className="max-w-6xl mx-auto relative z-10">
-    
-
           <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
-
             {/* LEFT SIDE - IMAGE WITH MODERN OVERLAYS */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -267,8 +306,6 @@ export default function KarnatakaLanding() {
               transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
               className="relative order-2 md:order-1"
             >
-             
-              
               {/* Main Image Container */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-[1.02]">
                 <img
@@ -342,15 +379,15 @@ export default function KarnatakaLanding() {
               {/* FEATURES WITH MODERN CARDS */}
               <div className="mt-6 md:mt-8 grid gap-3">
                 {[
-                  { icon: "🏢", text: "Local Support in Karnataka, Anytime with iQueCap Karnataka", color: "from-emerald-500 to-emerald-350", border: "border-green-200" },
-                  { icon: "🔒", text: "Strong Trust Signals from iQueCap Karnataka", color: "from-emerald-500 to-emerald-350", border: "border-blue-200" },
-                  { icon: "📱", text: "Easy & Paperless Onboarding with iQueCap Karnataka", color: "from-emerald-500 to-emerald-350", border: "border-purple-200" },
-                  { icon: "🎯", text: "Expert Guidance from iQueCap Karnataka Team", color: "from-emerald-500 to-emerald-350", border: "border-amber-200" },
-                  { icon: "🛡️", text: "Trusted & Secure Transactions with iQueCap Karnataka", color: "from-emerald-500 to-emerald-350", border: "border-red-200" },
-                  { icon: "📈", text: "Proven Track Record of iQueCap Karnataka", color: "from-emerald-500 to-emerald-350", border: "border-indigo-200" },
-                  { icon: "🌐", text: "Robust Network Access through iQueCap Karnataka", color: "from-emerald-500 to-emerald-350", border: "border-teal-200" },
-                  { icon: "⭐", text: "Credibility and growth markers of iQueCap Karnataka", color: "from-emerald-500 to-emerald-350", border: "border-yellow-200" },
-                  { icon: "💡", text: "Innovative Platform Features of iQueCap Karnataka", color: "from-emerald-500 to-emerald-350", border: "border-cyan-200" },
+                  { icon: "🏢", text: "Local Support in Karnataka, Anytime with iQueCap Karnataka", border: "border-green-200" },
+                  { icon: "🔒", text: "Strong Trust Signals from iQueCap Karnataka", border: "border-blue-200" },
+                  { icon: "📱", text: "Easy & Paperless Onboarding with iQueCap Karnataka", border: "border-purple-200" },
+                  { icon: "🎯", text: "Expert Guidance from iQueCap Karnataka Team", border: "border-amber-200" },
+                  { icon: "🛡️", text: "Trusted & Secure Transactions with iQueCap Karnataka", border: "border-red-200" },
+                  { icon: "📈", text: "Proven Track Record of iQueCap Karnataka", border: "border-indigo-200" },
+                  { icon: "🌐", text: "Robust Network Access through iQueCap Karnataka", border: "border-teal-200" },
+                  { icon: "⭐", text: "Credibility and growth markers of iQueCap Karnataka", border: "border-yellow-200" },
+                  { icon: "💡", text: "Innovative Platform Features of iQueCap Karnataka", border: "border-cyan-200" },
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -358,7 +395,7 @@ export default function KarnatakaLanding() {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05, duration: 0.4 }}
                     whileHover={{ scale: 1.02, x: 5 }}
-                    className={`group bg-gradient-to-r ${item.color} border ${item.border} rounded-xl p-3 md:p-3.5 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer`}
+                    className={`group bg-white border ${item.border} rounded-xl p-3 md:p-3.5 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer`}
                   >
                     <div className="flex items-start gap-3">
                       <span className="text-xl md:text-2xl transform group-hover:scale-110 transition-transform duration-300">
@@ -393,10 +430,10 @@ export default function KarnatakaLanding() {
           </div>
         </div>
       </section>
+
       {/* ================= CTA STRIP ================= */}
       <section className="py-8 md:py-10 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-4 md:gap-5">
-
           {/* CARD 1 */}
           <div className="bg-gray-500 p-3 sm:p-4 rounded-xl flex items-center justify-between gap-3">
             <img
@@ -448,7 +485,6 @@ export default function KarnatakaLanding() {
           <div className="absolute top-[42px] left-0 w-full border-t border-dashed border-gray-300 hidden lg:block"></div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 md:gap-6">
-
             {[
               { icon: <FaUserPlus />, title: "Sign Up with iQueCap Karnataka Instantly" },
               { icon: <FaThList />, title: "Explore iQueCap Karnataka Options" },
