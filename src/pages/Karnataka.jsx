@@ -1,4 +1,6 @@
+// KarnatakaLanding.js
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
@@ -15,6 +17,8 @@ import link1 from "../assets/images/link-box-1.png";
 import footer from "../assets/images/image-about-ls.jpg";
 
 export default function KarnatakaLanding() {
+  const navigate = useNavigate();
+
   const EnquiryForm = () => {
     const [form, setForm] = useState({
       name: "",
@@ -22,35 +26,62 @@ export default function KarnatakaLanding() {
       phone: "",
       place: ""
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (e) => {
       setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+      e.preventDefault(); // Prevent default form submission
+      
       if (!form.name || !form.email || !form.phone || !form.place) {
         alert("Please fill all fields");
         return;
       }
 
+      setIsSubmitting(true);
+
       try {
+        console.log("Submitting form data:", form); // Debug log
+        
         const res = await fetch("https://script.google.com/macros/s/AKfycbzEwGvYhL2uj6ouXMDT9bbHaG849lP_sExiLD9bsoWL1e81BNYuX2EZs1slm-UDI08E/exec", {
           method: "POST",
+          mode: "no-cors", // Add this to handle CORS issues
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify(form),
         });
 
-        const data = await res.json();
-
-        if (data.status === "success") {
-          alert("Submitted successfully!Thank You ");
-          setForm({ name: "", email: "", phone: "", place: "" });
-        } else {
-          alert("Something went wrong");
-        }
-
+        console.log("Response received:", res); // Debug log
+        
+        // Since we're using no-cors, we can't read the response
+        // Assume success if no error thrown
+        console.log("Form submitted successfully!");
+        
+        // Navigate to thank you page with form data
+        navigate('/thank-you', { 
+          state: { 
+            formData: form,
+            timestamp: new Date().toISOString()
+          },
+          replace: true // Use replace to prevent back button issues
+        });
+        
+        // Reset form
+        setForm({ name: "", email: "", phone: "", place: "" });
+        
       } catch (error) {
-        console.error(error);
-        alert("Submission failed");
+        console.error("Submission error:", error);
+        
+        // Even if there's an error, you might want to show thank you page
+        // Uncomment the line below if you want to redirect anyway
+        // navigate('/thank-you', { state: { formData: form, error: true } });
+        
+        alert("Submission failed: " + error.message);
+      } finally {
+        setIsSubmitting(false);
       }
     };
 
@@ -61,48 +92,113 @@ export default function KarnatakaLanding() {
             Enquire Now with iQueCap Karnataka
           </h3>
 
-          <input
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            placeholder="Enter Your Name"
-            className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-3 text-white placeholder:text-white/70"
-          />
+          <form onSubmit={handleSubmit}>
+            <input
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              placeholder="Enter Your Name"
+              className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-3 text-white placeholder:text-white/70"
+              disabled={isSubmitting}
+              required
+            />
 
-          <input
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="Enter Your Email"
-            className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-3 text-white placeholder:text-white/70"
-          />
+            <input
+              name="email"
+              type="email"
+              value={form.email}
+              onChange={handleChange}
+              placeholder="Enter Your Email"
+              className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-3 text-white placeholder:text-white/70"
+              disabled={isSubmitting}
+              required
+            />
 
-          <input
-            name="phone"
-            value={form.phone}
-            onChange={handleChange}
-            placeholder="Enter Your Phone Number"
-            className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-3 text-white placeholder:text-white/70"
-          />
+            <input
+              name="phone"
+              type="tel"
+              value={form.phone}
+              onChange={handleChange}
+              placeholder="Enter Your Phone Number"
+              className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-3 text-white placeholder:text-white/70"
+              disabled={isSubmitting}
+              required
+            />
 
-          <input
-            name="place"
-            value={form.place}
-            onChange={handleChange}
-            placeholder="Enter Your Place"
-            className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-4 text-white placeholder:text-white/70"
-          />
+            <input
+              name="place"
+              value={form.place}
+              onChange={handleChange}
+              placeholder="Enter Your Place"
+              className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-4 text-white placeholder:text-white/70"
+              disabled={isSubmitting}
+              required
+            />
 
-          <button
-            onClick={handleSubmit}
-            className="w-full bg-green-400 text-black py-3 rounded-lg font-semibold hover:bg-green-300 transition"
-          >
-            Submit
-          </button>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-green-400 text-black py-3 rounded-lg font-semibold hover:bg-green-300 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? "Submitting..." : "Submit"}
+            </button>
+          </form>
         </div>
       </div>
     );
   };
+
+  // Reviews array for auto-scrolling
+  const reviews = [
+    {
+      name: "SabeeK Sabeek",
+      location: "Tamilnadu",
+      rating: 5,
+      review: "I am safreek from tamilnadu I invest some lakhs in 40 days plan after maturity principal amount and returns in my account i really happy this is trusted platform. Thank u I Que cap 🥰🥰🥰",
+      time: "19 hours ago",
+      isNew: true
+    },
+    {
+      name: "Ratheesh Parakkal",
+      location: "",
+      rating: 5,
+      review: "Best investment platform secure your money",
+      time: "6 weeks ago",
+      isNew: false
+    },
+    {
+      name: "Gopal reddy",
+      location: "",
+      rating: 4,
+      review: "Good for investment",
+      time: "8 weeks ago",
+      isNew: false
+    },
+    {
+      name: "DK Akash",
+      location: "Karnataka",
+      rating: 5,
+      review: "Best investment platform in Karnataka. iQueCap Karnataka provides great service and 100% security for your money.",
+      time: "3 months ago",
+      isNew: false
+    },
+    {
+      name: "Akhila",
+      location: "Karnataka",
+      rating: 5,
+      review: "Very professional team at iQueCap Karnataka and smooth onboarding process. Highly recommended for Karnataka investors.",
+      time: "2 months ago",
+      isNew: false
+    },
+    {
+      name: "Musthafa K",
+      location: "Karnataka",
+      rating: 5,
+      review: "iQueCap Karnataka is a trusted platform with consistent returns. Customer support is excellent.",
+      time: "1 month ago",
+      isNew: false
+    }
+  ];
 
   return (
     <div className="font-sans text-white w-full overflow-x-hidden">
@@ -132,8 +228,6 @@ export default function KarnatakaLanding() {
               <li>✔ Trusted by top investors in Karnataka with iQueCap Karnataka</li>
               <li>✔ Low risk or high returns, build wealth your way with iQueCap Karnataka</li>
             </ul>
-
-            
           </div>
 
           {/* RIGHT FORM */}
@@ -145,7 +239,7 @@ export default function KarnatakaLanding() {
       <section className="py-12 md:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* LEFT TEXT */}
-          <div className="space-y-5 md:space-y-6 order-2 md:order-1">
+          <div className="space-y-5 md:space-y-6 text-gray-900 order-2 md:order-1">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
               About iQueCap Karnataka
             </h2>
@@ -192,14 +286,12 @@ export default function KarnatakaLanding() {
 
           {/* RIGHT IMAGE SECTION */}
           <div className="relative flex justify-center order-1 md:order-2">
-            {/* MAIN IMAGE */}  
             <img
               src={about}
               alt="iQueCap Karnataka About"
               className="rounded-2xl w-full max-w-sm md:max-w-md object-cover"
             />
 
-            {/* TOP CARD */}
             <div className="absolute top-2 left-2 sm:top-4 sm:left-4 flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg shadow-md text-xs sm:text-sm font-medium text-gray-800">
               <img
                 src={about1}
@@ -209,7 +301,6 @@ export default function KarnatakaLanding() {
               <span className="text-xs sm:text-sm">5M+ Active Investors with iQueCap Karnataka</span>
             </div>
 
-            {/* BOTTOM CARD */}
             <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg shadow-md text-xs sm:text-sm font-medium text-gray-800">
               <img
                 src={about2}
@@ -222,86 +313,193 @@ export default function KarnatakaLanding() {
         </div>
       </section>
 
-      {/* ================= GOOGLE REVIEWS ================= */}
-      <section className="py-12 md:py-20 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
-          {/* LEFT HEADER */}
-          <div className="space-y-3 md:space-y-4 text-center sm:text-left">
-            <div className="flex items-center gap-2 justify-center sm:justify-start">
-              <img src={googleLogo} alt="Google Reviews iQueCap Karnataka" className="w-6 h-6 md:w-8 md:h-8 object-contain" />
-              <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">
-                iQueCap Karnataka Google Reviews
-              </h2>
-            </div>
-
-            {/* RATING */}
-            <div className="flex items-center gap-2 justify-center sm:justify-start">
-              <span className="text-lg md:text-xl font-semibold text-gray-900">4.7</span>
-              <div className="flex text-yellow-400">
-                {[...Array(5)].map((_, i) => (
-                  <FaStar key={i} className="w-3 h-3 md:w-4 md:h-4" />
-                ))}
+      {/* ================= GOOGLE REVIEWS WITH HORIZONTAL SCROLL ================= */}
+      <section className="py-12 md:py-20 px-4 sm:px-6 overflow-hidden bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            {/* LEFT SIDE - REVIEWS HEADER */}
+            <div className="space-y-4 md:space-y-6 sticky top-8">
+              <div className="flex items-center gap-3">
+                <img 
+                  src={googleLogo} 
+                  alt="Google Reviews iQueCap Karnataka" 
+                  className="w-10 h-10 md:w-12 md:h-12 object-contain" 
+                />
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
+                  Google Reviews
+                </h2>
               </div>
+
+              <div className="space-y-2">
+                <div className="flex items-center gap-3">
+                  <span className="text-3xl md:text-4xl font-bold text-gray-900">4.8</span>
+                  <div className="flex text-yellow-400">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar key={i} className="w-5 h-5 md:w-6 md:h-6" />
+                    ))}
+                  </div>
+                </div>
+                <p className="text-sm md:text-base text-gray-600">
+                  Rated 4.8 out of 5 stars
+                </p>
+                <p className="text-xs md:text-sm text-gray-500">
+                  Based on 150+ reviews from investors across Karnataka
+                </p>
+              </div>
+
+              
             </div>
 
-            <p className="text-xs md:text-sm text-gray-500">
-              Rated by investors across Karnataka for iQueCap Karnataka
-            </p>
+            {/* RIGHT SIDE - HORIZONTAL AUTO-SCROLLING REVIEWS */}
+            <div className="relative">
+              <div className="overflow-hidden">
+                <div className="animate-scroll-horizontal flex gap-6 py-4" style={{ width: 'fit-content' }}>
+                  {/* First set of reviews */}
+                  {reviews.map((item, i) => (
+                    <div
+                      key={i}
+                      className="flex-shrink-0 w-80 md:w-96 p-5 rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 bg-white hover:transform hover:scale-105"
+                    >
+                      {/* Rating Stars and NEW Badge */}
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex text-yellow-400 gap-1">
+                          {[...Array(5)].map((_, starIndex) => (
+                            <FaStar 
+                              key={starIndex} 
+                              size={16} 
+                              className={`${starIndex < item.rating ? 'text-yellow-400' : 'text-gray-300'}`}
+                            />
+                          ))}
+                        </div>
+                        {item.isNew && (
+                          <span className="bg-green-100 text-green-700 text-xs px-2.5 py-1 rounded-full font-semibold">
+                            NEW
+                          </span>
+                        )}
+                      </div>
 
-            <button className="mt-2 bg-[#01454b] hover:bg-[#01363b] text-white px-4 py-2 md:px-5 md:py-2.5 rounded-lg text-xs md:text-sm font-medium transition shadow">
-              Write a Review for iQueCap Karnataka
-            </button>
+                      {/* Review Text */}
+                      <p className="text-sm md:text-base text-gray-700 leading-relaxed mb-3 line-clamp-4">
+                        "{item.review}"
+                      </p>
+
+                      {/* Reviewer Info */}
+                      <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
+                        <div>
+                          <p className="font-semibold text-gray-900 text-sm md:text-base">
+                            {item.name}
+                          </p>
+                          {item.location && (
+                            <p className="text-xs text-gray-500">{item.location}</p>
+                          )}
+                        </div>
+                        <p className="text-xs text-gray-400">{item.time}</p>
+                      </div>
+
+                      {/* Google Badge */}
+                      <div className="flex items-center gap-1.5 mt-2">
+                        <img src={googleLogo} alt="Google" className="w-4 h-4" />
+                        <span className="text-xs text-gray-500">Verified Google Review</span>
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Duplicate reviews for seamless scroll */}
+                  {reviews.map((item, i) => (
+                    <div
+                      key={`duplicate-${i}`}
+                      className="flex-shrink-0 w-80 md:w-96 p-5 rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 bg-white hover:transform hover:scale-105"
+                    >
+                      {/* Rating Stars and NEW Badge */}
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex text-yellow-400 gap-1">
+                          {[...Array(5)].map((_, starIndex) => (
+                            <FaStar 
+                              key={starIndex} 
+                              size={16} 
+                              className={`${starIndex < item.rating ? 'text-yellow-400' : 'text-gray-300'}`}
+                            />
+                          ))}
+                        </div>
+                        {item.isNew && (
+                          <span className="bg-green-100 text-green-700 text-xs px-2.5 py-1 rounded-full font-semibold">
+                            NEW
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Review Text */}
+                      <p className="text-sm md:text-base text-gray-700 leading-relaxed mb-3 line-clamp-4">
+                        "{item.review}"
+                      </p>
+
+                      {/* Reviewer Info */}
+                      <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
+                        <div>
+                          <p className="font-semibold text-gray-900 text-sm md:text-base">
+                            {item.name}
+                          </p>
+                          {item.location && (
+                            <p className="text-xs text-gray-500">{item.location}</p>
+                          )}
+                        </div>
+                        <p className="text-xs text-gray-400">{item.time}</p>
+                      </div>
+
+                      {/* Google Badge */}
+                      <div className="flex items-center gap-1.5 mt-2">
+                        <img src={googleLogo} alt="Google" className="w-4 h-4" />
+                        <span className="text-xs text-gray-500">Verified Google Review</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Gradient overlays for smooth edges */}
+              <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-gray-50 to-transparent pointer-events-none"></div>
+              <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-gray-50 to-transparent pointer-events-none"></div>
+            </div>
           </div>
-
-          {/* REVIEWS */}
-          {[
-            {
-              name: "DK Akash",
-              review: "Best investment platform in Karnataka. iQueCap Karnataka provides great service and 100% security for your money.",
-            },
-            {
-              name: "Akhila",
-              review: "Very professional team at iQueCap Karnataka and smooth onboarding process. Highly recommended for Karnataka investors.",
-            },
-            {
-              name: "Musthafa K",
-              review: "iQueCap Karnataka is a trusted platform with consistent returns. Customer support is excellent.",
-            },
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="p-4 md:p-5 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition bg-white/80 backdrop-blur-md"
-            >
-              {/* STARS */}
-              <div className="flex text-yellow-400 mb-2">
-                {[...Array(5)].map((_, i) => (
-                  <FaStar key={i} size={12} className="sm:w-3 sm:h-3 md:w-3.5 md:h-3.5" />
-                ))}
-              </div>
-
-              {/* REVIEW TEXT */}
-              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-3">
-                {item.review}
-              </p>
-
-              {/* NAME */}
-              <p className="font-semibold text-gray-900 text-xs sm:text-sm">
-                {item.name} - iQueCap Karnataka Investor
-              </p>
-            </div>
-          ))}
         </div>
+
+        <style>{`
+          @keyframes scrollHorizontal {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+          
+          .animate-scroll-horizontal {
+            display: flex;
+            animation: scrollHorizontal 40s linear infinite;
+            width: fit-content;
+          }
+          
+          .animate-scroll-horizontal:hover {
+            animation-play-state: paused;
+          }
+          
+          .line-clamp-4 {
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+        `}</style>
       </section>
 
-     {/* ================= WHY CHOOSE - PROFESSIONAL DESIGN ================= */}
+      {/* ================= WHY CHOOSE ================= */}
       <section className="py-12 md:py-24 px-4 sm:px-6 relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100">
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
-            {/* LEFT SIDE - CONTENT */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+              transition={{ duration: 0.6 }}
               className="order-1"
             >
               <div className="space-y-4 md:space-y-5">
@@ -311,14 +509,12 @@ export default function KarnatakaLanding() {
                     iQueCap Karnataka
                   </span>
                 </h2>
-
                 <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                   iQueCap Karnataka offers top-tier investment opportunities backed by expert-driven
                   strategies, ensuring security, growth, and long-term value for investors across Karnataka.
                 </p>
               </div>
 
-              {/* FEATURES WITH PROFESSIONAL CARDS */}
               <div className="mt-6 md:mt-8 grid gap-3">
                 {[
                   { text: "Local Support in Karnataka, Anytime with iQueCap Karnataka", border: "border-green-200" },
@@ -335,7 +531,7 @@ export default function KarnatakaLanding() {
                     key={i}
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05, duration: 0.4 }}
+                    transition={{ delay: i * 0.05 }}
                     whileHover={{ scale: 1.02, x: 5 }}
                     className={`group bg-white border ${item.border} rounded-xl p-3 md:p-3.5 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer`}
                   >
@@ -352,18 +548,14 @@ export default function KarnatakaLanding() {
                   </motion.div>
                 ))}
               </div>
-
-              
             </motion.div>
 
-            {/* RIGHT SIDE - IMAGE WITH BIGGER HEIGHT */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+              transition={{ duration: 0.6 }}
               className="relative order-2"
             >
-              {/* Main Image Container - Bigger Height */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-[1.02]">
                 <div className="relative w-full" style={{ paddingBottom: "120%" }}>
                   <img
@@ -372,50 +564,7 @@ export default function KarnatakaLanding() {
                     className="absolute inset-0 w-full h-full object-cover rounded-2xl"
                   />
                 </div>
-                
-                {/* Gradient Overlay on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
               </div>
-
-              {/* Floating Stats Card 1 */}
-              <motion.div
-                initial={{ opacity: 0, x: -20, y: 20 }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-                className="absolute -top-6 -left-6 md:-top-10 md:-left-10 bg-white/90 backdrop-blur-md rounded-xl px-3 py-2 md:px-4 md:py-3 shadow-xl border border-white/50 z-10"
-              >
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-green-500 to-teal-500 rounded-lg flex items-center justify-center">
-                    <FaChartLine className="text-white text-sm md:text-base" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500">Avg. Returns</p>
-                    <p className="text-lg md:text-xl font-bold text-gray-800">Up to 60%</p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Floating Stats Card 2 */}
-              <motion.div
-                initial={{ opacity: 0, x: 20, y: 20 }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 bg-white/90 backdrop-blur-md rounded-xl px-3 py-2 md:px-4 md:py-3 shadow-xl border border-white/50 z-10"
-              >
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-emerald-800 to-cyan-500 rounded-lg flex items-center justify-center">
-                    <FaUserPlus className="text-white text-sm md:text-base" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500">Happy Investors</p>
-                    <p className="text-lg md:text-xl font-bold text-gray-800">1000+</p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Decorative Background Element */}
-              <div className="absolute -z-10 -bottom-10 -right-10 w-64 h-64 md:w-80 md:h-80 bg-green-500/10 rounded-full blur-3xl"></div>
-              <div className="absolute -z-10 -top-10 -left-10 w-64 h-64 md:w-80 md:h-80 bg-teal-500/10 rounded-full blur-3xl"></div>
             </motion.div>
           </div>
         </div>
@@ -424,7 +573,6 @@ export default function KarnatakaLanding() {
       {/* ================= CTA STRIP ================= */}
       <section className="py-8 md:py-10 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-4 md:gap-5">
-          {/* CARD 1 */}
           <div className="bg-gray-500 p-3 sm:p-4 rounded-xl flex items-center justify-between gap-3">
             <img
               src={link2}
@@ -441,7 +589,6 @@ export default function KarnatakaLanding() {
             </div>
           </div>
 
-          {/* CARD 2 */}
           <div className="bg-[#054045] text-white p-3 sm:p-4 rounded-xl flex items-center justify-between gap-3">
             <div className="max-w-[55%]">
               <h3 className="font-semibold mb-1 text-xs sm:text-sm md:text-base">
@@ -494,13 +641,9 @@ export default function KarnatakaLanding() {
                   </div>
                   <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-700 rounded-full absolute left-1/2 -translate-x-1/2 -bottom-1 sm:bottom-0"></div>
                 </div>
-
                 <h3 className="mt-4 sm:mt-6 text-xs sm:text-sm font-semibold text-gray-700 text-center px-1">
                   {step.title}
                 </h3>
-
-                <div className="w-full border-t border-dashed border-gray-300 mt-3 sm:mt-4 md:hidden"></div>
-
                 <span className="mt-2 sm:mt-3 text-xs sm:text-sm text-gray-500">{i + 1}</span>
               </motion.div>
             ))}
@@ -522,27 +665,20 @@ export default function KarnatakaLanding() {
             Ready to Grow Your Wealth <br className="hidden sm:block" />
             with iQueCap Karnataka?
           </h2>
-
           <p className="text-gray-200 mb-4 sm:mb-6 md:mb-8 text-xs sm:text-sm md:text-base">
             Take the first step with iQueCap Karnataka – invest smart, invest simple.
           </p>
-
           <div className="border-t border-white/30 mb-5 sm:mb-6 md:mb-8 w-2/3 mx-auto"></div>
-
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6">
-           
-
             <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-200">
               <FaEnvelope className="w-3 h-3 sm:w-4 sm:h-4" />
               <span>salma@iquecap.com</span>
             </div>
-
             <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-200">
               <FaPhoneAlt className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span>+91-9035514801, +91-9036913390  (iQueCap Karnataka)</span>
+              <span>+91-9035514801, +91-9036913390 (iQueCap Karnataka)</span>
             </div>
           </div>
-          
           <p className="text-xs text-gray-300 mt-6">
             © 2026 iQueCap Karnataka - Empowering Karnataka Investors
           </p>
