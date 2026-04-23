@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MapPin, Phone, Mail, Globe, Navigation, Building } from "lucide-react";
+import { MapPin, Phone, Mail, Globe, Building } from "lucide-react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 const Contact = () => {
@@ -7,42 +7,118 @@ const Contact = () => {
     name: "",
     email: "",
     subject: "",
+    phone: "",
     message: "",
     investmentRange: "",
-    preferredIndustries: "",
-    investmentPreference: "",
+    preferredLocation: "",
+    preferredLanguage: "",
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const sendWhatsAppMessage = (e) => {
+  // Investment range options starting from 1 Lakh
+  const investmentOptions = [
+    "₹1 Lakh - ₹5 Lakhs",
+    "₹5 Lakhs - ₹10 Lakhs",
+    "₹10 Lakhs - ₹25 Lakhs",
+    "₹25 Lakhs - ₹50 Lakhs",
+    "₹50 Lakhs - ₹1 Crore",
+    "₹1 Crore - ₹5 Crores",
+    "₹5 Crores+"
+  ];
+
+  // Location options (Indian cities/states)
+  const locationOptions = [
+    "Mumbai",
+    "Delhi NCR",
+    "Bengaluru",
+    "Chennai",
+    "Kolkata",
+    "Hyderabad",
+    "Pune",
+    "Ahmedabad",
+    "Jaipur",
+    "Lucknow",
+    "Other - North India",
+    "Other - South India",
+    "Other - East India",
+    "Other - West India",
+    "International"
+  ];
+
+  // Language options
+  const languageOptions = [
+    "English",
+    "Hindi",
+    "Kannada",
+    "Tamil",
+    "Telugu",
+    "Marathi",
+    "Gujarati",
+    "Bengali",
+    "Malayalam"
+  ];
+
+  const GOOGLE_SHEETS_API_URL = "https://script.google.com/macros/s/AKfycbwLAGp1W742Fv57EeHlc2acjm9Y-hTkVKr0RrLQj75Ys5fqIXIFVLvORz4eP_qt0Wqy/exec"; // Replace with your deployed script URL
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: "", message: "" });
 
-    const {
-      name,
-      email,
-      subject,
-      message,
-      investmentRange,
-      preferredIndustries,
-      investmentPreference,
-    } = formData;
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("subject", formData.subject);
+      formDataToSend.append("phone", formData.phone);
+      formDataToSend.append("message", formData.message);
+      formDataToSend.append("investmentRange", formData.investmentRange);
+      formDataToSend.append("preferredLocation", formData.preferredLocation);
+      formDataToSend.append("preferredLanguage", formData.preferredLanguage);
+      formDataToSend.append("timestamp", new Date().toISOString());
 
-    const whatsappMessage = `Name: ${name}
-Email: ${email}
-Subject: ${subject}
-Message: ${message}
-Investment Range: ${investmentRange}
-Preferred Industries: ${preferredIndustries}
-Investment Preference: ${investmentPreference}`;
+      const response = await fetch(GOOGLE_SHEETS_API_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: formDataToSend,
+      });
 
-    const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(`https://wa.me/8095041714?text=${encodedMessage}`, "_blank");
+      setSubmitStatus({
+        type: "success",
+        message: "Thank you! Your information has been submitted successfully. We'll contact you soon!",
+      });
+      
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        phone: "",
+        message: "",
+        investmentRange: "",
+        preferredLocation: "",
+        preferredLanguage: "",
+      });
+
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus({
+        type: "error",
+        message: "Oops! Something went wrong. Please try again or contact us directly.",
+      });
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => {
+        setSubmitStatus({ type: "", message: "" });
+      }, 5000);
+    }
   };
 
-  // Company address
   const companyAddress = {
     doorNo: "Startup Park,",
     landmark: "near Madiwala Police Station",
@@ -52,12 +128,9 @@ Investment Preference: ${investmentPreference}`;
     pincode: "560068"
   };
 
-  const fullAddress = `${companyAddress.doorNo}, ${companyAddress.landmark}, ${companyAddress.area}, ${companyAddress.city}, ${companyAddress.state} ${companyAddress.pincode}`;
-
   return (
-    <section className="min-h-screen py-16 bg-gradient-to-b from-[#0d9866]  to-[#01454b] overflow-x-hidden">
+    <section className="min-h-screen py-16 bg-gradient-to-b from-[#0d9866] to-[#01454b] overflow-x-hidden">
       <div className="container mx-auto px-4 max-w-6xl">
-        {/* Header Section */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Contact Us
@@ -67,11 +140,9 @@ Investment Preference: ${investmentPreference}`;
           </p>
         </div>
 
-        {/* Main Content Grid - Compact Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           {/* Contact Info & Map Side */}
           <div className="space-y-6">
-            {/* Address Card */}
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:border-emerald-400 transition-all duration-300">
               <div className="flex items-start space-x-4 mb-4">
                 <div className="bg-emerald-500 p-3 rounded-xl">
@@ -90,7 +161,6 @@ Investment Preference: ${investmentPreference}`;
               </div>
             </div>
 
-            {/* Map Section */}
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
               <h3 className="text-xl font-semibold text-white mb-4">Find Us Here</h3>
               <p className="text-gray-300 mb-4 text-sm">
@@ -123,9 +193,7 @@ Investment Preference: ${investmentPreference}`;
               </div>
             </div>
 
-            {/* Contact Details Grid */}
             <div className="grid grid-cols-2 gap-4">
-              {/* Phone */}
               <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:border-emerald-400 transition-all duration-300">
                 <div className="flex items-center space-x-3">
                   <div className="bg-emerald-500 p-2 rounded-lg">
@@ -133,12 +201,11 @@ Investment Preference: ${investmentPreference}`;
                   </div>
                   <div>
                     <h4 className="text-white font-semibold text-sm">Call Us</h4>
-                    <p className="text-emerald-100 text-xs">+918095041714 </p>
+                    <p className="text-emerald-100 text-xs">+918095041714</p>
                   </div>
                 </div>
               </div>
 
-              {/* Email */}
               <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:border-emerald-400 transition-all duration-300">
                 <div className="flex items-center space-x-3">
                   <div className="bg-emerald-500 p-2 rounded-lg">
@@ -151,7 +218,6 @@ Investment Preference: ${investmentPreference}`;
                 </div>
               </div>
 
-              {/* Website */}
               <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:border-emerald-400 transition-all duration-300">
                 <div className="flex items-center space-x-3">
                   <div className="bg-emerald-500 p-2 rounded-lg">
@@ -164,7 +230,6 @@ Investment Preference: ${investmentPreference}`;
                 </div>
               </div>
 
-              {/* Location */}
               <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:border-emerald-400 transition-all duration-300">
                 <div className="flex items-center space-x-3">
                   <div className="bg-emerald-500 p-2 rounded-lg">
@@ -187,7 +252,17 @@ Investment Preference: ${investmentPreference}`;
                 Ready to start your investment journey? Fill out the form and we'll get back to you within 24 hours.
               </p>
               
-              <form onSubmit={sendWhatsAppMessage} className="space-y-4">
+              {submitStatus.message && (
+                <div className={`mb-6 p-4 rounded-lg ${
+                  submitStatus.type === "success" 
+                    ? "bg-green-100 text-green-700 border border-green-200" 
+                    : "bg-red-100 text-red-700 border border-red-200"
+                }`}>
+                  {submitStatus.message}
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -233,6 +308,21 @@ Investment Preference: ${investmentPreference}`;
                     onChange={handleChange}
                   />
                 </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
+                    placeholder="Enter your phone number"
+                    required
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
+                </div>
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -261,46 +351,56 @@ Investment Preference: ${investmentPreference}`;
                       value={formData.investmentRange}
                       onChange={handleChange}
                     >
-                      <option value="">Select Range</option>
-                      <option value="₹10K - ₹50K">₹10K - ₹50K</option>
-                      <option value="₹50K - ₹1L">₹50K - ₹1L</option>
-                      <option value="₹1L - ₹5L">₹1L - ₹5L</option>
-                      <option value="₹5L - ₹10L">₹5L - ₹10L</option>
-                      <option value="₹10L - ₹50L">₹10L - ₹50L</option>
-                      <option value="₹50L - ₹1Cr">₹50L - ₹1Cr</option>
-                      <option value="₹1Cr - ₹5Cr">₹1Cr - ₹5Cr</option>
-                      <option value="₹5Cr+">₹5Cr+</option>
+                      <option value="">Select investment range</option>
+                      {investmentOptions.map(option => (
+                        <option key={option} value={option}>{option}</option>
+                      ))}
                     </select>
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Location 
+                      Location *
                     </label>
                     <select
-                      name="preferredIndustries"
+                      name="preferredLocation"
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
                       required
-                      value={formData.preferredIndustries}
+                      value={formData.preferredLocation}
                       onChange={handleChange}
                     >
-                      <option value="">Select Location</option>
-                      <option value="Technology">Kerala</option>
-                      <option value="Real Estate">Tamil Nadu</option>
-                      <option value="Healthcare">Karnataka</option>
-                      <option value="Finance">Andra Pradesh</option>
-                      <option value="Other">Other</option>
+                      <option value="">Select your location</option>
+                      {locationOptions.map(option => (
+                        <option key={option} value={option}>{option}</option>
+                      ))}
                     </select>
                   </div>
 
-                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Preferred Language *
+                    </label>
+                    <select
+                      name="preferredLanguage"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
+                      required
+                      value={formData.preferredLanguage}
+                      onChange={handleChange}
+                    >
+                      <option value="">Select language</option>
+                      {languageOptions.map(option => (
+                        <option key={option} value={option}>{option}</option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-lg hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm mt-4"
+                  disabled={isSubmitting}
+                  className="w-full py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-lg hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  Send Message via WhatsApp
+                  {isSubmitting ? "Submitting..." : "Submit Form"}
                 </button>
               </form>
             </div>

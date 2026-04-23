@@ -78,7 +78,7 @@ const CapAdvisor = () => {
     if (note) message += `Note: ${note}\n`;
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/919035093820?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/+919035093820?text=${encodedMessage}`, "_blank");
   };
 
   const handleSubmit = (e) => {
