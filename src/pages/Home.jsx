@@ -4,7 +4,7 @@ import About from "../pages/About";
 import MissionVision from "../pages/Mission";
 import Chatbot from "../pages/Chatbot";
 import Why from "../pages/why";
-import Awards from "../pages/Awards";
+
 import Testimonials from "../pages/Testimonials";
 import BranchesSection from "./Branches";
 
@@ -15,7 +15,7 @@ const Home = () => {
     <div className=" min-h-screen ">
       <Hero />
       <BranchesSection />
-      <Awards />
+      {/* <Awards /> */}
       <Why />
       <Testimonials />
       {/* <Team /> */}

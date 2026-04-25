@@ -39,10 +39,10 @@ const Navbar = () => {
   const menuItems = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "Services", path: "/services",},
+    // { name: "Services", path: "/services",},
     { name: "Cap Academy", path: "/capacademy" },
     { name: "Careers", path: "/careers" },
-    {name: "FAQ'S", path:"/faqs"},
+    // {name: "FAQ'S", path:"/faqs"},
     
   ];
 

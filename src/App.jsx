@@ -40,13 +40,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/mission" element={<Mission />} />
-        <Route path="/services" element={<ServicesSection />} />
+        {/* <Route path="/services" element={<ServicesSection />} /> */}
         <Route path="/team" element={<Team />} />
         <Route path="/contact" element={<Contacts />} />
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/capacademy" element={<CapAdvisor />} />
         <Route path="/careers" element={<Career />} />
-        <Route path="/faqs" element={<FAQSection />} />
+        {/* <Route path="/faqs" element={<FAQSection />} /> */}
          <Route path="/kerala" element={<KeralaBranch />} />
         <Route path="/tamil" element={<TamilNaduBranch />} />
         <Route path="/karnataka" element={<KarnatakaBranch />} />
