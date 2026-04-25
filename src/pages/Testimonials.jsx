@@ -19,7 +19,7 @@ const testimonials = [
     name: "Shefin",
     role: "Investor",
     text: "A professional and dedicated team! Highly recommended for anyone looking for top-notch development services.",
-  }
+  },
   {
     name: "Keerthi",
    role: "Investor",
