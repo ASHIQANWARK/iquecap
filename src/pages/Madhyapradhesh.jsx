@@ -144,7 +144,7 @@ export default function MadhyaPradeshLanding() {
       icon: <FaUsers />,
       title: "Local Support",
       description:
-        "Dedicated support team in Madhya Pradesh for personalized assistance",
+        "Dedicated support team for personalized assistance",
       color: "from-blue-500 to-cyan-600",
     },
     {
@@ -168,7 +168,7 @@ export default function MadhyaPradeshLanding() {
     {
       icon: <FaChartBar />,
       title: "Proven Track Record",
-      description: "Consistent returns with 95% investor satisfaction",
+      description: "Consistent returns with investor satisfaction",
       color: "from-indigo-500 to-purple-600",
     },
     {
@@ -180,15 +180,10 @@ export default function MadhyaPradeshLanding() {
     {
       icon: <FaRocket />,
       title: "High Growth Potential",
-      description: "Target startups with 2x-5x growth trajectory",
+      description: "Target startups with 10x-20x growth trajectory",
       color: "from-rose-500 to-red-600",
     },
-    {
-      icon: <FaLightbulb />,
-      title: "Innovative Platform",
-      description: "AI-powered insights and real-time portfolio tracking",
-      color: "from-cyan-500 to-blue-600",
-    },
+    
   ];
 
   const steps = [
@@ -209,7 +204,7 @@ export default function MadhyaPradeshLanding() {
     {
       icon: <FaHandHoldingUsd />,
       title: "Make Investment",
-      desc: "Choose amount & invest securely with one click",
+      desc: "Choose Plan & invest securely",
       time: "2 mins",
       step: 3,
     },
@@ -284,7 +279,7 @@ export default function MadhyaPradeshLanding() {
                 <FaCheckCircle className="text-green-300" /> Trusted by top investors
               </li>
               <li className="flex items-center gap-2 justify-center md:justify-start">
-                <FaCheckCircle className="text-green-300" /> Grow Your wealth Plan Your Future
+                <FaCheckCircle className="text-green-300" /> Grow Your wealth, Plan Your Future
               </li>
             </ul>
           </motion.div>
@@ -360,7 +355,7 @@ export default function MadhyaPradeshLanding() {
               About <span className="text-green-200">iQueCap</span>
             </h2>
             <p className="text-gray-100 max-w-3xl mx-auto text-base">
-              iQueCap is a trusted startup investment platform, connecting investors across
+              iQueCap is a trusted startup investment platform, connecting investors 
               with high-potential startups.
             </p>
           </div>
@@ -379,10 +374,18 @@ export default function MadhyaPradeshLanding() {
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-white">Our Vision</h3>
               </div>
-              <p className="text-gray-100 leading-relaxed">
-                To go beyond being just a platform and become a powerful movement that transforms
-                the investment ecosystem across india creating lasting wealth for every investor.
-              </p>
+              <p className="text-white text-base leading-relaxed text-justify">
+            At Ique Cap, we envision a future where innovation thrives without barriers. 
+            Our goal is to build an inclusive and dynamic ecosystem where startups with 
+            bold ideas can seamlessly access the right capital, mentorship, and resources to scale. 
+            We aim to be the trusted bridge between high-potential founders and forward-thinking investors.
+          </p>
+          <p className="text-white text-base leading-relaxed text-justify">
+            Our vision is to be more than a platform—we aspire to be a movement that empowers 
+            entrepreneurship across industries, geographies, and communities. Through transparency, 
+            trust, and long-term collaboration, we work toward a thriving startup landscape where 
+            innovation leads to sustainable progress.
+          </p>
               <div className="mt-4 pt-4 border-t border-white/20">
                 <p className="text-green-200 font-semibold text-sm">✦ Empowering Financial Future</p>
               </div>
@@ -401,10 +404,19 @@ export default function MadhyaPradeshLanding() {
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-white">Our Mission</h3>
               </div>
-              <p className="text-gray-100 leading-relaxed">
-                To empower startups and investors across through structured, transparent,
-                and guided investment opportunities, ensuring sustainable growth and mutual success.
-              </p>
+              <p className="text-white text-base leading-relaxed text-justify">
+            Our mission is to empower both startups and investors through a well-structured, 
+            expertly guided investment journey. We curate exceptional early-stage and growth-stage 
+            startups and rigorously evaluate them to ensure that only the most promising businesses 
+            reach our investor network.
+          </p>
+          <p className="text-white text-base leading-relaxed text-justify">
+            Backed by IQue Ventures' deep expertise in venture building, we aim to minimize risk 
+            while maximizing impact. We’re committed to supporting visionary founders not just 
+            with funding, but with strategic advice, mentorship, and operational support. 
+            Through this mission, we strive to build ventures that are scalable, impactful, 
+            and investment-worthy.
+          </p>
               <div className="mt-4 pt-4 border-t border-white/20">
                 <p className="text-blue-200 font-semibold text-sm">✦ Building Trust Through Transparency</p>
               </div>
