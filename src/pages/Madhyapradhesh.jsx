@@ -381,7 +381,7 @@ export default function MadhyaPradeshLanding() {
               </div>
               <p className="text-gray-100 leading-relaxed">
                 To go beyond being just a platform and become a powerful movement that transforms
-                the investment ecosystem across Madhya Pradesh, creating lasting wealth for every investor.
+                the investment ecosystem across india creating lasting wealth for every investor.
               </p>
               <div className="mt-4 pt-4 border-t border-white/20">
                 <p className="text-green-200 font-semibold text-sm">✦ Empowering Financial Future</p>
@@ -402,7 +402,7 @@ export default function MadhyaPradeshLanding() {
                 <h3 className="text-2xl md:text-3xl font-bold text-white">Our Mission</h3>
               </div>
               <p className="text-gray-100 leading-relaxed">
-                To empower startups and investors across Madhya Pradesh through structured, transparent,
+                To empower startups and investors across through structured, transparent,
                 and guided investment opportunities, ensuring sustainable growth and mutual success.
               </p>
               <div className="mt-4 pt-4 border-t border-white/20">
@@ -437,7 +437,7 @@ export default function MadhyaPradeshLanding() {
               Why Choose <span className="text-green-200">iQueCap</span>
             </h2>
             <p className="text-gray-100 max-w-2xl mx-auto">
-              Discover the benefits that make us the preferred investment platform in Madhya Pradesh
+              Discover the benefits that make us the preferred investment platform in india
             </p>
           </div>
 
@@ -496,7 +496,7 @@ export default function MadhyaPradeshLanding() {
                   Rated 4.8 out of 5 stars
                 </p>
                 <p className="text-xs md:text-sm text-gray-200">
-                  Based on 150+ reviews from investors across Madhya Pradesh
+                  Based on 150+ reviews from investors across India
                 </p>
               </div>
             </div>
@@ -650,7 +650,7 @@ export default function MadhyaPradeshLanding() {
             </div>
           </div>
           <p className="text-xs text-gray-300 mt-6">
-            © 2026 iQueCap Madhya Pradesh - Empowering Madhya Pradesh Investors
+            © 2026 iQueCap - Empowering  Investors
           </p>
         </div>
       </section>
