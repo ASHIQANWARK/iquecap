@@ -31,6 +31,20 @@ const branches = [
     shortDesc: "Metropolitan Excellence in Healthcare",
     route: "/maharashtra" // Changed to route path
   },
+  {
+    id: "MadhyaPradhesh",
+    state: "MadhyaPradhesh",
+    logo: "/assets/images/maharashtra.png",
+    shortDesc: "Metropolitan Excellence in Healthcare",
+    route: "/MadhyaPradhesh" // Changed to route path
+  },
+  {
+    id: "Punjab",
+    state: "Punjab",
+    logo: "/assets/images/maharashtra.png",
+    shortDesc: "Metropolitan Excellence in Healthcare",
+    route: "/Punjab" // Changed to route path
+  },
 ];
 
 export default function BranchesSection() {

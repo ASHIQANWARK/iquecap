@@ -16,7 +16,7 @@ import link2 from "../assets/images/link-box-2.png";
 import link1 from "../assets/images/link-box-1.png";
 import footer from "../assets/images/image-about-ls.jpg";
 
-export default function KarnatakaLanding() {
+export default function KarnatakaBranch() {
   const navigate = useNavigate();
 
   const EnquiryForm = () => {
