@@ -78,7 +78,7 @@ const CapAdvisor = () => {
     if (note) message += `Note: ${note}\n`;
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/+919035093820?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/+919036913399?text=${encodedMessage}`, "_blank");
   };
 
   const handleSubmit = (e) => {
@@ -895,7 +895,7 @@ const CapAdvisor = () => {
                       href="tel:+919035093820"
                       className="text-gray-600 hover:text-emerald-700 transition-colors"
                     >
-                      +91 90350 93820
+                      +919036913399
                     </a>
                   </div>
                 </div>

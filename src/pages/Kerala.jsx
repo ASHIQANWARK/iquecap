@@ -156,29 +156,30 @@ export default function KeralaBranch() {
             </div>
           </div>
 
-          {/* Sidebar */}
-          <div className="space-y-6">
+         {/* Sidebar */}
+<div className="space-y-6">
 
-            {/* Quick Facts */}
-            <div className="bg-white rounded-2xl shadow-xl p-6">
-              <h3 className="text-xl font-bold text-gray-800 mb-4">
-                Quick Facts
-              </h3>
-              <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Location</span>
-                  <span className="font-semibold">Kerala, India</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Platform Type</span>
-                  <span className="font-semibold">Private Equity & Startup Investing</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Focus</span>
-                  <span className="font-semibold">Early-Stage & Private Companies</span>
-                </div>
-              </div>
-            </div>
+  {/* Quick Facts */}
+  <div className="bg-white rounded-2xl shadow-xl p-6">
+    <h3 className="text-xl font-bold text-gray-800 mb-4">
+      Quick Facts
+    </h3>
+    <div className="space-y-3">
+      <div className="flex justify-between items-start">
+        <span className="text-gray-600 w-32">Location:</span>
+        <span className="font-semibold text-gray-800 text-right">Kerala, India</span>
+      </div>
+      <div className="flex justify-between items-start">
+        <span className="text-gray-600 w-32">Platform Type:</span>
+        <span className="font-semibold text-gray-800 text-right">Private Equity & Startup Investing</span>
+      </div>
+      <div className="flex justify-between items-start">
+        <span className="text-gray-600 w-32">Focus:</span>
+        <span className="font-semibold text-gray-800 text-right">Early-Stage & Private Companies</span>
+      </div>
+    </div>
+  </div>
+
 
             {/* WhatsApp Enquiry */}
             <div className="bg-white rounded-2xl shadow-xl p-6 text-center">
