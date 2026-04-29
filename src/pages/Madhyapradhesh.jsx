@@ -247,7 +247,7 @@ export default function MadhyaPradeshLanding() {
             <p className="text-gray-600 mb-6">
               Your enquiry has been submitted successfully.
               <br />
-              Our iQueCap MP team will reach out shortly.
+              Our iQueCap  team will reach out shortly.
             </p>
             <button
               onClick={closePopup}
@@ -298,7 +298,7 @@ export default function MadhyaPradeshLanding() {
           >
             <div className="backdrop-blur-lg bg-white/10 border border-white/20 p-5 md:p-6 rounded-2xl shadow-2xl w-full max-w-sm">
               <h3 className="text-lg md:text-xl font-semibold mb-4 text-white text-center">
-                Enquire Now with iQueCap MP
+                Enquire Now with iQueCap 
               </h3>
               <form onSubmit={handleSubmit}>
                 <input
@@ -360,7 +360,7 @@ export default function MadhyaPradeshLanding() {
               About <span className="text-green-200">iQueCap</span>
             </h2>
             <p className="text-gray-100 max-w-3xl mx-auto text-base">
-              iQueCap is a trusted startup investment platform, connecting investors across Madhya Pradesh
+              iQueCap is a trusted startup investment platform, connecting investors across
               with high-potential startups.
             </p>
           </div>
