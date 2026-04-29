@@ -1,17 +1,13 @@
-// MadhyaPradeshLanding.js
+// MadhyaPradeshLanding.jsx
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   FaStar,
-  FaCheckCircle,
-  FaEnvelope,
-  FaPhoneAlt,
+  FaEye,
+  FaBullseye,
   FaUserPlus,
   FaThList,
   FaHandHoldingUsd,
   FaChartLine,
-  FaEye,
-  FaBullseye,
   FaShieldAlt,
   FaUsers,
   FaFileAlt,
@@ -21,129 +17,73 @@ import {
   FaNetworkWired,
   FaRocket,
   FaLightbulb,
+  FaEnvelope,
+  FaPhoneAlt,
+  FaCheckCircle,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import googleLogo from "../assets/images/icons8-google-logo-48.png";
-import why from "../assets/images/2285.jpg";
+import why from "../assets/images/banner-one-2.png";
 import footer from "../assets/images/image-about-ls.jpg";
 import how from "../assets/images/banner-one-2.png";
 
 export default function MadhyaPradeshLanding() {
-  const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    place: "",
+  });
 
-  const EnquiryForm = () => {
-    const [form, setForm] = useState({
-      name: "",
-      email: "",
-      phone: "",
-      place: "",
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-
-    const handleChange = (e) => {
-      setForm({ ...form, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-
-      if (!form.name || !form.email || !form.phone || !form.place) {
-        alert("Please fill all fields");
-        return;
-      }
-
-      setIsSubmitting(true);
-
-      try {
-        const formData = new FormData();
-        formData.append("name", form.name);
-        formData.append("email", form.email);
-        formData.append("phone", form.phone);
-        formData.append("place", form.place);
-
-        await fetch(
-          "https://script.google.com/macros/s/AKfycbyjypM1LIG71oaBHPH0e4D4ps2XgMbN_2XfZSHW-lZFrk8lciofEcVXHXerKmrcC7d-DQ/exec",
-          {
-            method: "POST",
-            body: formData,
-          },
-        );
-
-        // SUCCESS (no redirect)
-        alert("Form submitted successfully ✅");
-
-        setForm({
-          name: "",
-          email: "",
-          phone: "",
-          place: "",
-        });
-      } catch (error) {
-        console.error(error);
-        alert("Submission failed ❌");
-      } finally {
-        setIsSubmitting(false);
-      }
-    };
-
-    return (
-      <div className="w-full flex justify-center md:justify-end mt-8 md:mt-0">
-        <div className="backdrop-blur-lg bg-white/10 border border-white/20 p-5 md:p-6 rounded-2xl shadow-2xl w-full max-w-sm">
-          <h3 className="text-base md:text-lg font-semibold mb-4 text-center">
-            Enquire Now with iQueCap MP
-          </h3>
-
-          <form onSubmit={handleSubmit}>
-            <input
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              placeholder="Enter Your Name"
-              className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-3 text-white placeholder:text-white/70"
-              disabled={isSubmitting}
-              required
-            />
-            <input
-              name="email"
-              type="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="Enter Your Email"
-              className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-3 text-white placeholder:text-white/70"
-              disabled={isSubmitting}
-              required
-            />
-            <input
-              name="phone"
-              type="tel"
-              value={form.phone}
-              onChange={handleChange}
-              placeholder="Enter Your Phone Number"
-              className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-3 text-white placeholder:text-white/70"
-              disabled={isSubmitting}
-              required
-            />
-            <input
-              name="place"
-              value={form.place}
-              onChange={handleChange}
-              placeholder="Enter Your Location"
-              className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-4 text-white placeholder:text-white/70"
-              disabled={isSubmitting}
-              required
-            />
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-green-400 text-black py-3 rounded-lg font-semibold hover:bg-green-300 transition disabled:opacity-50"
-            >
-              {isSubmitting ? "Submitting..." : "Submit"}
-            </button>
-          </form>
-        </div>
-      </div>
-    );
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!formData.name || !formData.email || !formData.phone || !formData.place) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const formPayload = new FormData();
+      formPayload.append("name", formData.name);
+      formPayload.append("email", formData.email);
+      formPayload.append("phone", formData.phone);
+      formPayload.append("place", formData.place);
+
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbyjypM1LIG71oaBHPH0e4D4ps2XgMbN_2XfZSHW-lZFrk8lciofEcVXHXerKmrcC7d-DQ/exec",
+        {
+          method: "POST",
+          body: formPayload,
+          mode: "no-cors",
+        }
+      );
+
+      setShowPopup(true);
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        place: "",
+      });
+    } catch (error) {
+      console.error(error);
+      alert("Submission failed ❌");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const closePopup = () => setShowPopup(false);
 
   const reviews = [
     {
@@ -192,7 +132,6 @@ export default function MadhyaPradeshLanding() {
     },
   ];
 
-  // Why Choose Services - Vertical Cards
   const whyServices = [
     {
       icon: <FaShieldAlt />,
@@ -252,143 +191,253 @@ export default function MadhyaPradeshLanding() {
     },
   ];
 
-  return (
-    <div className="font-sans text-white w-full overflow-x-hidden">
-      {/* ================= HERO ================= */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 pb-12 md:py-0 md:pt-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#012f33] via-[#01454b] to-[#021f22]" />
-        <div className="absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-green-500/20 blur-[120px] rounded-full top-[-100px] left-[-100px]" />
-        <div className="absolute w-[300px] h-[300px] md:w-[400px] md:h-[400px] bg-teal-400/20 blur-[120px] rounded-full bottom-[-100px] right-[-100px]" />
+  const steps = [
+    {
+      icon: <FaUserPlus />,
+      title: "Create Account",
+      desc: "Sign up with basic details & complete KYC verification",
+      time: "5 mins",
+      step: 1,
+    },
+    {
+      icon: <FaThList />,
+      title: "Explore Portfolios",
+      desc: "Browse through vetted startups & investment plans",
+      time: "10 mins",
+      step: 2,
+    },
+    {
+      icon: <FaHandHoldingUsd />,
+      title: "Make Investment",
+      desc: "Choose amount & invest securely with one click",
+      time: "2 mins",
+      step: 3,
+    },
+    {
+      icon: <FaChartLine />,
+      title: "Track Returns",
+      desc: "Monitor growth & get monthly payouts",
+      time: "Ongoing",
+      step: 4,
+    },
+  ];
 
-        <div className="relative z-10 max-w-6xl w-full grid md:grid-cols-2 gap-8 md:gap-6 items-center">
-          <div className="space-y-4 md:space-y-5 text-center md:text-left">
-            <p className="text-xs md:text-sm lg:text-base text-gray-200 tracking-wide">
-              Ready to Earn Up to 60% Returns Faster with iQueCap ?
+  const stats = [
+    { value: "2000+", label: "Active Investors" },
+    { value: "30+", label: "Startups Funded" },
+    { value: "200+", label: "Team Members" },
+    { value: "₹500Cr+", label: "Funds Managed" },
+  ];
+
+  return (
+    <div className="font-sans w-full overflow-x-hidden bg-gradient-to-l from-[#0d9866] to-[#01454b]">
+      {/* ================= THANK YOU POPUP ================= */}
+      {showPopup && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 px-4">
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ type: "spring", duration: 0.4 }}
+            className="bg-white rounded-2xl max-w-md w-full p-6 md:p-8 text-center shadow-2xl"
+          >
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <FaCheckCircle className="text-green-500 text-3xl" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-800 mb-2">Thank You! ✅</h3>
+            <p className="text-gray-600 mb-6">
+              Your enquiry has been submitted successfully.
+              <br />
+              Our iQueCap MP team will reach out shortly.
             </p>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+            <button
+              onClick={closePopup}
+              className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-full transition shadow-md"
+            >
+              Got it
+            </button>
+          </motion.div>
+        </div>
+      )}
+
+      {/* ================= HERO SECTION ================= */}
+      <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 pb-12 md:py-0 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-l from-[#0d9866] to-[#01454b]" />
+        <div className="absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-green-300/20 blur-[120px] rounded-full top-[-100px] left-[-100px]" />
+        <div className="absolute w-[300px] h-[300px] md:w-[400px] md:h-[400px] bg-teal-300/20 blur-[120px] rounded-full bottom-[-100px] right-[-100px]" />
+
+        <div className="relative z-10 max-w-6xl w-full grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-5 text-center md:text-left"
+          >
+            <p className="text-sm md:text-base text-gray-100 tracking-wide">
+              Ready to Earn Up to 60% Returns Faster with iQueCap?
+            </p>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
               Invest smart, invest securely <br />
-              with{" "}
-              <span className="text-green-300">iQueCap</span>
+              with <span className="text-green-200">iQueCap</span>
             </h1>
-            <ul className="space-y-1.5 md:space-y-2 text-gray-300 text-xs sm:text-sm md:text-base">
-              <li>✔ Trusted by top investors</li>
-              <li>✔ Grow Your wealth Plan Your Future</li>
+            <ul className="space-y-2 text-gray-100 text-sm sm:text-base">
+              <li className="flex items-center gap-2 justify-center md:justify-start">
+                <FaCheckCircle className="text-green-300" /> Trusted by top investors
+              </li>
+              <li className="flex items-center gap-2 justify-center md:justify-start">
+                <FaCheckCircle className="text-green-300" /> Grow Your wealth Plan Your Future
+              </li>
             </ul>
-          </div>
-          <EnquiryForm />
+          </motion.div>
+
+          {/* Enquiry Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center md:justify-end mt-8 md:mt-0"
+          >
+            <div className="backdrop-blur-lg bg-white/10 border border-white/20 p-5 md:p-6 rounded-2xl shadow-2xl w-full max-w-sm">
+              <h3 className="text-lg md:text-xl font-semibold mb-4 text-white text-center">
+                Enquire Now with iQueCap MP
+              </h3>
+              <form onSubmit={handleSubmit}>
+                <input
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Enter Your Name"
+                  className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-3 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-green-300"
+                  disabled={isSubmitting}
+                  required
+                />
+                <input
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Enter Your Email"
+                  className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-3 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-green-300"
+                  disabled={isSubmitting}
+                  required
+                />
+                <input
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Enter Your Phone Number"
+                  className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-3 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-green-300"
+                  disabled={isSubmitting}
+                  required
+                />
+                <input
+                  name="place"
+                  value={formData.place}
+                  onChange={handleChange}
+                  placeholder="Enter Your Location"
+                  className="w-full bg-white/20 border border-white/30 p-3 rounded-lg mb-4 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-green-300"
+                  disabled={isSubmitting}
+                  required
+                />
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-green-400 hover:bg-green-300 text-gray-900 py-3 rounded-lg font-semibold transition disabled:opacity-50"
+                >
+                  {isSubmitting ? "Submitting..." : "Submit"}
+                </button>
+              </form>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* ================= ABOUT with VISION & MISSION CARDS ================= */}
-      <section className="py-12 md:py-20 px-4 sm:px-6 bg-white">
+      {/* ================= ABOUT SECTION ================= */}
+      <section className="py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-l from-[#0d9866] to-[#01454b]">
         <div className="max-w-6xl mx-auto">
-          {/* About Title */}
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              About{" "}
-              <span className="text-green-600">iQueCap</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+              About <span className="text-green-200">iQueCap</span>
             </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto text-sm sm:text-base">
-              iQueCap  is a trusted startup investment platform, connecting investors across india
+            <p className="text-gray-100 max-w-3xl mx-auto text-base">
+              iQueCap is a trusted startup investment platform, connecting investors across Madhya Pradesh
               with high-potential startups.
             </p>
           </div>
 
-          {/* Vision & Mission Cards - Side by Side */}
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-12">
-            {/* Vision Card */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-green-100"
+              viewport={{ once: true }}
+              className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-lg border border-white/20"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                  <FaEye className="text-green-600 text-xl" />
+                <div className="w-12 h-12 bg-green-500/30 rounded-full flex items-center justify-center">
+                  <FaEye className="text-green-200 text-xl" />
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-gray-800">
-                  Our Vision
-                </h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-white">Our Vision</h3>
               </div>
-              <p className="text-gray-700 leading-relaxed text-sm md:text-base">
-                To go beyond being just a platform and become a powerful
-                movement that transforms the investment ecosystem across
-               , creating lasting wealth for every investor.
+              <p className="text-gray-100 leading-relaxed">
+                To go beyond being just a platform and become a powerful movement that transforms
+                the investment ecosystem across Madhya Pradesh, creating lasting wealth for every investor.
               </p>
-              <div className="mt-4 pt-4 border-t border-green-200">
-                <p className="text-green-600 font-semibold text-sm">
-                  ✦ Empowering  Financial Future
-                </p>
+              <div className="mt-4 pt-4 border-t border-white/20">
+                <p className="text-green-200 font-semibold text-sm">✦ Empowering Financial Future</p>
               </div>
             </motion.div>
 
-            {/* Mission Card */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100"
+              viewport={{ once: true }}
+              className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-lg border border-white/20"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <FaBullseye className="text-blue-600 text-xl" />
+                <div className="w-12 h-12 bg-blue-500/30 rounded-full flex items-center justify-center">
+                  <FaBullseye className="text-blue-200 text-xl" />
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-gray-800">
-                  Our Mission
-                </h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-white">Our Mission</h3>
               </div>
-              <p className="text-gray-700 leading-relaxed text-sm md:text-base">
-                To empower startups and investors across through
-                structured, transparent, and guided investment opportunities,
-                ensuring sustainable growth and mutual success.
+              <p className="text-gray-100 leading-relaxed">
+                To empower startups and investors across Madhya Pradesh through structured, transparent,
+                and guided investment opportunities, ensuring sustainable growth and mutual success.
               </p>
-              <div className="mt-4 pt-4 border-t border-blue-200">
-                <p className="text-blue-600 font-semibold text-sm">
-                  ✦ Building Trust Through Transparency
-                </p>
+              <div className="mt-4 pt-4 border-t border-white/20">
+                <p className="text-blue-200 font-semibold text-sm">✦ Building Trust Through Transparency</p>
               </div>
             </motion.div>
           </div>
 
-          {/* Stats Cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { value: "2000+", label: "Active Investors" },
-              { value: "30+", label: "Startups Funded" },
-              { value: "200+", label: "Team Members" },
-              { value: "₹500Cr+", label: "Funds Managed" },
-            ].map((stat, i) => (
+            {stats.map((stat, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="text-center p-4 bg-gray-50 rounded-xl"
+                viewport={{ once: true }}
+                className="text-center p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20"
               >
-                <p className="text-2xl md:text-3xl font-bold text-green-600">
-                  {stat.value}
-                </p>
-                <p className="text-xs sm:text-sm text-gray-600 mt-1">
-                  {stat.label}
-                </p>
+                <p className="text-2xl md:text-3xl font-bold text-green-200">{stat.value}</p>
+                <p className="text-xs sm:text-sm text-gray-200 mt-1">{stat.label}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ================= WHY CHOOSE - SMALL VERTICAL CARDS ================= */}
-      <section className="py-12 md:py-20 px-4 sm:px-6 bg-gradient-to-br from-gray-50 to-gray-100">
+      {/* ================= WHY CHOOSE SECTION ================= */}
+      <section className="py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-l from-[#0d9866] to-[#01454b]">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10 md:mb-14">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Why Choose{" "}
-              <span className="text-green-600">iQueCap</span>
+          <div className="text-center mb-12 md:mb-14">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+              Why Choose <span className="text-green-200">iQueCap</span>
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
-              Discover the benefits that make us the preferred investment
-              platform in India
+            <p className="text-gray-100 max-w-2xl mx-auto">
+              Discover the benefits that make us the preferred investment platform in Madhya Pradesh
             </p>
           </div>
 
@@ -399,24 +448,19 @@ export default function MadhyaPradeshLanding() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.05 }}
+                viewport={{ once: true }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="bg-white rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 group"
+                className="bg-white/10 backdrop-blur-sm rounded-xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 group cursor-pointer"
               >
                 <div
                   className={`w-14 h-14 bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
                 >
                   <span className="text-white text-2xl">{service.icon}</span>
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-2">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {service.description}
-                </p>
-                <div className="mt-3 pt-3 border-t border-gray-100">
-                  <span className="text-green-600 text-xs font-semibold">
-                    Learn more →
-                  </span>
+                <h3 className="text-lg md:text-xl font-bold text-white mb-2">{service.title}</h3>
+                <p className="text-gray-200 text-sm leading-relaxed">{service.description}</p>
+                <div className="mt-3 pt-3 border-t border-white/20">
+                  <span className="text-green-200 text-xs font-semibold">Learn more →</span>
                 </div>
               </motion.div>
             ))}
@@ -424,8 +468,8 @@ export default function MadhyaPradeshLanding() {
         </div>
       </section>
 
-      {/* ================= GOOGLE REVIEWS ================= */}
-      <section className="py-12 md:py-20 px-4 sm:px-6 overflow-hidden bg-white">
+      {/* ================= GOOGLE REVIEWS SECTION ================= */}
+      <section className="py-16 md:py-20 px-4 sm:px-6 overflow-hidden bg-gradient-to-l from-[#0d9866] to-[#01454b]">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 items-start">
             <div className="space-y-4 md:space-y-6 sticky top-8">
@@ -433,27 +477,25 @@ export default function MadhyaPradeshLanding() {
                 <img
                   src={googleLogo}
                   alt="Google Reviews"
-                  className="w-10 h-10 md:w-12 md:h-12 object-contain"
+                  className="w-10 h-10 md:w-12 md:h-12 object-contain bg-white rounded-full p-1"
                 />
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">
                   Google Reviews
                 </h2>
               </div>
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
-                  <span className="text-3xl md:text-4xl font-bold text-gray-900">
-                    4.8
-                  </span>
-                  <div className="flex text-yellow-400">
+                  <span className="text-3xl md:text-4xl font-bold text-white">4.8</span>
+                  <div className="flex text-yellow-400 gap-1">
                     {[...Array(5)].map((_, i) => (
                       <FaStar key={i} className="w-5 h-5 md:w-6 md:h-6" />
                     ))}
                   </div>
                 </div>
-                <p className="text-sm md:text-base text-gray-600">
+                <p className="text-sm md:text-base text-gray-200">
                   Rated 4.8 out of 5 stars
                 </p>
-                <p className="text-xs md:text-sm text-gray-500">
+                <p className="text-xs md:text-sm text-gray-200">
                   Based on 150+ reviews from investors across Madhya Pradesh
                 </p>
               </div>
@@ -461,14 +503,11 @@ export default function MadhyaPradeshLanding() {
 
             <div className="relative">
               <div className="overflow-hidden">
-                <div
-                  className="animate-scroll-horizontal flex gap-6 py-4"
-                  style={{ width: "fit-content" }}
-                >
+                <div className="animate-scroll-horizontal flex gap-6 py-4" style={{ width: "fit-content" }}>
                   {[...reviews, ...reviews].map((item, i) => (
                     <div
                       key={i}
-                      className="flex-shrink-0 w-80 md:w-96 p-5 rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 bg-white"
+                      className="flex-shrink-0 w-80 md:w-96 p-5 rounded-2xl border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 bg-white/10 backdrop-blur-sm"
                     >
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex text-yellow-400 gap-1">
@@ -476,42 +515,34 @@ export default function MadhyaPradeshLanding() {
                             <FaStar
                               key={si}
                               size={16}
-                              className={
-                                si < item.rating
-                                  ? "text-yellow-400"
-                                  : "text-gray-300"
-                              }
+                              className={si < item.rating ? "text-yellow-400" : "text-gray-400"}
                             />
                           ))}
                         </div>
                         {item.isNew && (
-                          <span className="bg-green-100 text-green-700 text-xs px-2.5 py-1 rounded-full font-semibold">
+                          <span className="bg-green-500/30 text-green-200 text-xs px-2.5 py-1 rounded-full font-semibold border border-green-300">
                             NEW
                           </span>
                         )}
                       </div>
-                      <p className="text-sm md:text-base text-gray-700 leading-relaxed mb-3 line-clamp-4">
+                      <p className="text-sm md:text-base text-gray-100 leading-relaxed mb-3 line-clamp-4">
                         "{item.review}"
                       </p>
-                      <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
+                      <div className="flex items-center justify-between mt-3 pt-3 border-t border-white/20">
                         <div>
-                          <p className="font-semibold text-gray-900 text-sm">
-                            {item.name}
-                          </p>
+                          <p className="font-semibold text-white text-sm">{item.name}</p>
                           {item.location && (
-                            <p className="text-xs text-gray-500">
-                              {item.location}
-                            </p>
+                            <p className="text-xs text-gray-300">{item.location}</p>
                           )}
                         </div>
-                        <p className="text-xs text-gray-400">{item.time}</p>
+                        <p className="text-xs text-gray-300">{item.time}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
-              <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+              <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0d9866] to-transparent pointer-events-none"></div>
+              <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#01454b] to-transparent pointer-events-none"></div>
             </div>
           </div>
         </div>
@@ -523,87 +554,49 @@ export default function MadhyaPradeshLanding() {
         `}</style>
       </section>
 
-      {/* ================= HOW IT WORKS - VERTICAL TIMELINE VARIANT ================= */}
-      <section className="py-12 md:py-20 px-4 sm:px-6 bg-gradient-to-br from-gray-50 to-white">
+      {/* ================= HOW IT WORKS SECTION ================= */}
+      <section className="py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-l from-[#0d9866] to-[#01454b]">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
             className="text-center mb-12 md:mb-16"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-              How <span className="text-green-600">iQueCap</span>{" "}
-              Works
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+              How <span className="text-green-200">iQueCap</span> Works
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
+            <p className="text-gray-200 max-w-2xl mx-auto text-sm sm:text-base">
               Your journey to financial freedom starts here
             </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Left Side - Timeline Steps */}
             <div className="space-y-8">
-              {[
-                {
-                  icon: <FaUserPlus />,
-                  title: "Create Account",
-                  desc: "Sign up with basic details & complete KYC verification",
-                  time: "5 mins",
-                  step: 1,
-                },
-                {
-                  icon: <FaThList />,
-                  title: "Explore Portfolios",
-                  desc: "Browse through vetted startups & investment plans",
-                  time: "10 mins",
-                  step: 2,
-                },
-                {
-                  icon: <FaHandHoldingUsd />,
-                  title: "Make Investment",
-                  desc: "Choose amount & invest securely with one click",
-                  time: "2 mins",
-                  step: 3,
-                },
-                {
-                  icon: <FaChartLine />,
-                  title: "Track Returns",
-                  desc: "Monitor growth & get monthly payouts",
-                  time: "Ongoing",
-                  step: 4,
-                },
-              ].map((step, i) => (
+              {steps.map((step, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="relative pl-8 pb-8 border-l-4 border-green-200 last:border-0 group"
+                  viewport={{ once: true }}
+                  className="relative pl-8 pb-8 border-l-4 border-green-400 last:border-0 group"
                 >
-                  {/* Step Circle */}
-                  <div className="absolute left-[-12px] top-0 w-6 h-6 bg-green-500 rounded-full border-4 border-white shadow-md group-hover:scale-125 transition-transform"></div>
-
-                  {/* Step Number */}
-                  <div className="absolute left-[-28px] top-0 text-xs font-bold text-green-600">
+                  <div className="absolute left-[-12px] top-0 w-6 h-6 bg-green-400 rounded-full border-4 border-[#0d9866] shadow-md group-hover:scale-125 transition-transform"></div>
+                  <div className="absolute left-[-28px] top-0 text-xs font-bold text-green-200">
                     {String(step.step).padStart(2, "0")}
                   </div>
-
-                  {/* Content */}
-                  <div className="bg-white rounded-xl p-5 shadow-sm hover:shadow-lg transition-all ml-4">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 shadow-lg hover:shadow-xl transition-all ml-4 border border-white/20">
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600 text-lg">
+                      <div className="w-10 h-10 bg-green-500/30 rounded-lg flex items-center justify-center text-green-200 text-lg">
                         {step.icon}
                       </div>
-                      <h3 className="font-bold text-gray-800 text-lg">
-                        {step.title}
-                      </h3>
+                      <h3 className="font-bold text-white text-lg">{step.title}</h3>
                     </div>
-                    <p className="text-gray-600 text-sm mb-2 ml-12">
-                      {step.desc}
-                    </p>
+                    <p className="text-gray-200 text-sm mb-2 ml-12">{step.desc}</p>
                     <div className="flex items-center gap-2 ml-12">
-                      <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
+                      <span className="text-xs bg-white/20 text-gray-200 px-2 py-1 rounded-full">
                         ⏱ {step.time}
                       </span>
                     </div>
@@ -612,40 +605,35 @@ export default function MadhyaPradeshLanding() {
               ))}
             </div>
 
-            {/* Right Side - Image with Stats */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="sticky top-8"
             >
-              <div className="relative  overflow-hidden ">
-                <img
-                  src={how} // Replace with your image
-                  alt="Investment Journey"
-                  className="w-full h-auto object-cover"
-                />
-
-                {/* Floating Cards */}
-                <div className="absolute top-4 right-4 bg-white rounded-lg p-2 shadow-lg animate-bounce"></div>
-              </div>
+              <img
+                src={why}
+                alt="Investment Journey"
+                className="w-full h-auto rounded-2xl shadow-xl object-cover border border-white/20"
+              />
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* ================= FOOTER BANNER ================= */}
-      <section className="relative min-h-[300px] md:h-[400px] lg:h-[450px] flex items-center justify-center text-center text-white overflow-hidden">
+      <section className="relative min-h-[300px] md:h-[400px] flex items-center justify-center text-center text-white overflow-hidden">
         <img
           src={footer}
           alt="Footer"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-[#0b2f33]/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-l from-[#0d9866]/90 to-[#01454b]/90"></div>
         <div className="relative z-10 max-w-3xl px-4 sm:px-6">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold mb-3 sm:mb-4 leading-tight">
             Ready to Grow Your Wealth <br className="hidden sm:block" />
-            with iQueCap ?
+            with iQueCap?
           </h2>
           <p className="text-gray-200 mb-4 sm:mb-6 md:mb-8 text-xs sm:text-sm md:text-base">
             Take the first step – invest smart, invest simple.
