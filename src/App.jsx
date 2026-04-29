@@ -53,7 +53,7 @@ function App() {
         <Route path="/tamil" element={<TamilNaduBranch />} />
         <Route path="/karnataka" element={<KarnatakaBranch />} />
         <Route path="/Maharashtra" element={<MaharashtraBranch />} />
-        <Route path="/MadhyaPradhesh" element={<MadhyaPradeshBranch />} />
+        <Route path="/MadhyaPradesh" element={<MadhyaPradeshBranch />} />
         <Route path="/Punjab" element={<PunjabLanding />} />
         <Route path="/thank-you" element={<ThankYou />} />
       </Routes>

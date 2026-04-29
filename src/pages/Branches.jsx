@@ -36,7 +36,7 @@ const branches = [
     state: "MadhyaPradhesh",
     logo: "/assets/images/maharashtra.png",
     shortDesc: "Metropolitan Excellence in Healthcare",
-    route: "/MadhyaPradhesh" // Changed to route path
+    route: "/MadhyaPradesh" // Changed to route path
   },
   {
     id: "Punjab",

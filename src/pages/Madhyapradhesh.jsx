@@ -273,7 +273,7 @@ export default function MadhyaPradeshLanding() {
             className="space-y-5 text-center md:text-left"
           >
             <p className="text-sm md:text-base text-gray-100 tracking-wide">
-              Ready to Earn Up to 60% Returns Faster with iQueCap?
+              Ready to Invest in High Potential Startups with iQueCap?
             </p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
               Invest smart, invest securely <br />
