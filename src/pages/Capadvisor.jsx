@@ -171,7 +171,7 @@ const CapAdvisor = () => {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://forms.gle/5ydJrcSRdT59B2Zm8"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfvjYsMgij787z6l5P1KDcRt8Bnq-mS06L5R1C2dc7hB8tNwA/viewform?usp=publish-editor"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center bg-white text-emerald-700 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-emerald-50 transition-all duration-300"
