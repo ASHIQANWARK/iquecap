@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function MaharashtraBranch() {
 
-  const whatsappNumber = "919035465958";
+  const whatsappNumber = "919187190945";
   const whatsappMessage =
     "Hello IqueCap Maharashtra Team, I would like to know more about investment opportunities.";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
@@ -196,10 +196,10 @@ export default function MaharashtraBranch() {
               </a>
 
               <a
-                href="tel:+919035465958"
+                href="tel:+919187190945"
                 className="block mt-4 text-[#0d9866] font-semibold"
               >
-                Call: 9035465958
+                Call: 9187190945
               </a>
             </div>
 
