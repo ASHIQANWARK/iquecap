@@ -20,6 +20,7 @@ import KeralaBranch from "./pages/Kerala";
 import ThankYou from "./pages/Thankyou";
 import MadhyaPradeshBranch from "./pages/Madhyapradhesh";
 import PunjabLanding from "./pages/Punjab";
+import Disclaimer from "./pages/Disclaimer";
 
 
 const ScrollToTop = () => {
@@ -56,6 +57,7 @@ function App() {
         <Route path="/Startups" element={<MadhyaPradeshBranch />} />
         <Route path="/Punjab" element={<PunjabLanding />} />
         <Route path="/thank-you" element={<ThankYou />} />
+        <Route path="/disclaimer" element={<Disclaimer />} />
       </Routes>
       <Footer />
     </Router>
