@@ -54,35 +54,7 @@ const Disclaimer = () => {
           ))}
         </div>
 
-        {/* Footer Note */}
-        <motion.div
-          className="mt-10 bg-emerald-50 border border-emerald-200 rounded-2xl p-6"
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h3 className="text-lg font-semibold text-emerald-800 mb-3">
-            Website Footer Disclosure
-          </h3>
-
-          <p className="text-gray-700 leading-relaxed">
-            iQue Cap is a startup-investor discovery and networking platform.
-            Information shared here is for discovery purposes only. Startup
-            funding is subject to market dynamics. iQue Cap operates as a
-            discovery and networking platform, not a regulated financial entity.
-            For queries —{" "}
-            <a
-              href="mailto:support@iquecap.com"
-              className="text-emerald-700 font-medium hover:underline"
-            >
-              support@iquecap.com
-            </a>
-          </p>
-
-          <p className="mt-4 text-sm text-gray-500">
-            Last updated: May 2026 · support@iquecap.com
-          </p>
-        </motion.div>
+       
       </motion.div>
     </div>
   );

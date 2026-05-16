@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { MapPin, Phone, Mail, Globe, Building, CheckCircle, AlertCircle } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Globe,
+  Building,
+  CheckCircle,
+  AlertCircle,
+} from "lucide-react";
 import { FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
 
 const Contact = () => {
@@ -12,13 +20,22 @@ const Contact = () => {
     investmentRange: "",
     preferredLocation: "",
     preferredLanguage: "",
+    consent: false,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
+  const [submitStatus, setSubmitStatus] = useState({
+    type: "",
+    message: "",
+  });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value, type, checked } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
   };
 
   const investmentOptions = [
@@ -28,7 +45,7 @@ const Contact = () => {
     "₹25 Lakhs - ₹50 Lakhs",
     "₹50 Lakhs - ₹1 Crore",
     "₹1 Crore - ₹5 Crores",
-    "₹5 Crores+"
+    "₹5 Crores+",
   ];
 
   const locationOptions = [
@@ -42,7 +59,7 @@ const Contact = () => {
     "Other - North India",
     "Other - East India",
     "Other - West India",
-    "International"
+    "International",
   ];
 
   const languageOptions = [
@@ -54,33 +71,20 @@ const Contact = () => {
     "English",
     "Marathi",
     "Gujarati",
-    "Bengali"
+    "Bengali",
   ];
-
-  // Google Sheets API URL (backup storage)
-  const GOOGLE_SHEETS_API_URL = "https://script.google.com/macros/s/AKfycbzi221GMkR3XgG59Fii-qdyv0cXdPxPu25Do4XfYegwQXhl5zlMx3onFfCwCF0AR3Zk/exec";
-
-  // Send data to Google Sheets (backup)
-  const sendToGoogleSheets = async (data) => {
-    try {
-      const response = await fetch(GOOGLE_SHEETS_API_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      console.log("Backup saved to Google Sheets");
-      return true;
-    } catch (error) {
-      console.error("Google Sheets error:", error);
-      return false;
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!formData.consent) {
+      setSubmitStatus({
+        type: "error",
+        message: "Please accept the consent checkbox to continue.",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus({ type: "", message: "" });
 
@@ -94,12 +98,9 @@ const Contact = () => {
         investmentRange: formData.investmentRange,
         preferredLocation: formData.preferredLocation,
         preferredLanguage: formData.preferredLanguage,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
 
-      console.log("Sending data:", data);
-
-      // Create WhatsApp message
       const whatsappMessage = `🆕 *NEW INVESTMENT LEAD* 🆕
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 👤 *Name:* ${data.name}
@@ -114,22 +115,18 @@ const Contact = () => {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 🔔 *Action Required: Contact lead within 24 hours*`;
 
-      // Encode for WhatsApp URL
       const encodedMessage = encodeURIComponent(whatsappMessage);
+
       const whatsappUrl = `https://wa.me/919036913399?text=${encodedMessage}`;
-      
-      // Save to Google Sheets as backup
-      await sendToGoogleSheets(data);
-      
-      // Open WhatsApp in new tab
-      window.open(whatsappUrl, '_blank');
-      
+
+      window.open(whatsappUrl, "_blank");
+
       setSubmitStatus({
         type: "success",
-        message: "✓ Opening WhatsApp! Send the message to connect with us instantly.",
+        message:
+          "✓ Opening WhatsApp! Send the message to connect with us instantly.",
       });
-      
-      // Reset form
+
       setFormData({
         name: "",
         email: "",
@@ -139,16 +136,19 @@ const Contact = () => {
         investmentRange: "",
         preferredLocation: "",
         preferredLanguage: "",
+        consent: false,
       });
-
     } catch (error) {
       console.error("Error submitting form:", error);
+
       setSubmitStatus({
         type: "error",
-        message: "⚠️ Please click the WhatsApp button below to contact us directly.",
+        message:
+          "⚠️ Please click the WhatsApp button below to contact us directly.",
       });
     } finally {
       setIsSubmitting(false);
+
       setTimeout(() => {
         setSubmitStatus({ type: "", message: "" });
       }, 5000);
@@ -158,10 +158,11 @@ const Contact = () => {
   const companyAddress = {
     doorNo: "Startup Park,",
     landmark: "near Madiwala Police Station",
-    area: "Sidharata Colony, Santhosapuram, Koramangala 2nd Block,",
+    area:
+      "Sidharata Colony, Santhosapuram, Koramangala 2nd Block,",
     city: "Bengaluru",
     state: "Karnataka",
-    pincode: "560068"
+    pincode: "560068",
   };
 
   return (
@@ -171,23 +172,32 @@ const Contact = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Contact Us
           </h2>
+
           <p className="text-xl text-emerald-100 max-w-2xl mx-auto">
-            Have questions or need assistance? We are just a message away.
+            Have questions or need assistance? We are just a
+            message away.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {/* Contact Info & Map Side */}
+          {/* LEFT SIDE */}
           <div className="space-y-6">
-            {/* WhatsApp Contact Card */}
+            {/* WhatsApp Card */}
             <div className="bg-gradient-to-r from-green-600/20 to-emerald-600/20 backdrop-blur-md rounded-2xl p-6 border border-green-400/30 hover:border-green-400 transition-all duration-300">
               <div className="flex items-center space-x-4 mb-4">
                 <div className="bg-green-500 p-3 rounded-xl animate-pulse">
                   <FaWhatsapp className="w-6 h-6 text-white" />
                 </div>
+
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-2">Chat with us on WhatsApp</h3>
-                  <p className="text-emerald-100 text-sm mb-3">Quick response within minutes</p>
+                  <h3 className="text-xl font-semibold text-white mb-2">
+                    Chat with us on WhatsApp
+                  </h3>
+
+                  <p className="text-emerald-100 text-sm mb-3">
+                    Quick response within minutes
+                  </p>
+
                   <a
                     href="https://wa.me/919036913399?text=Hello%21%20I%27m%20interested%20in%20investing%20with%20iQuecap"
                     target="_blank"
@@ -201,20 +211,29 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Office Address */}
+            {/* Address */}
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:border-emerald-400 transition-all duration-300">
               <div className="flex items-start space-x-4 mb-4">
                 <div className="bg-emerald-500 p-3 rounded-xl">
                   <Building className="w-6 h-6 text-white" />
                 </div>
+
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-3">Visit Our Office</h3>
+                  <h3 className="text-xl font-semibold text-white mb-3">
+                    Visit Our Office
+                  </h3>
+
                   <div className="text-emerald-100 space-y-1 text-sm">
                     <p>{companyAddress.doorNo}</p>
                     <p>{companyAddress.landmark}</p>
                     <p>{companyAddress.area}</p>
-                    <p>{companyAddress.city}, {companyAddress.state}</p>
-                    <p className="font-semibold">{companyAddress.pincode}</p>
+                    <p>
+                      {companyAddress.city},{" "}
+                      {companyAddress.state}
+                    </p>
+                    <p className="font-semibold">
+                      {companyAddress.pincode}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -253,124 +272,164 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Contact Details Grid */}
+            {/* Contact Grid */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:border-emerald-400 transition-all duration-300">
+              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
                 <div className="flex items-center space-x-3">
                   <div className="bg-emerald-500 p-2 rounded-lg">
                     <Phone className="w-4 h-4 text-white" />
                   </div>
+
                   <div>
-                    <h4 className="text-white font-semibold text-sm">Call Us</h4>
-                    <p className="text-emerald-100 text-xs">+919036913399</p>
+                    <h4 className="text-white font-semibold text-sm">
+                      Call Us
+                    </h4>
+
+                    <p className="text-emerald-100 text-xs">
+                      +919036913399
+                    </p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:border-emerald-400 transition-all duration-300">
+              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
                 <div className="flex items-center space-x-3">
                   <div className="bg-emerald-500 p-2 rounded-lg">
                     <Mail className="w-4 h-4 text-white" />
                   </div>
+
                   <div>
-                    <h4 className="text-white font-semibold text-sm">Email Us</h4>
-                    <p className="text-emerald-100 text-xs">support@iquecap.com</p>
+                    <h4 className="text-white font-semibold text-sm">
+                      Email Us
+                    </h4>
+
+                    <p className="text-emerald-100 text-xs">
+                      support@iquecap.com
+                    </p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:border-emerald-400 transition-all duration-300">
+              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
                 <div className="flex items-center space-x-3">
                   <div className="bg-emerald-500 p-2 rounded-lg">
                     <Globe className="w-4 h-4 text-white" />
                   </div>
+
                   <div>
-                    <h4 className="text-white font-semibold text-sm">Website</h4>
-                    <p className="text-emerald-100 text-xs">www.iquecap.com</p>
+                    <h4 className="text-white font-semibold text-sm">
+                      Website
+                    </h4>
+
+                    <p className="text-emerald-100 text-xs">
+                      www.iquecap.com
+                    </p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:border-emerald-400 transition-all duration-300">
+              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
                 <div className="flex items-center space-x-3">
                   <div className="bg-emerald-500 p-2 rounded-lg">
                     <MapPin className="w-4 h-4 text-white" />
                   </div>
+
                   <div>
-                    <h4 className="text-white font-semibold text-sm">Location</h4>
-                    <p className="text-emerald-100 text-xs">Bengaluru</p>
+                    <h4 className="text-white font-semibold text-sm">
+                      Location
+                    </h4>
+
+                    <p className="text-emerald-100 text-xs">
+                      Bengaluru
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* RIGHT SIDE FORM */}
           <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
             <div className="p-8">
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">Get In Touch</h3>
+              <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                Get In Touch
+              </h3>
+
               <p className="text-gray-600 mb-6">
-                Ready to start your investment journey? Fill out the form and we'll get back to you within 24 hours.
+                Ready to start your investment journey?
+                Fill out the form and connect instantly
+                through WhatsApp.
               </p>
-              
+
               {submitStatus.message && (
-                <div className={`mb-6 p-4 rounded-lg flex items-start space-x-3 ${
-                  submitStatus.type === "success" 
-                    ? "bg-green-100 text-green-700 border border-green-200" 
-                    : "bg-red-100 text-red-700 border border-red-200"
-                }`}>
-                  {submitStatus.type === "success" ? 
-                    <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" /> : 
+                <div
+                  className={`mb-6 p-4 rounded-lg flex items-start space-x-3 ${
+                    submitStatus.type === "success"
+                      ? "bg-green-100 text-green-700 border border-green-200"
+                      : "bg-red-100 text-red-700 border border-red-200"
+                  }`}
+                >
+                  {submitStatus.type === "success" ? (
+                    <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                  ) : (
                     <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                  }
+                  )}
+
                   <span>{submitStatus.message}</span>
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-4"
+              >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Full Name *
                     </label>
+
                     <input
                       type="text"
                       name="name"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
-                      placeholder="Enter your name"
                       required
                       value={formData.name}
                       onChange={handleChange}
+                      placeholder="Enter your name"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
                     />
                   </div>
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Email Address *
                     </label>
+
                     <input
                       type="email"
                       name="email"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
-                      placeholder="Enter your email"
                       required
                       value={formData.email}
                       onChange={handleChange}
+                      placeholder="Enter your email"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
                     />
                   </div>
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Any previous Experience in startups/any investment *
+                    Previous Startup / Investment Experience *
                   </label>
+
                   <input
                     type="text"
                     name="subject"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
-                    placeholder="What is this regarding?"
                     required
                     value={formData.subject}
                     onChange={handleChange}
+                    placeholder="Tell us about your experience"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
                   />
                 </div>
 
@@ -378,29 +437,31 @@ const Contact = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Phone Number *
                   </label>
+
                   <input
                     type="tel"
                     name="phone"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
-                    placeholder="Enter your phone number"
                     required
                     value={formData.phone}
                     onChange={handleChange}
+                    placeholder="Enter your phone number"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Message *
                   </label>
+
                   <textarea
                     name="message"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all resize-none text-sm"
                     rows="3"
-                    placeholder="Tell us about your requirements..."
                     required
                     value={formData.message}
                     onChange={handleChange}
+                    placeholder="Tell us about your requirements..."
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all resize-none text-sm"
                   ></textarea>
                 </div>
 
@@ -409,16 +470,25 @@ const Contact = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Investment Range *
                     </label>
+
                     <select
                       name="investmentRange"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
                       required
                       value={formData.investmentRange}
                       onChange={handleChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
                     >
-                      <option value="">Select investment range</option>
-                      {investmentOptions.map(option => (
-                        <option key={option} value={option}>{option}</option>
+                      <option value="">
+                        Select investment range
+                      </option>
+
+                      {investmentOptions.map((option) => (
+                        <option
+                          key={option}
+                          value={option}
+                        >
+                          {option}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -427,16 +497,25 @@ const Contact = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Location *
                     </label>
+
                     <select
                       name="preferredLocation"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
                       required
                       value={formData.preferredLocation}
                       onChange={handleChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
                     >
-                      <option value="">Select your location</option>
-                      {locationOptions.map(option => (
-                        <option key={option} value={option}>{option}</option>
+                      <option value="">
+                        Select your location
+                      </option>
+
+                      {locationOptions.map((option) => (
+                        <option
+                          key={option}
+                          value={option}
+                        >
+                          {option}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -445,21 +524,54 @@ const Contact = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Preferred Language *
                     </label>
+
                     <select
                       name="preferredLanguage"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
                       required
                       value={formData.preferredLanguage}
                       onChange={handleChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm"
                     >
-                      <option value="">Select language</option>
-                      {languageOptions.map(option => (
-                        <option key={option} value={option}>{option}</option>
+                      <option value="">
+                        Select language
+                      </option>
+
+                      {languageOptions.map((option) => (
+                        <option
+                          key={option}
+                          value={option}
+                        >
+                          {option}
+                        </option>
                       ))}
                     </select>
                   </div>
                 </div>
 
+                {/* CONSENT CHECKBOX */}
+                <div className="flex items-start space-x-3 pt-2">
+                  <input
+                    type="checkbox"
+                    name="consent"
+                    id="consent"
+                    required
+                    checked={formData.consent}
+                    onChange={handleChange}
+                    className="mt-1 h-4 w-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500"
+                  />
+
+                  <label
+                    htmlFor="consent"
+                    className="text-sm text-gray-600 leading-relaxed"
+                  >
+                    I agree to be contacted via WhatsApp,
+                    phone call, or email regarding
+                    investment opportunities and platform
+                    updates.
+                  </label>
+                </div>
+
+                {/* SUBMIT BUTTON */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -467,22 +579,44 @@ const Contact = () => {
                 >
                   {isSubmitting ? (
                     <span className="flex items-center justify-center space-x-2">
-                      <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      <svg
+                        className="animate-spin h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 
+                          0 0 5.373 0 12h4zm2 
+                          5.291A7.962 7.962 0 
+                          014 12H0c0 3.042 1.135 
+                          5.824 3 7.938l3-2.647z"
+                        ></path>
                       </svg>
+
                       <span>Submitting...</span>
                     </span>
                   ) : (
                     <span className="flex items-center justify-center space-x-2">
                       <FaWhatsapp className="w-5 h-5" />
-                      <span>Submit & Chat on WhatsApp</span>
+                      <span>
+                        Submit & Chat on WhatsApp
+                      </span>
                     </span>
                   )}
                 </button>
               </form>
-
-             
             </div>
           </div>
         </div>
