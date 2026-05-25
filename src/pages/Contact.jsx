@@ -166,35 +166,35 @@ const Contact = () => {
   };
 
   return (
-    <section className="min-h-screen py-16 bg-gradient-to-b from-[#0d9866] to-[#01454b] overflow-x-hidden">
-      <div className="container mx-auto px-4 max-w-6xl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+    <section className="min-h-screen py-8 md:py-16 bg-gradient-to-b from-[#0d9866] to-[#01454b] overflow-x-hidden">
+      <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4 text-white">
             Contact Us
           </h2>
 
-          <p className="text-xl text-emerald-100 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-emerald-100 max-w-2xl mx-auto px-2">
             Have questions or need assistance? We are just a
             message away.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12">
           {/* LEFT SIDE */}
-          <div className="space-y-6">
+          <div className="space-y-5 md:space-y-6">
             {/* WhatsApp Card */}
-            <div className="bg-gradient-to-r from-green-600/20 to-emerald-600/20 backdrop-blur-md rounded-2xl p-6 border border-green-400/30 hover:border-green-400 transition-all duration-300">
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="bg-green-500 p-3 rounded-xl animate-pulse">
+            <div className="bg-gradient-to-r from-green-600/20 to-emerald-600/20 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-green-400/30 hover:border-green-400 transition-all duration-300">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-3 sm:space-y-0">
+                <div className="bg-green-500 p-3 rounded-xl animate-pulse self-start sm:self-auto">
                   <FaWhatsapp className="w-6 h-6 text-white" />
                 </div>
 
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-2">
+                  <h3 className="text-lg md:text-xl font-semibold text-white mb-1 md:mb-2">
                     Chat with us on WhatsApp
                   </h3>
 
-                  <p className="text-emerald-100 text-sm mb-3">
+                  <p className="text-emerald-100 text-xs md:text-sm mb-3">
                     Quick response within minutes
                   </p>
 
@@ -202,9 +202,9 @@ const Contact = () => {
                     href="https://wa.me/919036913399?text=Hello%21%20I%27m%20interested%20in%20investing%20with%20iQuecap"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105"
+                    className="inline-flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 text-sm md:text-base"
                   >
-                    <FaWhatsapp className="w-5 h-5" />
+                    <FaWhatsapp className="w-4 h-4 md:w-5 md:h-5" />
                     <span>Click to WhatsApp</span>
                   </a>
                 </div>
@@ -212,18 +212,18 @@ const Contact = () => {
             </div>
 
             {/* Address */}
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:border-emerald-400 transition-all duration-300">
-              <div className="flex items-start space-x-4 mb-4">
-                <div className="bg-emerald-500 p-3 rounded-xl">
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-white/20 hover:border-emerald-400 transition-all duration-300">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:space-x-4 space-y-3 sm:space-y-0">
+                <div className="bg-emerald-500 p-3 rounded-xl self-start sm:self-auto">
                   <Building className="w-6 h-6 text-white" />
                 </div>
 
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-3">
+                  <h3 className="text-lg md:text-xl font-semibold text-white mb-2 md:mb-3">
                     Visit Our Office
                   </h3>
 
-                  <div className="text-emerald-100 space-y-1 text-sm">
+                  <div className="text-emerald-100 space-y-1 text-xs sm:text-sm">
                     <p>{companyAddress.doorNo}</p>
                     <p>{companyAddress.landmark}</p>
                     <p>{companyAddress.area}</p>
@@ -240,9 +240,9 @@ const Contact = () => {
             </div>
 
             {/* Map Section */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-              <h3 className="text-xl font-semibold text-white mb-4">Find Us Here</h3>
-              <p className="text-gray-300 mb-4 text-sm">
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-5 md:p-6 border border-white/10">
+              <h3 className="text-lg md:text-xl font-semibold text-white mb-3 md:mb-4">Find Us Here</h3>
+              <p className="text-gray-300 mb-4 text-xs sm:text-sm">
                 Startup Park, Sidharata Colony, Santhosapuram, Koramangala 2nd
                 Block, Koramangala, Bengaluru, Karnataka 560068
               </p>
@@ -251,7 +251,7 @@ const Contact = () => {
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.7832!2d77.6246!3d12.9356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae150058b75f01%3A0xd3b7950ec31e6322!2sStartup%20park!5e0!3m2!1sen!2sin!4v1719724986017!5m2!1sen!2sin"
                   width="100%"
                   height="300"
-                  style={{ border: 0 }}
+                  style={{ border: 0, minHeight: "200px" }}
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -264,82 +264,82 @@ const Contact = () => {
                   href="https://maps.google.com/maps?q=Startup+Park+Koramangala+Bengaluru"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-emerald-300 hover:text-white transition-colors text-sm font-medium flex items-center space-x-2"
+                  className="text-emerald-300 hover:text-white transition-colors text-xs sm:text-sm font-medium flex items-center space-x-2"
                 >
-                  <FaMapMarkerAlt size={16} />
+                  <FaMapMarkerAlt size={14} className="sm:w-4 sm:h-4" />
                   <span>Open in Google Maps</span>
                 </a>
               </div>
             </div>
 
             {/* Contact Grid */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
-                <div className="flex items-center space-x-3">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 sm:p-4 border border-white/20">
+                <div className="flex items-center space-x-2 sm:space-x-3">
                   <div className="bg-emerald-500 p-2 rounded-lg">
-                    <Phone className="w-4 h-4 text-white" />
+                    <Phone className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                   </div>
 
                   <div>
-                    <h4 className="text-white font-semibold text-sm">
+                    <h4 className="text-white font-semibold text-xs sm:text-sm">
                       Call Us
                     </h4>
 
-                    <p className="text-emerald-100 text-xs">
+                    <p className="text-emerald-100 text-[10px] sm:text-xs">
                       +919036913399
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
-                <div className="flex items-center space-x-3">
+              <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 sm:p-4 border border-white/20">
+                <div className="flex items-center space-x-2 sm:space-x-3">
                   <div className="bg-emerald-500 p-2 rounded-lg">
-                    <Mail className="w-4 h-4 text-white" />
+                    <Mail className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                   </div>
 
                   <div>
-                    <h4 className="text-white font-semibold text-sm">
+                    <h4 className="text-white font-semibold text-xs sm:text-sm">
                       Email Us
                     </h4>
 
-                    <p className="text-emerald-100 text-xs">
+                    <p className="text-emerald-100 text-[10px] sm:text-xs break-all">
                       support@iquecap.com
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
-                <div className="flex items-center space-x-3">
+              <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 sm:p-4 border border-white/20">
+                <div className="flex items-center space-x-2 sm:space-x-3">
                   <div className="bg-emerald-500 p-2 rounded-lg">
-                    <Globe className="w-4 h-4 text-white" />
+                    <Globe className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                   </div>
 
                   <div>
-                    <h4 className="text-white font-semibold text-sm">
+                    <h4 className="text-white font-semibold text-xs sm:text-sm">
                       Website
                     </h4>
 
-                    <p className="text-emerald-100 text-xs">
+                    <p className="text-emerald-100 text-[10px] sm:text-xs break-all">
                       www.iquecap.com
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
-                <div className="flex items-center space-x-3">
+              <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 sm:p-4 border border-white/20">
+                <div className="flex items-center space-x-2 sm:space-x-3">
                   <div className="bg-emerald-500 p-2 rounded-lg">
-                    <MapPin className="w-4 h-4 text-white" />
+                    <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                   </div>
 
                   <div>
-                    <h4 className="text-white font-semibold text-sm">
+                    <h4 className="text-white font-semibold text-xs sm:text-sm">
                       Location
                     </h4>
 
-                    <p className="text-emerald-100 text-xs">
+                    <p className="text-emerald-100 text-[10px] sm:text-xs">
                       Bengaluru
                     </p>
                   </div>
@@ -350,12 +350,12 @@ const Contact = () => {
 
           {/* RIGHT SIDE FORM */}
           <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-            <div className="p-8">
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">
+            <div className="p-5 sm:p-6 md:p-8">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">
                 Get In Touch
               </h3>
 
-              <p className="text-gray-600 mb-6">
+              <p className="text-sm sm:text-base text-gray-600 mb-5 md:mb-6">
                 Ready to start your investment journey?
                 Fill out the form and connect instantly
                 through WhatsApp.
@@ -363,19 +363,19 @@ const Contact = () => {
 
               {submitStatus.message && (
                 <div
-                  className={`mb-6 p-4 rounded-lg flex items-start space-x-3 ${
+                  className={`mb-5 md:mb-6 p-3 sm:p-4 rounded-lg flex items-start space-x-3 ${
                     submitStatus.type === "success"
                       ? "bg-green-100 text-green-700 border border-green-200"
                       : "bg-red-100 text-red-700 border border-red-200"
                   }`}
                 >
                   {submitStatus.type === "success" ? (
-                    <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 flex-shrink-0" />
                   ) : (
-                    <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                    <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 flex-shrink-0" />
                   )}
 
-                  <span>{submitStatus.message}</span>
+                  <span className="text-xs sm:text-sm">{submitStatus.message}</span>
                 </div>
               )}
 
@@ -383,7 +383,7 @@ const Contact = () => {
                 onSubmit={handleSubmit}
                 className="space-y-4"
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Full Name *
@@ -465,7 +465,7 @@ const Contact = () => {
                   ></textarea>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Investment Range *
@@ -557,12 +557,12 @@ const Contact = () => {
                     required
                     checked={formData.consent}
                     onChange={handleChange}
-                    className="mt-1 h-4 w-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500"
+                    className="mt-1 h-4 w-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500 flex-shrink-0"
                   />
 
                   <label
                     htmlFor="consent"
-                    className="text-sm text-gray-600 leading-relaxed"
+                    className="text-xs sm:text-sm text-gray-600 leading-relaxed"
                   >
                     I agree to be contacted via WhatsApp,
                     phone call, or email regarding
@@ -609,7 +609,7 @@ const Contact = () => {
                     </span>
                   ) : (
                     <span className="flex items-center justify-center space-x-2">
-                      <FaWhatsapp className="w-5 h-5" />
+                      <FaWhatsapp className="w-4 h-4 sm:w-5 sm:h-5" />
                       <span>
                         Submit & Chat on WhatsApp
                       </span>
